@@ -132,6 +132,7 @@
             font-weight: 400;
             color: var(--navy-muted);
             border-radius: var(--radius);
+            transition: color 0.2s var(--ease), background 0.2s var(--ease);
         }
 
         .nav-links a.link:hover {
@@ -176,42 +177,50 @@
 
         .menu-btn {
             display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
             width: 40px;
             height: 40px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            background: var(--white);
+            border: none;
+            border-radius: 10px;
+            background: none;
             color: var(--navy);
             cursor: pointer;
             padding: 0;
             flex-shrink: 0;
+            margin-left: auto;
         }
 
         .menu-bars {
-            display: grid;
+            display: flex;
+            flex-direction: column;
             gap: 5px;
-            width: 18px;
-            margin: 0 auto;
+            width: 22px;
+            margin: 0;
         }
 
         .menu-bars span {
             display: block;
-            width: 18px;
-            height: 1.5px;
-            border-radius: 1px;
+            width: 22px;
+            height: 2px;
+            border-radius: 2px;
             background: currentColor;
+            transform-origin: center;
         }
 
         .menu-btn.open .menu-bars span:nth-child(1) {
-            transform: translateY(6.5px) rotate(45deg);
+            transform: translateY(7px) rotate(45deg);
         }
 
         .menu-btn.open .menu-bars span:nth-child(2) {
             opacity: 0;
+            transform: scaleX(0);
         }
 
         .menu-btn.open .menu-bars span:nth-child(3) {
-            transform: translateY(-6.5px) rotate(-45deg);
+            transform: translateY(-7px) rotate(-45deg);
         }
 
         .nav-mobile {
@@ -420,45 +429,83 @@
         }
 
         /* ── Responsive ── */
+        @media (hover: hover) {
+            .menu-btn:hover {
+                background: rgba(6, 27, 49, 0.06);
+            }
+        }
+
         @media (max-width: 720px) {
+            .nav-wrap {
+                position: relative;
+                z-index: 50;
+            }
+
             .nav-links .link,
             .nav-links .btn--primary {
                 display: none;
             }
 
             .menu-btn {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .nav-mobile {
-                display: none;
-                position: fixed;
-                inset: 0;
-                z-index: 90;
-                background: rgba(255, 255, 255, 0.97);
-                backdrop-filter: blur(16px);
-                -webkit-backdrop-filter: blur(16px);
-                padding: 88px var(--pad) 40px;
-                flex-direction: column;
-                gap: 4px;
-            }
-
-            .nav-mobile.open {
                 display: flex;
             }
 
-            .nav-mobile a {
-                padding: 14px 16px;
-                font-size: 16px;
-                font-weight: 400;
-                color: var(--navy);
-                border-radius: var(--radius);
+            .nav-mobile {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 40;
+                background: var(--white);
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 8px 32px rgba(6, 27, 49, 0.1);
+                padding: 86px var(--pad) 28px;
+                transform: translateY(-100%);
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                text-align: center;
             }
 
-            .nav-mobile a:hover {
+            .nav-mobile.open {
+                transform: translateY(0);
+            }
+
+            .nav-mobile a:not(.nav-mobile-contact) {
+                display: block;
+                width: 100%;
+                margin: 0 auto;
+                padding: 10px 16px;
+                text-align: center;
+                font-size: 16px;
+                font-weight: 500;
+                color: var(--navy-muted);
+                border-radius: var(--radius);
+                transition: color 0.2s var(--ease), background 0.2s var(--ease);
+            }
+
+            .nav-mobile a:not(.nav-mobile-contact):hover {
+                color: var(--navy);
                 background: var(--surface);
+            }
+
+            .nav-mobile .nav-mobile-contact {
+                display: block;
+                width: 100%;
+                margin: 0 auto;
+                padding: 13px;
+                text-align: center;
+                font-size: 15px;
+                font-weight: 600;
+                color: var(--white);
+                background: var(--blurple);
+                border: 1px solid var(--blurple);
+                border-radius: 12px;
+                transition: background 0.2s var(--ease);
+            }
+
+            .nav-mobile .nav-mobile-contact:hover {
+                color: var(--white);
+                background: var(--blurple-hover);
             }
 
             .hero-grid {
@@ -467,8 +514,19 @@
 
             .hero-photo {
                 order: -1;
-                max-width: 260px;
+                width: min(260px, 85vw);
+                aspect-ratio: 1;
                 margin: 0 auto;
+            }
+
+            .hero-photo-frame {
+                width: 100%;
+                height: 100%;
+            }
+
+            .hero-photo img {
+                width: 100%;
+                height: 100%;
             }
 
             .hero-content {
@@ -512,7 +570,7 @@
                         </span>
                     </button>
                 </div>
-            </div>
+            </div> 
         </nav>
 
         <nav class="nav-mobile" id="nav-mobile" aria-label="Mobile" aria-hidden="true">
@@ -520,7 +578,7 @@
             <a href="https://www.linkedin.com/in/abhishekpallepati/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="https://github.com/MasterMilkyshake" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="/static/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-            <a href="mailto:pallepat@usc.edu">Contact</a>
+            <a class="nav-mobile-contact" href="mailto:pallepat@usc.edu">Contact</a>
         </nav>
 
         <div class="hero-wrap">
@@ -560,7 +618,7 @@
                             <h3>University of Southern California</h3>
                             <span class="entry-date">2025 — 2029</span>
                         </div>
-                        <div class="entry-sub">Bachelor of Science in Biochemistry</div>
+                        <div class="entry-sub">Bachelor of Science in Biophysics</div>
                         <div class="entry-loc">Los Angeles, CA</div>
                     </article>
                 </div>
