@@ -22,13 +22,12 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/static/icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
     <style>
         :root {
             --white: #ffffff;
             --surface: #f8fafd;
-            --surface-2: #f0f4f9;
             --border: #e5edf5;
             --border-hover: #d0dae8;
             --navy: #061b31;
@@ -37,17 +36,12 @@
             --text-tertiary: #94a3b8;
             --blurple: #6a6ae7;
             --blurple-hover: #5656d4;
-            --blurple-light: #eeedfc;
-            --blurple-border: #b8b8f0;
-            --blurple-soft: #8b86f0;
-            --green: #00d4aa;
             --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
             --max: 1080px;
             --pad: clamp(20px, 5vw, 40px);
             --radius: 6px;
             --radius-lg: 12px;
             --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
-            --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         *,
@@ -59,6 +53,11 @@
         html {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            color-scheme: light;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
         }
 
         body,
@@ -76,7 +75,10 @@
             font-weight: 400;
             line-height: 1.6;
             color: var(--navy-muted);
-            background: var(--white);
+            background:
+                radial-gradient(ellipse 900px 620px at 88% 0%, rgba(106, 106, 231, 0.07), transparent 62%),
+                radial-gradient(ellipse 700px 500px at 8% 30%, rgba(139, 134, 240, 0.05), transparent 60%),
+                linear-gradient(180deg, #ffffff 0%, #f8fafd 100%);
             overflow-x: hidden;
         }
 
@@ -107,7 +109,7 @@
 
         /* ── Navigation ── */
         .nav-wrap {
-            background: var(--white);
+            background: transparent;
         }
 
         .nav-inner {
@@ -231,25 +233,32 @@
         .hero {
             position: relative;
             z-index: 1;
-            padding: clamp(72px, 11vw, 128px) var(--pad) clamp(88px, 13vw, 148px);
+            padding: clamp(40px, 6vw, 72px) var(--pad) clamp(72px, 10vw, 120px);
             max-width: var(--max);
             margin: 0 auto;
+            min-height: calc(100vh - 64px);
+            min-height: calc(100svh - 64px);
+            display: flex;
+            align-items: center;
         }
 
         .hero-grid {
+            width: 100%;
             display: grid;
             grid-template-columns: 1fr minmax(240px, 320px);
             gap: clamp(48px, 7vw, 96px);
             align-items: center;
+            margin-top: calc(-1 * clamp(24px, 6vh, 64px));
         }
 
         .hero-name {
-            font-size: clamp(2.75rem, 6.5vw, 4.25rem);
-            font-weight: 300;
+            font-size: clamp(2.75rem, 6vw, 4rem);
+            font-weight: 400;
             line-height: 1.02;
             letter-spacing: -0.04em;
             color: var(--navy);
             margin-bottom: 28px;
+            text-wrap: balance;
         }
 
         .hero-bio {
@@ -257,8 +266,9 @@
             font-size: 18px;
             font-weight: 400;
             line-height: 1.7;
-            color: var(--navy-muted);
+            color: var(--text-secondary);
             margin-bottom: 36px;
+            text-wrap: pretty;
         }
 
         .hero-actions {
@@ -291,55 +301,42 @@
         .main {
             max-width: var(--max);
             margin: 0 auto;
-            padding: clamp(80px, 10vw, 120px) var(--pad);
+            padding: clamp(24px, 4vw, 48px) var(--pad) clamp(96px, 12vw, 140px);
             display: grid;
-            gap: 80px;
-        }
-
-        .section {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        .section-side {
-            width: 100%;
+            gap: clamp(64px, 8vw, 96px);
         }
 
         .section-title {
-            font-size: clamp(1.35rem, 2.5vw, 1.65rem);
-            font-weight: 400;
+            font-size: clamp(1.45rem, 2.6vw, 1.75rem);
+            font-weight: 500;
             letter-spacing: -0.025em;
-            line-height: 1.2;
+            line-height: 1.15;
             color: var(--navy);
+            margin-bottom: clamp(24px, 4vw, 34px);
         }
 
-        .section-body {
-            width: 100%;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
+        .section .timeline,
+        .section ul,
+        .section .tag-wall {
+            padding-left: 32px;
         }
 
         /* ── Entries ── */
         .entry {
+            padding: 0 0 36px;
             display: grid;
-            gap: 6px;
-            padding: 28px 32px;
-            border-bottom: 1px solid var(--border);
-            position: relative;
+            gap: 5px;
         }
 
         .entry:last-of-type {
-            border-bottom: none;
+            padding-bottom: 0;
         }
 
         .entry-top {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            gap: 16px;
+            gap: 18px;
         }
 
         .entry-top h3 {
@@ -376,9 +373,13 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            gap: 16px;
-            padding: 24px 32px;
+            gap: 18px;
+            padding: 20px 0;
             border-bottom: 1px solid var(--border);
+        }
+
+        .pub-item:first-child {
+            padding-top: 0;
         }
 
         .pub-item:last-child {
@@ -395,32 +396,32 @@
 
         .pub-date {
             font-size: 13px;
+            font-weight: 400;
             color: var(--text-tertiary);
             white-space: nowrap;
             font-variant-numeric: tabular-nums;
         }
 
-        /* ── Certifications grid ── */
+        /* ── Certifications ── */
         .tag-wall {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 12px;
-            padding: 24px;
         }
 
         .cert-tag {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-height: 56px;
-            padding: 14px 20px;
+            padding: 11px 22px;
             font-size: 14px;
             font-weight: 500;
             letter-spacing: -0.01em;
             color: var(--navy);
-            background: var(--white);
-            border: 1px solid var(--border);
             border-radius: var(--radius);
+            border: 1px solid var(--border);
+            background: var(--white);
+            transition: border-color 0.15s var(--ease), background 0.15s var(--ease);
         }
 
         .cert-tag:hover {
@@ -491,7 +492,7 @@
             .nav-mobile .nav-mobile-contact {
                 display: block;
                 width: 100%;
-                margin: 0 auto;
+                margin: 12px auto 0;
                 padding: 13px;
                 text-align: center;
                 font-size: 15px;
@@ -542,9 +543,59 @@
                 justify-content: center;
             }
 
+            .entry-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+
+            .section .timeline,
+            .section ul,
+            .section .tag-wall {
+                padding-left: 0;
+            }
+        }
+
+        /* ── Print ── */
+        @media print {
+            body {
+                background: #fff;
+                color: #000;
+            }
+
+            .nav-wrap,
+            .nav-mobile,
+            .hero-actions {
+                display: none;
+            }
+
+            .hero {
+                min-height: 0;
+                padding: 0 0 32px;
+            }
+
+            .hero-grid {
+                margin-top: 0;
+            }
+
+            .hero-photo-frame {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+
+            .main {
+                padding-top: 0;
+                gap: 40px;
+            }
+
             .entry,
-            .pub-item {
-                padding: 24px 20px;
+            .pub-item,
+            .section-title {
+                break-inside: avoid;
+            }
+
+            .cert-tag {
+                border-color: #ccc;
             }
         }
     </style>
@@ -570,7 +621,7 @@
                         </span>
                     </button>
                 </div>
-            </div> 
+            </div>
         </nav>
 
         <nav class="nav-mobile" id="nav-mobile" aria-label="Mobile" aria-hidden="true">
@@ -581,38 +632,34 @@
             <a class="nav-mobile-contact" href="mailto:pallepat@usc.edu">Contact</a>
         </nav>
 
-        <div class="hero-wrap">
-            <header class="hero">
-                <div class="hero-grid">
-                    <div class="hero-content">
-                        <h1 class="hero-name">Abhishek Pallepati</h1>
-                        <p class="hero-bio">
-                            Student interested in biophysics and biotechnology, with an emphasis
-                            on preventive medicine through pediatric genetics and emergency medicine
-                            through nanoparticle therapeutics.
-                        </p>
-                        <div class="hero-actions">
-                            <a class="btn btn--primary" href="mailto:pallepat@usc.edu">Contact Me</a>
-                            <a class="btn btn--ghost" href="/static/resume.pdf" target="_blank"
-                                rel="noopener noreferrer">View Resume</a>
-                        </div>
-                    </div>
-                    <div class="hero-photo">
-                        <div class="hero-photo-frame">
-                            <img src="/static/profile.jpeg" alt="Portrait of Abhishek Pallepati" width="320"
-                                height="320" decoding="async" />
-                        </div>
+        <header class="hero">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1 class="hero-name">Abhishek Pallepati</h1>
+                    <p class="hero-bio">
+                        Student interested in biophysics and biotechnology, with an emphasis
+                        on preventive medicine through pediatric genetics and emergency medicine
+                        through nanoparticle therapeutics.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn--primary" href="mailto:pallepat@usc.edu">Contact Me</a>
+                        <a class="btn btn--ghost" href="/static/resume.pdf" target="_blank"
+                            rel="noopener noreferrer">View Resume</a>
                     </div>
                 </div>
-            </header>
-        </div>
+                <div class="hero-photo">
+                    <div class="hero-photo-frame">
+                        <img src="/static/profile.jpeg" alt="Portrait of Abhishek Pallepati" width="320"
+                            height="320" decoding="async" fetchpriority="high" />
+                    </div>
+                </div>
+            </div>
+        </header>
 
         <main class="main">
             <section class="section">
-                <div class="section-side">
-                    <h2 class="section-title">Education</h2>
-                </div>
-                <div class="section-body">
+                <h2 class="section-title">Education</h2>
+                <div class="timeline">
                     <article class="entry">
                         <div class="entry-top">
                             <h3>University of Southern California</h3>
@@ -625,10 +672,8 @@
             </section>
 
             <section class="section">
-                <div class="section-side">
-                    <h2 class="section-title">Experience</h2>
-                </div>
-                <div class="section-body">
+                <h2 class="section-title">Experience</h2>
+                <div class="timeline">
                     <article class="entry">
                         <div class="entry-top">
                             <h3>Emergency Medical Technician</h3>
@@ -657,10 +702,8 @@
             </section>
 
             <section class="section">
-                <div class="section-side">
-                    <h2 class="section-title">Volunteer Experience</h2>
-                </div>
-                <div class="section-body">
+                <h2 class="section-title">Volunteer Experience</h2>
+                <div class="timeline">
                     <article class="entry">
                         <div class="entry-top">
                             <h3>Coming Soon</h3>
@@ -681,41 +724,33 @@
             </section>
 
             <section class="section">
-                <div class="section-side">
-                    <h2 class="section-title">Publications</h2>
-                </div>
-                <div class="section-body">
-                    <ul>
-                        <li class="pub-item">
-                            <strong>Coming Soon</strong>
-                            <span class="pub-date">MM-DD-YYYY</span>
-                        </li>
-                        <li class="pub-item">
-                            <strong>Coming Soon</strong>
-                            <span class="pub-date">MM-DD-YYYY</span>
-                        </li>
-                        <li class="pub-item">
-                            <strong>Coming Soon</strong>
-                            <span class="pub-date">MM-DD-YYYY</span>
-                        </li>
-                    </ul>
-                </div>
+                <h2 class="section-title">Publications</h2>
+                <ul>
+                    <li class="pub-item">
+                        <strong>Coming Soon</strong>
+                        <span class="pub-date">MM-DD-YYYY</span>
+                    </li>
+                    <li class="pub-item">
+                        <strong>Coming Soon</strong>
+                        <span class="pub-date">MM-DD-YYYY</span>
+                    </li>
+                    <li class="pub-item">
+                        <strong>Coming Soon</strong>
+                        <span class="pub-date">MM-DD-YYYY</span>
+                    </li>
+                </ul>
             </section>
 
             <section class="section">
-                <div class="section-side">
-                    <h2 class="section-title">Certifications</h2>
-                </div>
-                <div class="section-body">
-                    <div class="tag-wall">
-                        <a class="cert-tag" href="/static/emt.pdf" target="_blank" rel="noopener noreferrer">EMT</a>
-                        <a class="cert-tag" href="/static/bls.pdf" target="_blank" rel="noopener noreferrer">BLS</a>
-                        <a class="cert-tag" href="/static/acls.pdf" target="_blank" rel="noopener noreferrer">ACLS</a>
-                        <a class="cert-tag" href="/static/pals.pdf" target="_blank" rel="noopener noreferrer">PALS</a>
-                        <a class="cert-tag" href="/static/bls-i.pdf" target="_blank" rel="noopener noreferrer">BLS-I</a>
-                        <a class="cert-tag" href="/static/medstats.pdf" target="_blank"
-                            rel="noopener noreferrer">Medical Stats</a>
-                    </div>
+                <h2 class="section-title">Certifications</h2>
+                <div class="tag-wall">
+                    <a class="cert-tag" href="/static/emt.pdf" target="_blank" rel="noopener noreferrer">EMT</a>
+                    <a class="cert-tag" href="/static/bls.pdf" target="_blank" rel="noopener noreferrer">BLS</a>
+                    <a class="cert-tag" href="/static/acls.pdf" target="_blank" rel="noopener noreferrer">ACLS</a>
+                    <a class="cert-tag" href="/static/pals.pdf" target="_blank" rel="noopener noreferrer">PALS</a>
+                    <a class="cert-tag" href="/static/bls-i.pdf" target="_blank" rel="noopener noreferrer">BLS-I</a>
+                    <a class="cert-tag" href="/static/medstats.pdf" target="_blank"
+                        rel="noopener noreferrer">Medical Stats</a>
                 </div>
             </section>
         </main>
