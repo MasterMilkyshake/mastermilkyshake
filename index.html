@@ -7,7 +7,7 @@
     <title>Abhishek Pallepati</title>
     <meta name="description"
         content="Abhishek Pallepati – Student interested in biophysics and biotechnology, with an emphasis on preventive medicine through pediatric genetics and emergency medicine through nanoparticle therapeutics." />
-    <meta name="theme-color" content="#6a6ae7" />
+    <meta name="theme-color" content="#08090a" />
     <meta property="og:title" content="Abhishek Pallepati" />
     <meta property="og:description"
         content="Student interested in biophysics and biotechnology, with an emphasis on preventive medicine through pediatric genetics and emergency medicine through nanoparticle therapeutics." />
@@ -26,22 +26,16 @@
 
     <style>
         :root {
-            --white: #ffffff;
-            --surface: #f8fafd;
-            --border: #e5edf5;
-            --border-hover: #d0dae8;
-            --navy: #061b31;
-            --navy-muted: #425466;
-            --text-secondary: #64748b;
-            --text-tertiary: #94a3b8;
-            --blurple: #6a6ae7;
-            --blurple-hover: #5656d4;
             --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
             --max: 1080px;
             --pad: clamp(20px, 5vw, 40px);
-            --radius: 6px;
-            --radius-lg: 12px;
-            --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+            --ink: #f7f8f8;
+            --body: #b4b9c2;
+            --muted: #8a8f98;
+            --faint: #62666d;
+            --soon: #5a5e66;
+            --line: rgba(255, 255, 255, 0.08);
+            --line-strong: rgba(255, 255, 255, 0.14);
         }
 
         *,
@@ -51,13 +45,9 @@
         }
 
         html {
+            color-scheme: dark;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            color-scheme: light;
-        }
-
-        * {
-            -webkit-tap-highlight-color: transparent;
         }
 
         body,
@@ -72,13 +62,9 @@
         body {
             font-family: var(--font);
             font-size: 16px;
-            font-weight: 400;
             line-height: 1.6;
-            color: var(--navy-muted);
-            background:
-                radial-gradient(ellipse 900px 620px at 88% 0%, rgba(106, 106, 231, 0.07), transparent 62%),
-                radial-gradient(ellipse 700px 500px at 8% 30%, rgba(139, 134, 240, 0.05), transparent 60%),
-                linear-gradient(180deg, #ffffff 0%, #f8fafd 100%);
+            color: var(--body);
+            background: radial-gradient(ellipse 1100px 620px at 50% -20%, rgba(94, 106, 210, 0.07), transparent 60%), #08090a;
             overflow-x: hidden;
         }
 
@@ -98,20 +84,11 @@
         }
 
         :focus-visible {
-            outline: 2px solid var(--blurple);
+            outline: 2px solid var(--ink);
             outline-offset: 2px;
         }
 
-        .site {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* ── Navigation ── */
-        .nav-wrap {
-            background: transparent;
-        }
-
+        /* Navigation */
         .nav-inner {
             display: flex;
             align-items: center;
@@ -119,127 +96,50 @@
             max-width: var(--max);
             margin: 0 auto;
             padding: 0 var(--pad);
-            height: 64px;
+            height: 72px;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 2px;
+            gap: 4px;
         }
 
-        .nav-links a.link {
+        .nav-links .link {
             padding: 8px 14px;
             font-size: 14px;
-            font-weight: 400;
-            color: var(--navy-muted);
-            border-radius: var(--radius);
-            transition: color 0.2s var(--ease), background 0.2s var(--ease);
+            color: rgba(247, 248, 248, 0.62);
+            border-radius: 6px;
+            transition: color 0.2s ease;
         }
 
-        .nav-links a.link:hover {
-            color: var(--navy);
-            background: var(--surface);
+        .nav-links .link:hover {
+            color: var(--ink);
         }
 
-        .btn {
+        .btn-contact {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px 18px;
-            font-family: var(--font);
+            margin-left: 8px;
+            padding: 9px 18px;
             font-size: 14px;
             font-weight: 500;
-            line-height: 1.4;
-            border-radius: var(--radius);
-            border: none;
-            cursor: pointer;
+            color: #0a0b0d;
+            background: var(--ink);
+            border-radius: 6px;
+            transition: background 0.2s ease;
         }
 
-        .btn--primary {
-            background: var(--blurple);
-            color: var(--white);
+        .btn-contact:hover {
+            background: #e2e4e9;
         }
 
-        .btn--primary:hover {
-            background: var(--blurple-hover);
-        }
-
-        .btn--ghost {
-            background: var(--white);
-            color: var(--navy);
-            border: 1px solid var(--border);
-        }
-
-        .btn--ghost:hover {
-            border-color: var(--border-hover);
-            background: var(--surface);
-        }
-
-        .menu-btn {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
-            width: 40px;
-            height: 40px;
-            border: none;
-            border-radius: 10px;
-            background: none;
-            color: var(--navy);
-            cursor: pointer;
-            padding: 0;
-            flex-shrink: 0;
-            margin-left: auto;
-        }
-
-        .menu-bars {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            width: 22px;
-            margin: 0;
-        }
-
-        .menu-bars span {
-            display: block;
-            width: 22px;
-            height: 2px;
-            border-radius: 2px;
-            background: currentColor;
-            transform-origin: center;
-        }
-
-        .menu-btn.open .menu-bars span:nth-child(1) {
-            transform: translateY(7px) rotate(45deg);
-        }
-
-        .menu-btn.open .menu-bars span:nth-child(2) {
-            opacity: 0;
-            transform: scaleX(0);
-        }
-
-        .menu-btn.open .menu-bars span:nth-child(3) {
-            transform: translateY(-7px) rotate(-45deg);
-        }
-
-        .nav-mobile {
-            display: none;
-        }
-
-        /* ── Hero ── */
+        /* Hero */
         .hero {
-            position: relative;
-            z-index: 1;
-            padding: clamp(40px, 6vw, 72px) var(--pad) clamp(72px, 10vw, 120px);
             max-width: var(--max);
+            width: 100%;
             margin: 0 auto;
-            min-height: calc(100vh - 64px);
-            min-height: calc(100svh - 64px);
-            display: flex;
-            align-items: center;
+            padding: clamp(48px, 9vw, 104px) var(--pad) clamp(56px, 9vw, 96px);
         }
 
         .hero-grid {
@@ -248,87 +148,129 @@
             grid-template-columns: 1fr minmax(240px, 320px);
             gap: clamp(48px, 7vw, 96px);
             align-items: center;
-            margin-top: calc(-1 * clamp(24px, 6vh, 64px));
+        }
+
+        .hero-content {
+            min-width: 0;
         }
 
         .hero-name {
+            margin: 0 0 28px;
             font-size: clamp(2.75rem, 6vw, 4rem);
-            font-weight: 400;
+            font-weight: 500;
             line-height: 1.02;
             letter-spacing: -0.04em;
-            color: var(--navy);
-            margin-bottom: 28px;
+            color: var(--ink);
             text-wrap: balance;
         }
 
         .hero-bio {
             max-width: 46ch;
+            margin: 0 0 36px;
             font-size: 18px;
-            font-weight: 400;
             line-height: 1.7;
-            color: var(--text-secondary);
-            margin-bottom: 36px;
+            color: var(--muted);
             text-wrap: pretty;
         }
 
         .hero-actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 11px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #0a0b0d;
+            background: var(--ink);
+            border-radius: 6px;
+            transition: background 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background: #e2e4e9;
+        }
+
+        .resume-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 6px;
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(247, 248, 248, 0.62);
+            transition: color 0.2s ease;
+        }
+
+        .resume-link:hover {
+            color: var(--ink);
+        }
+
+        .resume-link .arrow {
+            display: inline-block;
+            transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .resume-link:hover .arrow {
+            transform: translateX(5px);
         }
 
         .hero-photo {
             position: relative;
-        }
-
-        .hero-photo-frame {
-            position: relative;
-            border-radius: var(--radius-lg);
+            aspect-ratio: 1;
+            border-radius: 12px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow:
-                0 0 0 1px var(--border),
-                0 8px 32px rgba(6, 27, 49, 0.08);
         }
 
         .hero-photo img {
             width: 100%;
-            aspect-ratio: 1;
+            height: 100%;
             object-fit: cover;
         }
 
-        /* ── Main sections ── */
+        /* Main sections */
         .main {
-            max-width: var(--max);
+            max-width: 720px;
+            width: 100%;
             margin: 0 auto;
-            padding: clamp(24px, 4vw, 48px) var(--pad) clamp(96px, 12vw, 140px);
+            padding: clamp(32px, 6vw, 64px) var(--pad) clamp(56px, 10vw, 96px);
             display: grid;
-            gap: clamp(64px, 8vw, 96px);
+            gap: clamp(56px, 10vw, 80px);
         }
 
-        .section-title {
-            font-size: clamp(1.45rem, 2.6vw, 1.75rem);
-            font-weight: 500;
-            letter-spacing: -0.025em;
-            line-height: 1.15;
-            color: var(--navy);
-            margin-bottom: clamp(24px, 4vw, 34px);
+        .section-label {
+            margin: 0 0 22px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--faint);
         }
 
-        .section .timeline,
-        .section ul,
-        .section .tag-wall {
-            padding-left: 32px;
-        }
-
-        /* ── Entries ── */
         .entry {
-            padding: 0 0 36px;
             display: grid;
-            gap: 5px;
+            gap: 3px;
         }
 
-        .entry:last-of-type {
+        .entry + .entry {
+            border-top: 1px solid var(--line);
+        }
+
+        .section .stack .entry {
+            padding: 18px 0;
+        }
+
+        .section .stack .entry:first-child {
+            padding-top: 0;
+        }
+
+        .section .stack .entry:last-child {
             padding-bottom: 0;
         }
 
@@ -340,175 +282,104 @@
         }
 
         .entry-top h3 {
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 500;
-            letter-spacing: -0.015em;
-            line-height: 1.3;
-            color: var(--navy);
+            letter-spacing: -0.02em;
+            line-height: 1.35;
+            color: var(--ink);
         }
 
         .entry-date {
             flex-shrink: 0;
             font-size: 13px;
-            font-weight: 400;
-            color: var(--text-tertiary);
+            color: var(--faint);
             font-variant-numeric: tabular-nums;
             white-space: nowrap;
         }
 
         .entry-sub {
-            font-size: 15px;
-            font-weight: 400;
+            font-size: 14.5px;
             line-height: 1.5;
-            color: var(--navy-muted);
+            color: var(--body);
         }
 
         .entry-loc {
-            font-size: 14px;
-            color: var(--text-secondary);
+            font-size: 13.5px;
+            color: var(--muted);
         }
 
-        /* ── Publications ── */
-        .pub-item {
+        .entry.soon {
+            grid-auto-flow: column;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .entry.soon h3,
+        .entry.soon .entry-date {
+            color: var(--soon);
+            font-weight: 400;
+        }
+
+        /* Publications */
+        .pub {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
             gap: 18px;
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+            border-bottom: 1px solid var(--line);
         }
 
-        .pub-item:first-child {
+        .pub:first-child {
             padding-top: 0;
         }
 
-        .pub-item:last-child {
+        .pub:last-child {
             border-bottom: none;
+            padding-bottom: 0;
         }
 
-        .pub-item strong {
+        .pub strong {
             font-size: 15px;
-            font-weight: 500;
-            letter-spacing: -0.01em;
-            line-height: 1.45;
-            color: var(--navy);
-        }
-
-        .pub-date {
-            font-size: 13px;
             font-weight: 400;
-            color: var(--text-tertiary);
-            white-space: nowrap;
-            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.015em;
+            line-height: 1.45;
+            color: var(--soon);
         }
 
-        /* ── Certifications ── */
-        .tag-wall {
+        .pub span {
+            font-size: 13px;
+            color: var(--soon);
+            white-space: nowrap;
+        }
+
+        /* Certifications */
+        .certs {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 8px;
         }
 
-        .cert-tag {
+        .cert {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            padding: 11px 22px;
-            font-size: 14px;
+            padding: 8px 14px;
+            font-size: 13px;
             font-weight: 500;
             letter-spacing: -0.01em;
-            color: var(--navy);
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            background: var(--white);
-            transition: border-color 0.15s var(--ease), background 0.15s var(--ease);
+            color: var(--ink);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            transition: border-color 0.15s ease, background 0.15s ease;
         }
 
-        .cert-tag:hover {
-            border-color: var(--border-hover);
-            background: var(--surface);
-        }
-
-        /* ── Responsive ── */
-        @media (hover: hover) {
-            .menu-btn:hover {
-                background: rgba(6, 27, 49, 0.06);
-            }
+        .cert:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.06);
         }
 
         @media (max-width: 720px) {
-            .nav-wrap {
-                position: relative;
-                z-index: 50;
-            }
-
-            .nav-links .link,
-            .nav-links .btn--primary {
-                display: none;
-            }
-
-            .menu-btn {
-                display: flex;
-            }
-
-            .nav-mobile {
-                display: block;
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                z-index: 40;
-                background: var(--white);
-                border-bottom: 1px solid var(--border);
-                box-shadow: 0 8px 32px rgba(6, 27, 49, 0.1);
-                padding: 86px var(--pad) 28px;
-                transform: translateY(-100%);
-                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                text-align: center;
-            }
-
-            .nav-mobile.open {
-                transform: translateY(0);
-            }
-
-            .nav-mobile a:not(.nav-mobile-contact) {
-                display: block;
-                width: 100%;
-                margin: 0 auto;
-                padding: 10px 16px;
-                text-align: center;
-                font-size: 16px;
-                font-weight: 500;
-                color: var(--navy-muted);
-                border-radius: var(--radius);
-                transition: color 0.2s var(--ease), background 0.2s var(--ease);
-            }
-
-            .nav-mobile a:not(.nav-mobile-contact):hover {
-                color: var(--navy);
-                background: var(--surface);
-            }
-
-            .nav-mobile .nav-mobile-contact {
-                display: block;
-                width: 100%;
-                margin: 12px auto 0;
-                padding: 13px;
-                text-align: center;
-                font-size: 15px;
-                font-weight: 600;
-                color: var(--white);
-                background: var(--blurple);
-                border: 1px solid var(--blurple);
-                border-radius: 12px;
-                transition: background 0.2s var(--ease);
-            }
-
-            .nav-mobile .nav-mobile-contact:hover {
-                color: var(--white);
-                background: var(--blurple-hover);
-            }
-
             .hero-grid {
                 grid-template-columns: 1fr;
             }
@@ -516,285 +387,131 @@
             .hero-photo {
                 order: -1;
                 width: min(260px, 85vw);
-                aspect-ratio: 1;
                 margin: 0 auto;
-            }
-
-            .hero-photo-frame {
-                width: 100%;
-                height: 100%;
-            }
-
-            .hero-photo img {
-                width: 100%;
-                height: 100%;
-            }
-
-            .hero-content {
-                text-align: center;
-            }
-
-            .hero-bio {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-actions {
-                justify-content: center;
-            }
-
-            .entry-top {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 6px;
-            }
-
-            .section .timeline,
-            .section ul,
-            .section .tag-wall {
-                padding-left: 0;
-            }
-        }
-
-        /* ── Print ── */
-        @media print {
-            body {
-                background: #fff;
-                color: #000;
-            }
-
-            .nav-wrap,
-            .nav-mobile,
-            .hero-actions {
-                display: none;
-            }
-
-            .hero {
-                min-height: 0;
-                padding: 0 0 32px;
-            }
-
-            .hero-grid {
-                margin-top: 0;
-            }
-
-            .hero-photo-frame {
-                box-shadow: none;
-                border: 1px solid #ddd;
-            }
-
-            .main {
-                padding-top: 0;
-                gap: 40px;
-            }
-
-            .entry,
-            .pub-item,
-            .section-title {
-                break-inside: avoid;
-            }
-
-            .cert-tag {
-                border-color: #ccc;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="site">
-        <nav class="nav-wrap" aria-label="Primary">
-            <div class="nav-inner">
-                <div class="nav-links">
-                    <a class="link" href="https://www.youtube.com/@AbhishekPallepati" target="_blank"
-                        rel="noopener noreferrer">YouTube</a>
-                    <a class="link" href="https://www.linkedin.com/in/abhishekpallepati/" target="_blank"
-                        rel="noopener noreferrer">LinkedIn</a>
-                    <a class="link" href="https://github.com/MasterMilkyshake" target="_blank"
-                        rel="noopener noreferrer">GitHub</a>
-                    <a class="link" href="/static/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-                    <a class="btn btn--primary" href="mailto:pallepat@usc.edu">Contact</a>
-                    <button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu"
-                        aria-expanded="false" aria-controls="nav-mobile">
-                        <span class="menu-bars" aria-hidden="true">
-                            <span></span><span></span><span></span>
-                        </span>
-                    </button>
+    <nav aria-label="Primary">
+        <div class="nav-inner">
+            <div class="nav-links">
+                <a class="link" href="https://www.youtube.com/@AbhishekPallepati" target="_blank" rel="noopener noreferrer">YouTube</a>
+                <a class="link" href="https://www.linkedin.com/in/abhishekpallepati/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a class="link" href="https://github.com/MasterMilkyshake" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="link" href="/static/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+                <a class="btn-contact" href="mailto:pallepat@usc.edu">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <h1 class="hero-name">Abhishek Pallepati</h1>
+                <p class="hero-bio">Student interested in biophysics and biotechnology, with an emphasis on preventive
+                    medicine through pediatric genetics and emergency medicine through nanoparticle therapeutics.</p>
+                <div class="hero-actions">
+                    <a class="btn-primary" href="mailto:pallepat@usc.edu">Contact Me</a>
+                    <a class="resume-link" href="/static/resume.pdf" target="_blank" rel="noopener noreferrer">View
+                        Resume <span class="arrow" aria-hidden="true">&#8594;</span></a>
                 </div>
             </div>
-        </nav>
-
-        <nav class="nav-mobile" id="nav-mobile" aria-label="Mobile" aria-hidden="true">
-            <a href="https://www.youtube.com/@AbhishekPallepati" target="_blank" rel="noopener noreferrer">YouTube</a>
-            <a href="https://www.linkedin.com/in/abhishekpallepati/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://github.com/MasterMilkyshake" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="/static/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-            <a class="nav-mobile-contact" href="mailto:pallepat@usc.edu">Contact</a>
-        </nav>
-
-        <header class="hero">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <h1 class="hero-name">Abhishek Pallepati</h1>
-                    <p class="hero-bio">
-                        Student interested in biophysics and biotechnology, with an emphasis
-                        on preventive medicine through pediatric genetics and emergency medicine
-                        through nanoparticle therapeutics.
-                    </p>
-                    <div class="hero-actions">
-                        <a class="btn btn--primary" href="mailto:pallepat@usc.edu">Contact Me</a>
-                        <a class="btn btn--ghost" href="/static/resume.pdf" target="_blank"
-                            rel="noopener noreferrer">View Resume</a>
-                    </div>
-                </div>
-                <div class="hero-photo">
-                    <div class="hero-photo-frame">
-                        <img src="/static/profile.jpeg" alt="Portrait of Abhishek Pallepati" width="320"
-                            height="320" decoding="async" fetchpriority="high" />
-                    </div>
-                </div>
+            <div class="hero-photo">
+                <img src="/static/profile.jpeg" alt="Portrait of Abhishek Pallepati" width="320" height="320"
+                    decoding="async" fetchpriority="high" />
             </div>
-        </header>
+        </div>
+    </header>
 
-        <main class="main">
-            <section class="section">
-                <h2 class="section-title">Education</h2>
-                <div class="timeline">
-                    <article class="entry">
-                        <div class="entry-top">
-                            <h3>University of Southern California</h3>
-                            <span class="entry-date">2025 — 2029</span>
-                        </div>
-                        <div class="entry-sub">Bachelor of Science in Biophysics</div>
-                        <div class="entry-loc">Los Angeles, CA</div>
-                    </article>
+    <main class="main">
+        <section class="section">
+            <h2 class="section-label">Education</h2>
+            <article class="entry">
+                <div class="entry-top">
+                    <h3>University of Southern California</h3>
+                    <span class="entry-date">2025 — 2029</span>
                 </div>
-            </section>
+                <div class="entry-sub">Bachelor of Science in Biochemistry</div>
+                <div class="entry-loc">Los Angeles, CA</div>
+            </article>
+        </section>
 
-            <section class="section">
-                <h2 class="section-title">Experience</h2>
-                <div class="timeline">
-                    <article class="entry">
-                        <div class="entry-top">
-                            <h3>Emergency Medical Technician</h3>
-                            <span class="entry-date">Nov 2025 — Present</span>
-                        </div>
-                        <div class="entry-sub">New York City Fire Department</div>
-                        <div class="entry-loc">New York, NY</div>
-                    </article>
-                    <article class="entry">
-                        <div class="entry-top">
-                            <h3>Coming Soon</h3>
-                            <span class="entry-date">Coming Soon</span>
-                        </div>
-                        <div class="entry-sub">Coming Soon</div>
-                        <div class="entry-loc">Coming Soon</div>
-                    </article>
-                    <article class="entry">
-                        <div class="entry-top">
-                            <h3>Coming Soon</h3>
-                            <span class="entry-date">Coming Soon</span>
-                        </div>
-                        <div class="entry-sub">Coming Soon</div>
-                        <div class="entry-loc">Coming Soon</div>
-                    </article>
-                </div>
-            </section>
+        <section class="section">
+            <h2 class="section-label">Experience</h2>
+            <div class="stack">
+                <article class="entry">
+                    <div class="entry-top">
+                        <h3>Emergency Medical Technician</h3>
+                        <span class="entry-date">Nov 2025 — Present</span>
+                    </div>
+                    <div class="entry-sub">New York City Fire Department</div>
+                    <div class="entry-loc">New York, NY</div>
+                </article>
+                <article class="entry">
+                    <div class="entry-top">
+                        <h3>BLS Instructor</h3>
+                        <span class="entry-date">Jul 2025 — Present</span>
+                    </div>
+                    <div class="entry-sub">CPR Certification Solutions</div>
+                    <div class="entry-loc">Princeton, NJ</div>
+                </article>
+                <article class="entry">
+                    <div class="entry-top">
+                        <h3>Emergency Medical Technician</h3>
+                        <span class="entry-date">Mar 2025 — May 2025</span>
+                    </div>
+                    <div class="entry-sub">On Time Ambulance</div>
+                    <div class="entry-loc">Voorhees, NJ</div>
+                </article>
+            </div>
+        </section>
 
-            <section class="section">
-                <h2 class="section-title">Volunteer Experience</h2>
-                <div class="timeline">
-                    <article class="entry">
-                        <div class="entry-top">
-                            <h3>Coming Soon</h3>
-                            <span class="entry-date">Coming Soon</span>
-                        </div>
-                        <div class="entry-sub">Coming Soon</div>
-                        <div class="entry-loc">Coming Soon</div>
-                    </article>
-                    <article class="entry">
-                        <div class="entry-top">
-                            <h3>Coming Soon</h3>
-                            <span class="entry-date">Coming Soon</span>
-                        </div>
-                        <div class="entry-sub">Coming Soon</div>
-                        <div class="entry-loc">Coming Soon</div>
-                    </article>
-                </div>
-            </section>
+        <section class="section">
+            <h2 class="section-label">Volunteer</h2>
+            <div class="stack">
+                <article class="entry">
+                    <div class="entry-top">
+                        <h3>Emergency Medical Technician</h3>
+                        <span class="entry-date">Oct 2025 — Present</span>
+                    </div>
+                    <div class="entry-sub">Narberth Ambulance</div>
+                    <div class="entry-loc">Ardmore, PA</div>
+                </article>
+                <article class="entry soon">
+                    <h3>Coming soon</h3>
+                    <span class="entry-date">—</span>
+                </article>
+            </div>
+        </section>
 
-            <section class="section">
-                <h2 class="section-title">Publications</h2>
-                <ul>
-                    <li class="pub-item">
-                        <strong>Coming Soon</strong>
-                        <span class="pub-date">MM-DD-YYYY</span>
-                    </li>
-                    <li class="pub-item">
-                        <strong>Coming Soon</strong>
-                        <span class="pub-date">MM-DD-YYYY</span>
-                    </li>
-                    <li class="pub-item">
-                        <strong>Coming Soon</strong>
-                        <span class="pub-date">MM-DD-YYYY</span>
-                    </li>
-                </ul>
-            </section>
+        <section class="section">
+            <h2 class="section-label">Publications</h2>
+            <ul>
+                <li class="pub">
+                    <strong>Coming soon</strong>
+                    <span>—</span>
+                </li>
+                <li class="pub">
+                    <strong>Coming soon</strong>
+                    <span>—</span>
+                </li>
+            </ul>
+        </section>
 
-            <section class="section">
-                <h2 class="section-title">Certifications</h2>
-                <div class="tag-wall">
-                    <a class="cert-tag" href="/static/emt.pdf" target="_blank" rel="noopener noreferrer">EMT</a>
-                    <a class="cert-tag" href="/static/bls.pdf" target="_blank" rel="noopener noreferrer">BLS</a>
-                    <a class="cert-tag" href="/static/acls.pdf" target="_blank" rel="noopener noreferrer">ACLS</a>
-                    <a class="cert-tag" href="/static/pals.pdf" target="_blank" rel="noopener noreferrer">PALS</a>
-                    <a class="cert-tag" href="/static/bls-i.pdf" target="_blank" rel="noopener noreferrer">BLS-I</a>
-                    <a class="cert-tag" href="/static/medstats.pdf" target="_blank"
-                        rel="noopener noreferrer">Medical Stats</a>
-                </div>
-            </section>
-        </main>
-    </div>
-
-    <script>
-        (function () {
-            var btn = document.getElementById("menu-btn");
-            var mobile = document.getElementById("nav-mobile");
-
-            if (btn && mobile) {
-                function closeMenu(returnFocus) {
-                    mobile.classList.remove("open");
-                    btn.classList.remove("open");
-                    btn.setAttribute("aria-expanded", "false");
-                    btn.setAttribute("aria-label", "Open menu");
-                    mobile.setAttribute("aria-hidden", "true");
-                    document.body.style.overflow = "";
-                    if (returnFocus) btn.focus();
-                }
-
-                btn.addEventListener("click", function () {
-                    var open = mobile.classList.toggle("open");
-                    btn.classList.toggle("open", open);
-                    btn.setAttribute("aria-expanded", open ? "true" : "false");
-                    btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-                    mobile.setAttribute("aria-hidden", open ? "false" : "true");
-                    document.body.style.overflow = open ? "hidden" : "";
-                });
-
-                mobile.querySelectorAll("a").forEach(function (a) {
-                    a.addEventListener("click", function () { closeMenu(false); });
-                });
-
-                document.addEventListener("keydown", function (e) {
-                    if (e.key === "Escape" && mobile.classList.contains("open")) closeMenu(true);
-                });
-
-                window.matchMedia("(max-width: 720px)").addEventListener("change", function (e) {
-                    if (!e.matches) closeMenu(false);
-                });
-            }
-        })();
-    </script>
+        <section class="section">
+            <h2 class="section-label">Certifications</h2>
+            <div class="certs">
+                <a class="cert" href="/static/emt.pdf" target="_blank" rel="noopener noreferrer">EMT</a>
+                <a class="cert" href="/static/bls.pdf" target="_blank" rel="noopener noreferrer">BLS</a>
+                <a class="cert" href="/static/bls-i.pdf" target="_blank" rel="noopener noreferrer">BLS-I</a>
+                <a class="cert" href="/static/acls.pdf" target="_blank" rel="noopener noreferrer">ACLS</a>
+                <a class="cert" href="/static/pals.pdf" target="_blank" rel="noopener noreferrer">PALS</a>
+                <a class="cert" href="/static/medstats.pdf" target="_blank" rel="noopener noreferrer">Medical Statistics</a>
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>
