@@ -416,6 +416,7 @@
         }
 
         .hero-photo {
+            position: relative;
             aspect-ratio: 1;
             border-radius: 12px;
             overflow: hidden;
@@ -592,6 +593,9 @@
                 top: -36px;
                 left: calc(-50vw + 50%);
                 right: calc(100% + max(44px, 50vw - 50% - 300px));
+                width: auto;
+                max-width: none;
+                height: auto;
                 z-index: 1;
                 pointer-events: none;
             }
@@ -620,6 +624,8 @@
                 box-shadow: 0 16px 40px rgba(0, 0, 0, 0.42);
                 overflow: hidden;
                 pointer-events: auto;
+                text-decoration: none;
+                color: inherit;
             }
 
             .edge-stage-right {
@@ -785,7 +791,7 @@
             .mk-vital {
                 border: 1px solid rgba(255, 255, 255, 0.08);
                 border-radius: 8px;
-                padding: 8px;
+                padding: 8px 8px;
                 background: rgba(255, 255, 255, 0.02);
                 display: flex;
                 flex-direction: column;
@@ -859,6 +865,11 @@
                 font-variant-numeric: tabular-nums;
             }
 
+            .mk-epcr.is-animating .mk-field:not(.ok):not(.warn) {
+                border-color: rgba(255, 255, 255, 0.07);
+                background: rgba(255, 255, 255, 0.015);
+            }
+
             .mk-field.is-focus {
                 border-color: rgba(125, 211, 252, 0.42) !important;
                 background: rgba(125, 211, 252, 0.06) !important;
@@ -873,6 +884,12 @@
                 color: var(--ink) !important;
                 font-weight: 600 !important;
                 font-style: normal !important;
+            }
+
+            .mk-vital.is-pending .mk-vital-v,
+            .mk-note.is-pending .mk-note-v,
+            .mk-vector-row.is-pending strong {
+                color: rgba(247, 248, 248, 0.22);
             }
 
             .mk-vital.warn {
@@ -917,25 +934,31 @@
                 font-style: normal !important;
             }
 
-            .mk-caret,
-            .mk-ide-caret,
-            .mk-term-caret {
-                display: none;
-                width: 1.5px;
-                height: 0.9em;
-                margin-left: 2px;
-                flex-shrink: 0;
-                align-self: center;
-                background: #7dd3fc;
-                border-radius: 1px;
-                pointer-events: none;
-                vertical-align: -0.05em;
+            .mk-note.is-focus {
+                border-color: rgba(125, 211, 252, 0.35);
+                background: rgba(125, 211, 252, 0.05);
+                box-shadow: 0 0 0 1px rgba(125, 211, 252, 0.1);
             }
 
-            .mk-caret.is-on,
-            .mk-ide-caret.is-on,
-            .mk-term-caret.is-on {
+            .mk-caret {
                 display: inline-block;
+                width: 0;
+                height: 1em;
+                margin-left: 0;
+                flex-shrink: 0;
+                align-self: center;
+                vertical-align: -0.05em;
+                background: #7dd3fc;
+                border-radius: 1px;
+                opacity: 0;
+                overflow: hidden;
+                pointer-events: none;
+            }
+
+            .mk-caret.is-on {
+                width: 1.5px;
+                margin-left: 2px;
+                opacity: 1;
                 animation: mk-caret-blink 1s steps(1, end) infinite;
             }
 
@@ -944,12 +967,29 @@
                 50%, 100% { opacity: 0; }
             }
 
+            .mk-vector-row.is-in {
+                animation: mk-fade-up 420ms var(--ease-out) both;
+            }
+
+            @keyframes mk-fade-up {
+                from {
+                    opacity: 0;
+                    transform: translateY(4px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
             @media (prefers-reduced-motion: reduce) {
-                .mk-caret.is-on,
-                .mk-ide-caret.is-on,
-                .mk-term-caret.is-on {
+                .mk-caret.is-on {
                     animation: none;
                     opacity: 1;
+                }
+
+                .mk-vector-row.is-in {
+                    animation: none;
                 }
             }
 
@@ -963,6 +1003,7 @@
             .mk-ide-tabs {
                 display: flex;
                 align-items: stretch;
+                gap: 0;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.06);
                 background: rgba(255, 255, 255, 0.02);
                 overflow: hidden;
@@ -1003,13 +1044,6 @@
                 min-height: calc(1.35em + 2px);
             }
 
-            .mk-ide-run {
-                display: inline-flex;
-                align-items: center;
-                min-width: 0;
-                flex: 1;
-            }
-
             .mk-ide-src {
                 min-width: 0;
             }
@@ -1023,13 +1057,15 @@
             }
 
             .mk-ide-line.is-typing {
-                background: rgba(125, 211, 252, 0.09);
-                box-shadow: inset 2px 0 0 #7dd3fc;
+                background: rgba(125, 211, 252, 0.06);
             }
 
             .mk-ide-line.is-glow {
-                background: rgba(106, 106, 231, 0.12);
-                box-shadow: inset 2px 0 0 #6a6ae7;
+                background: rgba(106, 106, 231, 0.1);
+            }
+
+            .mk-ide-line.is-glow.is-typing {
+                background: rgba(106, 106, 231, 0.16);
             }
 
             .mk-ide-k { color: #c4b5fd; }
@@ -1049,6 +1085,8 @@
             .mk-term-bar {
                 display: flex;
                 align-items: center;
+                gap: 0;
+                padding: 0;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.05);
                 font-size: 9px;
                 color: rgba(247, 248, 248, 0.4);
@@ -1070,6 +1108,7 @@
                 font-weight: 600;
                 font-size: 8.5px;
                 letter-spacing: 0.03em;
+                font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
                 flex-shrink: 0;
             }
 
@@ -1108,16 +1147,17 @@
                 min-height: calc(1.35em + 2px);
             }
 
+            .mk-term-line.is-hidden {
+                visibility: hidden;
+            }
+
             .mk-term-line[data-term-cmd] {
                 display: flex;
                 align-items: center;
             }
 
-            .mk-term-line.is-hidden {
-                visibility: hidden;
-            }
-
             .mk-term-body .mk-term-ok { color: #86efac; }
+            .mk-term-body .mk-term-dim { color: rgba(247, 248, 248, 0.32); }
             .mk-term-body .mk-term-cmd { color: rgba(247, 248, 248, 0.72); }
             .mk-term-body .mk-term-prompt { color: #7dd3fc; }
         }
@@ -1189,7 +1229,7 @@
 </head>
 
 <body>
-    <header class="site-header">
+    <header class="site-header" role="banner">
         <div class="nav-inner">
             <nav class="nav-links" aria-label="Primary">
                 <a class="link" href="https://www.youtube.com/@AbhishekPallepati" target="_blank" rel="noopener noreferrer">YouTube</a>
@@ -1305,7 +1345,7 @@
                     </aside>
                     <aside class="edge-stage edge-stage-right" aria-hidden="true">
                         <div class="edge-canvas"></div>
-                        <div class="edge-window">
+                        <a class="edge-window" href="https://github.com/MasterMilkyshake" target="_blank" rel="noopener noreferrer" tabindex="-1">
                             <div class="mk-topbar">
                                 <span class="mk-traffic" aria-hidden="true"><i></i><i></i><i></i></span>
                                 <span class="mk-topbar-title">biophysics-lab</span>
@@ -1315,28 +1355,28 @@
                                     <span class="mk-ide-tab is-active">gait.py</span>
                                     <span class="mk-ide-tab">torque.py</span>
                                 </div>
-                                <pre class="mk-ide-code" aria-hidden="true"><span class="mk-ide-line" data-ide-row><span class="mk-ide-n">1</span><span class="mk-ide-run"><span class="mk-ide-src"><span class="mk-ide-k">def</span> <span class="mk-ide-f">stance_torque</span>(limb, φ, P_h):</span><span class="mk-ide-caret"></span></span></span>
-<span class="mk-ide-line" data-ide-row><span class="mk-ide-n">2</span><span class="mk-ide-run"><span class="mk-ide-src"></span><span class="mk-ide-caret"></span></span></span>
-<span class="mk-ide-line" data-ide-row data-ide-type><span class="mk-ide-n">3</span><span class="mk-ide-run"><span class="mk-ide-src">    τ = P_h * limb.A_eff * np.sin(φ)</span><span class="mk-ide-caret"></span></span></span>
-<span class="mk-ide-line" data-ide-row data-ide-type data-ide-glow><span class="mk-ide-n">4</span><span class="mk-ide-run"><span class="mk-ide-src">    F_n = limb.grf(τ, μ=<span class="mk-ide-n2">0.62</span>)</span><span class="mk-ide-caret"></span></span></span>
-<span class="mk-ide-line" data-ide-row><span class="mk-ide-n">5</span><span class="mk-ide-run"><span class="mk-ide-src"></span><span class="mk-ide-caret"></span></span></span>
-<span class="mk-ide-line" data-ide-row><span class="mk-ide-n">6</span><span class="mk-ide-run"><span class="mk-ide-src">    <span class="mk-ide-k">return</span> F_n <span class="mk-ide-k">if</span> F_n &gt; <span class="mk-ide-n2">0</span> <span class="mk-ide-k">else</span> <span class="mk-ide-n2">0.0</span></span><span class="mk-ide-caret"></span></span></span>
-<span class="mk-ide-line" data-ide-row><span class="mk-ide-n">7</span><span class="mk-ide-run"><span class="mk-ide-src"></span><span class="mk-ide-caret"></span></span></span>
-<span class="mk-ide-line" data-ide-row><span class="mk-ide-n">8</span><span class="mk-ide-run"><span class="mk-ide-src"><span class="mk-ide-k">def</span> <span class="mk-ide-f">phase_gait</span>(t, ω, δ=<span class="mk-ide-n2">π/4</span>):</span><span class="mk-ide-caret"></span></span></span>
-<span class="mk-ide-line" data-ide-row><span class="mk-ide-n">9</span><span class="mk-ide-run"><span class="mk-ide-src"></span><span class="mk-ide-caret"></span></span></span>
-<span class="mk-ide-line" data-ide-row><span class="mk-ide-n">10</span><span class="mk-ide-run"><span class="mk-ide-src">    <span class="mk-ide-k">return</span> [(ω+i*δ)%<span class="mk-ide-n2">2π</span> <span class="mk-ide-k">for</span> i <span class="mk-ide-k">in</span> range(<span class="mk-ide-n2">8</span>)]</span><span class="mk-ide-caret"></span></span></span></pre>
+                                <pre class="mk-ide-code" aria-hidden="true"><span class="mk-ide-line" data-ide-row><span class="mk-ide-n">1</span><span class="mk-ide-src"><span class="mk-ide-k">def</span> <span class="mk-ide-f">stance_torque</span>(limb, φ, P_h):</span><span class="mk-caret"></span></span>
+<span class="mk-ide-line" data-ide-row data-ide-blank><span class="mk-ide-n">2</span><span class="mk-ide-src"></span><span class="mk-caret"></span></span>
+<span class="mk-ide-line" data-ide-row data-ide-type><span class="mk-ide-n">3</span><span class="mk-ide-src">    τ = P_h * limb.A_eff * np.sin(φ)</span><span class="mk-caret"></span></span>
+<span class="mk-ide-line is-glow" data-ide-row data-ide-type><span class="mk-ide-n">4</span><span class="mk-ide-src">    F_n = limb.grf(τ, μ=<span class="mk-ide-n2">0.62</span>)</span><span class="mk-caret"></span></span>
+<span class="mk-ide-line" data-ide-row data-ide-blank><span class="mk-ide-n">5</span><span class="mk-ide-src"></span><span class="mk-caret"></span></span>
+<span class="mk-ide-line" data-ide-row><span class="mk-ide-n">6</span><span class="mk-ide-src">    <span class="mk-ide-k">return</span> F_n <span class="mk-ide-k">if</span> F_n &gt; <span class="mk-ide-n2">0</span> <span class="mk-ide-k">else</span> <span class="mk-ide-n2">0.0</span></span><span class="mk-caret"></span></span>
+<span class="mk-ide-line" data-ide-row data-ide-blank><span class="mk-ide-n">7</span><span class="mk-ide-src"></span><span class="mk-caret"></span></span>
+<span class="mk-ide-line" data-ide-row><span class="mk-ide-n">8</span><span class="mk-ide-src"><span class="mk-ide-k">def</span> <span class="mk-ide-f">phase_gait</span>(t, ω, δ=<span class="mk-ide-n2">π/4</span>):</span><span class="mk-caret"></span></span>
+<span class="mk-ide-line" data-ide-row data-ide-blank><span class="mk-ide-n">9</span><span class="mk-ide-src"></span><span class="mk-caret"></span></span>
+<span class="mk-ide-line" data-ide-row><span class="mk-ide-n">10</span><span class="mk-ide-src">    <span class="mk-ide-k">return</span> [(ω*t+i*δ)%<span class="mk-ide-n2">2π</span> <span class="mk-ide-k">for</span> i <span class="mk-ide-k">in</span> range(<span class="mk-ide-n2">8</span>)]</span><span class="mk-caret"></span></span></pre>
                                 <div class="mk-term">
                                     <div class="mk-term-bar">
                                         <span class="mk-term-seg">zsh</span>
                                         <span class="mk-term-bar-label">biophysics-lab</span>
                                     </div>
-                                    <pre class="mk-term-body" aria-hidden="true"><span class="mk-term-line" data-term-cmd><span class="mk-term-prompt">›</span>&nbsp;<span class="mk-term-cmd" data-term-cmd-text>python gait.py --froude 0.31</span><span class="mk-term-caret"></span></span>
+                                    <pre class="mk-term-body" aria-hidden="true"><span class="mk-term-line" data-term-cmd><span class="mk-term-prompt">›</span> <span class="mk-term-cmd" data-term-cmd-text>python gait.py --froude 0.31</span><span class="mk-caret" data-term-caret></span></span>
 <span class="mk-term-line" data-term-out><span class="mk-term-ok">ok</span> duty=0.58  μ_peak=0.61</span>
 <span class="mk-term-line" data-term-out><span class="mk-term-ok">ok</span> limbs[stance]=5/8</span>
-<span class="mk-term-line" data-term-prompt><span class="mk-term-prompt">›</span>&nbsp;<span class="mk-term-cmd">_</span></span></pre>
+<span class="mk-term-line" data-term-prompt><span class="mk-term-prompt">›</span> <span class="mk-term-cmd">_</span></span></pre>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </aside>
                 </article>
                 <article class="entry">
@@ -1440,150 +1480,151 @@
             }
         })();
 
-        // Shared scaffolding for the looping demo animations: timer bookkeeping,
-        // start/stop on visibility, and a static fallback for reduced motion.
-        const demoLoop = (root, setup) => {
+        (() => {
+            const root = document.querySelector('[data-epcr-demo]');
+            if (!root) return;
+
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const complaint = root.querySelector('[data-epcr-field]');
+            const spo2 = root.querySelector('[data-epcr-spo2]');
+            const spo2V = root.querySelector('[data-epcr-spo2-v]');
             let timers = [];
             let running = false;
             let loopId = 0;
 
-            const demo = setup({
-                wait: (ms) => new Promise((resolve) => timers.push(setTimeout(resolve, ms))),
-                isRunning: () => running,
-                isCurrent: (token) => running && token === loopId,
+            const wait = (ms) => new Promise((resolve) => {
+                const id = setTimeout(resolve, ms);
+                timers.push(id);
             });
+
+            const clearTimers = () => {
+                timers.forEach(clearTimeout);
+                timers = [];
+            };
+
+            const setCaret = (el, on) => {
+                root.querySelectorAll('[data-epcr-caret]').forEach((c) => c.classList.remove('is-on'));
+                if (on && el) el.querySelector('[data-epcr-caret]')?.classList.add('is-on');
+            };
+
+            const typeInto = async (host, text, speed = 38) => {
+                const target = host?.querySelector('[data-epcr-type]');
+                if (!target) return;
+                setCaret(host, true);
+                target.textContent = '';
+                for (let i = 0; i < text.length; i++) {
+                    if (!running) return;
+                    target.textContent = text.slice(0, i + 1);
+                    await wait(speed + (text[i] === ' ' ? 24 : 0) + Math.random() * 18);
+                }
+                setCaret(host, false);
+            };
+
+            const fillStatic = () => {
+                const type = complaint?.querySelector('[data-epcr-type]');
+                if (type) type.textContent = type.dataset.text || '';
+                complaint?.classList.add('ok');
+                complaint?.classList.remove('warn', 'is-focus');
+                if (spo2V) spo2V.textContent = '97%';
+                spo2?.classList.add('is-live');
+                spo2?.classList.remove('warn', 'is-focus', 'is-pending');
+                setCaret(null, false);
+                root.classList.remove('is-animating');
+            };
+
+            const runCycle = async (token) => {
+                root.classList.add('is-animating');
+
+                const cType = complaint?.querySelector('[data-epcr-type]');
+                if (cType) cType.textContent = cType.dataset.wrong || 'Chest pain';
+                complaint?.classList.add('warn');
+                complaint?.classList.remove('ok', 'is-focus');
+
+                if (spo2V) spo2V.textContent = '91%';
+                spo2?.classList.add('warn');
+                spo2?.classList.remove('is-live', 'is-focus');
+
+                await wait(1300);
+                if (!running || token !== loopId) return;
+
+                complaint?.classList.remove('warn');
+                complaint?.classList.add('is-focus');
+                if (cType) cType.textContent = '';
+                setCaret(complaint, true);
+                await wait(180);
+                if (!running || token !== loopId) return;
+
+                await typeInto(complaint, cType?.dataset.text || '', 44);
+                if (!running || token !== loopId) return;
+                complaint?.classList.remove('is-focus');
+                complaint?.classList.add('ok');
+
+                await wait(520);
+                if (!running || token !== loopId) return;
+
+                spo2?.classList.remove('warn');
+                spo2?.classList.add('is-focus');
+                if (spo2V) spo2V.textContent = '';
+                setCaret(spo2, true);
+                await wait(180);
+                if (!running || token !== loopId) return;
+
+                const fixed = '97%';
+                for (let i = 0; i < fixed.length; i++) {
+                    if (!running || token !== loopId) return;
+                    spo2V.textContent = fixed.slice(0, i + 1);
+                    await wait(70 + Math.random() * 30);
+                }
+                setCaret(spo2, false);
+                await wait(200);
+                if (!running || token !== loopId) return;
+
+                spo2?.classList.remove('is-focus');
+                spo2?.classList.add('is-live');
+
+                await wait(3200);
+                if (running && token === loopId) runCycle(token);
+            };
 
             const start = () => {
                 if (running) return;
                 running = true;
                 loopId += 1;
-                demo.runCycle(loopId);
+                runCycle(loopId);
             };
 
             const stop = () => {
                 running = false;
                 loopId += 1;
-                timers.forEach(clearTimeout);
-                timers = [];
-                demo.fillStatic();
+                clearTimers();
+                fillStatic();
             };
 
-            demo.fillStatic();
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            if (reduce) {
+                fillStatic();
+                return;
+            }
+
+            fillStatic();
 
             const io = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => (entry.isIntersecting ? start() : stop()));
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) start();
+                    else stop();
+                });
             }, { threshold: 0.35 });
 
             io.observe(root);
-        };
-
-        (() => {
-            const root = document.querySelector('[data-epcr-demo]');
-            if (!root) return;
-
-            const complaint = root.querySelector('[data-epcr-field]');
-            const spo2 = root.querySelector('[data-epcr-spo2]');
-            const spo2V = root.querySelector('[data-epcr-spo2-v]');
-
-            demoLoop(root, ({ wait, isRunning, isCurrent }) => {
-                const setCaret = (el, on) => {
-                    root.querySelectorAll('[data-epcr-caret]').forEach((c) => c.classList.remove('is-on'));
-                    if (on && el) {
-                        const caret = el.querySelector('[data-epcr-caret]');
-                        if (!caret) return;
-                        // restart blink cleanly
-                        void caret.offsetWidth;
-                        caret.classList.add('is-on');
-                    }
-                };
-
-                const typeInto = async (host, text, speed = 38) => {
-                    const target = host?.querySelector('[data-epcr-type]');
-                    if (!target) return;
-                    setCaret(host, true);
-                    target.textContent = '';
-                    for (let i = 0; i < text.length; i++) {
-                        if (!isRunning()) return;
-                        target.textContent = text.slice(0, i + 1);
-                        await wait(speed + (text[i] === ' ' ? 24 : 0) + Math.random() * 18);
-                    }
-                    setCaret(host, false);
-                };
-
-                const fillStatic = () => {
-                    const type = complaint?.querySelector('[data-epcr-type]');
-                    if (type) type.textContent = type.dataset.text || '';
-                    complaint?.classList.add('ok');
-                    complaint?.classList.remove('warn', 'is-focus');
-                    if (spo2V) spo2V.textContent = '97%';
-                    spo2?.classList.add('is-live');
-                    spo2?.classList.remove('warn', 'is-focus');
-                    setCaret(null, false);
-                };
-
-                const runCycle = async (token) => {
-                    const cType = complaint?.querySelector('[data-epcr-type]');
-                    if (cType) cType.textContent = cType.dataset.wrong || 'Chest pain';
-                    complaint?.classList.add('warn');
-                    complaint?.classList.remove('ok', 'is-focus');
-
-                    if (spo2V) spo2V.textContent = '91%';
-                    spo2?.classList.add('warn');
-                    spo2?.classList.remove('is-live', 'is-focus');
-
-                    await wait(1300);
-                    if (!isCurrent(token)) return;
-
-                    complaint?.classList.remove('warn');
-                    complaint?.classList.add('is-focus');
-                    if (cType) cType.textContent = '';
-                    setCaret(complaint, true);
-                    await wait(180);
-                    if (!isCurrent(token)) return;
-
-                    await typeInto(complaint, cType?.dataset.text || '', 44);
-                    if (!isCurrent(token)) return;
-                    complaint?.classList.remove('is-focus');
-                    complaint?.classList.add('ok');
-
-                    await wait(520);
-                    if (!isCurrent(token)) return;
-
-                    spo2?.classList.remove('warn');
-                    spo2?.classList.add('is-focus');
-                    if (spo2V) spo2V.textContent = '';
-                    setCaret(spo2, true);
-                    await wait(180);
-                    if (!isCurrent(token)) return;
-
-                    const fixed = '97%';
-                    for (let i = 0; i < fixed.length; i++) {
-                        if (!isCurrent(token)) return;
-                        spo2V.textContent = fixed.slice(0, i + 1);
-                        await wait(70 + Math.random() * 30);
-                    }
-                    setCaret(spo2, false);
-                    await wait(200);
-                    if (!isCurrent(token)) return;
-
-                    spo2?.classList.remove('is-focus');
-                    spo2?.classList.add('is-live');
-
-                    await wait(3200);
-                    if (isCurrent(token)) runCycle(token);
-                };
-
-                return { fillStatic, runCycle };
-            });
         })();
 
         (() => {
             const root = document.querySelector('[data-ide-demo]');
             if (!root) return;
 
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             const rows = [...root.querySelectorAll('[data-ide-row]')];
             const typeRows = rows.filter((r) => r.hasAttribute('data-ide-type'));
+            const cmdLine = root.querySelector('[data-term-cmd]');
             const cmdText = root.querySelector('[data-term-cmd-text]');
             const termOuts = [...root.querySelectorAll('[data-term-out]')];
             const termPrompt = root.querySelector('[data-term-prompt]');
@@ -1594,110 +1635,144 @@
                 rows.map((row) => [row, row.querySelector('.mk-ide-src')?.innerHTML || ''])
             );
 
-            demoLoop(root, ({ wait, isRunning, isCurrent }) => {
-                const clearCarets = () => {
-                    root.querySelectorAll('.mk-ide-caret, .mk-term-caret').forEach((c) => c.classList.remove('is-on'));
-                    rows.forEach((r) => r.classList.remove('is-typing'));
-                };
+            let timers = [];
+            let running = false;
+            let loopId = 0;
 
-                const showCaret = (caret) => {
-                    if (!caret) return;
-                    caret.classList.remove('is-on');
-                    void caret.offsetWidth;
-                    caret.classList.add('is-on');
-                };
-
-                const fillStatic = () => {
-                    rows.forEach((row) => {
-                        const src = row.querySelector('.mk-ide-src');
-                        if (src) src.innerHTML = originals.get(row) || '';
-                        row.classList.remove('is-typing');
-                        row.classList.toggle('is-glow', row.hasAttribute('data-ide-glow'));
-                    });
-                    if (cmdText) cmdText.textContent = cmdFull;
-                    termOuts.forEach((line) => line.classList.remove('is-hidden'));
-                    termPrompt?.classList.remove('is-hidden');
-                    clearCarets();
-                };
-
-                const typePlain = async (row, plain, html, speed = 28) => {
-                    const src = row.querySelector('.mk-ide-src');
-                    const caret = row.querySelector('.mk-ide-caret');
-                    if (!src) return;
-                    clearCarets();
-                    row.classList.remove('is-glow');
-                    row.classList.add('is-typing');
-                    showCaret(caret);
-                    src.textContent = '';
-                    for (let i = 0; i < plain.length; i++) {
-                        if (!isRunning()) return;
-                        src.textContent = plain.slice(0, i + 1);
-                        await wait(speed + (plain[i] === ' ' ? 16 : 0) + Math.random() * 14);
-                    }
-                    src.innerHTML = html;
-                    caret?.classList.remove('is-on');
-                    row.classList.remove('is-typing');
-                    if (row.hasAttribute('data-ide-glow')) row.classList.add('is-glow');
-                };
-
-                const runCycle = async (token) => {
-                    // Keep scaffold; clear the typed body lines + terminal
-                    typeRows.forEach((row) => {
-                        const src = row.querySelector('.mk-ide-src');
-                        if (src) src.innerHTML = '';
-                        row.classList.remove('is-glow', 'is-typing');
-                    });
-                    rows.forEach((row) => {
-                        if (row.hasAttribute('data-ide-type')) return;
-                        const src = row.querySelector('.mk-ide-src');
-                        if (src) src.innerHTML = originals.get(row) || '';
-                    });
-
-                    if (cmdText) cmdText.textContent = '';
-                    termOuts.forEach((line) => line.classList.add('is-hidden'));
-                    termPrompt?.classList.add('is-hidden');
-                    clearCarets();
-
-                    await wait(400);
-                    if (!isCurrent(token)) return;
-
-                    for (const row of typeRows) {
-                        if (!isCurrent(token)) return;
-                        const html = originals.get(row) || '';
-                        const tmp = document.createElement('span');
-                        tmp.innerHTML = html;
-                        await typePlain(row, tmp.textContent || '', html, 28);
-                        await wait(200);
-                    }
-
-                    await wait(360);
-                    if (!isCurrent(token)) return;
-
-                    // Type terminal command
-                    clearCarets();
-                    showCaret(termCaret);
-                    if (cmdText) cmdText.textContent = '';
-                    for (let i = 0; i < cmdFull.length; i++) {
-                        if (!isCurrent(token)) return;
-                        cmdText.textContent = cmdFull.slice(0, i + 1);
-                        await wait(24 + Math.random() * 16);
-                    }
-                    termCaret?.classList.remove('is-on');
-
-                    await wait(220);
-                    for (const line of termOuts) {
-                        if (!isCurrent(token)) return;
-                        line.classList.remove('is-hidden');
-                        await wait(240);
-                    }
-                    termPrompt?.classList.remove('is-hidden');
-
-                    await wait(2800);
-                    if (isCurrent(token)) runCycle(token);
-                };
-
-                return { fillStatic, runCycle };
+            const wait = (ms) => new Promise((resolve) => {
+                const id = setTimeout(resolve, ms);
+                timers.push(id);
             });
+
+            const clearTimers = () => {
+                timers.forEach(clearTimeout);
+                timers = [];
+            };
+
+            const clearCarets = () => {
+                root.querySelectorAll('.mk-ide-caret, .mk-term-caret').forEach((c) => c.classList.remove('is-on'));
+                rows.forEach((r) => r.classList.remove('is-typing'));
+            };
+
+            const fillStatic = () => {
+                rows.forEach((row) => {
+                    const src = row.querySelector('.mk-ide-src');
+                    if (src) src.innerHTML = originals.get(row) || '';
+                    row.classList.remove('is-typing');
+                });
+                if (cmdText) cmdText.textContent = cmdFull;
+                termOuts.forEach((line) => line.classList.remove('is-hidden'));
+                termPrompt?.classList.remove('is-hidden');
+                clearCarets();
+            };
+
+            const typePlain = async (row, plain, html, speed = 28) => {
+                const src = row.querySelector('.mk-ide-src');
+                const caret = row.querySelector('.mk-ide-caret');
+                if (!src) return;
+                clearCarets();
+                row.classList.add('is-typing');
+                caret?.classList.add('is-on');
+                src.textContent = '';
+                for (let i = 0; i < plain.length; i++) {
+                    if (!running) return;
+                    src.textContent = plain.slice(0, i + 1);
+                    await wait(speed + (plain[i] === ' ' ? 16 : 0) + Math.random() * 14);
+                }
+                src.innerHTML = html;
+                caret?.classList.remove('is-on');
+                row.classList.remove('is-typing');
+            };
+
+            const runCycle = async (token) => {
+                // Keep scaffold; clear the typed body lines + terminal
+                typeRows.forEach((row) => {
+                    const src = row.querySelector('.mk-ide-src');
+                    if (src) src.innerHTML = '';
+                });
+                rows.forEach((row) => {
+                    if (row.hasAttribute('data-ide-type')) return;
+                    const src = row.querySelector('.mk-ide-src');
+                    if (src) src.innerHTML = originals.get(row) || '';
+                });
+
+                if (cmdText) cmdText.textContent = '';
+                termOuts.forEach((line) => line.classList.add('is-hidden'));
+                termPrompt?.classList.add('is-hidden');
+                clearCarets();
+
+                await wait(400);
+                if (!running || token !== loopId) return;
+
+                for (const row of typeRows) {
+                    if (!running || token !== loopId) return;
+                    const html = originals.get(row) || '';
+                    const plain = row.querySelector('.mk-ide-src')
+                        ? (() => {
+                            const tmp = document.createElement('span');
+                            tmp.innerHTML = html;
+                            return tmp.textContent || '';
+                        })()
+                        : '';
+                    await typePlain(row, plain, html, row.classList.contains('is-glow') ? 26 : 30);
+                    await wait(180);
+                }
+
+                await wait(360);
+                if (!running || token !== loopId) return;
+
+                // Type terminal command
+                clearCarets();
+                termCaret?.classList.add('is-on');
+                if (cmdText) cmdText.textContent = '';
+                for (let i = 0; i < cmdFull.length; i++) {
+                    if (!running || token !== loopId) return;
+                    cmdText.textContent = cmdFull.slice(0, i + 1);
+                    await wait(24 + Math.random() * 16);
+                }
+                termCaret?.classList.remove('is-on');
+
+                await wait(220);
+                for (const line of termOuts) {
+                    if (!running || token !== loopId) return;
+                    line.classList.remove('is-hidden');
+                    await wait(240);
+                }
+                termPrompt?.classList.remove('is-hidden');
+
+                await wait(2800);
+                if (running && token === loopId) runCycle(token);
+            };
+
+            const start = () => {
+                if (running) return;
+                running = true;
+                loopId += 1;
+                runCycle(loopId);
+            };
+
+            const stop = () => {
+                running = false;
+                loopId += 1;
+                clearTimers();
+                fillStatic();
+            };
+
+            if (reduce) {
+                fillStatic();
+                return;
+            }
+
+            fillStatic();
+
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) start();
+                    else stop();
+                });
+            }, { threshold: 0.35 });
+
+            io.observe(root);
         })();
     </script>
 </body>
