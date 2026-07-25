@@ -942,23 +942,22 @@
 
             .mk-caret {
                 display: inline-block;
-                width: 0;
-                height: 1em;
-                margin-left: 0;
+                width: 1.5px;
+                height: 0.95em;
+                margin-left: 2px;
                 flex-shrink: 0;
                 align-self: center;
                 vertical-align: -0.05em;
                 background: #7dd3fc;
                 border-radius: 1px;
                 opacity: 0;
-                overflow: hidden;
+                visibility: hidden;
                 pointer-events: none;
             }
 
             .mk-caret.is-on {
-                width: 1.5px;
-                margin-left: 2px;
                 opacity: 1;
+                visibility: visible;
                 animation: mk-caret-blink 1s steps(1, end) infinite;
             }
 
@@ -986,6 +985,7 @@
                 .mk-caret.is-on {
                     animation: none;
                     opacity: 1;
+                    visibility: visible;
                 }
 
                 .mk-vector-row.is-in {
@@ -1062,10 +1062,6 @@
 
             .mk-ide-line.is-glow {
                 background: rgba(106, 106, 231, 0.1);
-            }
-
-            .mk-ide-line.is-glow.is-typing {
-                background: rgba(106, 106, 231, 0.16);
             }
 
             .mk-ide-k { color: #c4b5fd; }
@@ -1151,9 +1147,11 @@
                 visibility: hidden;
             }
 
-            .mk-term-line[data-term-cmd] {
+            .mk-term-line[data-term-cmd],
+            .mk-term-line[data-term-prompt] {
                 display: flex;
                 align-items: center;
+                gap: 6px;
             }
 
             .mk-term-body .mk-term-ok { color: #86efac; }
@@ -1358,7 +1356,7 @@
                                 <pre class="mk-ide-code" aria-hidden="true"><span class="mk-ide-line" data-ide-row><span class="mk-ide-n">1</span><span class="mk-ide-src"><span class="mk-ide-k">def</span> <span class="mk-ide-f">stance_torque</span>(limb, φ, P_h):</span><span class="mk-caret"></span></span>
 <span class="mk-ide-line" data-ide-row data-ide-blank><span class="mk-ide-n">2</span><span class="mk-ide-src"></span><span class="mk-caret"></span></span>
 <span class="mk-ide-line" data-ide-row data-ide-type><span class="mk-ide-n">3</span><span class="mk-ide-src">    τ = P_h * limb.A_eff * np.sin(φ)</span><span class="mk-caret"></span></span>
-<span class="mk-ide-line is-glow" data-ide-row data-ide-type><span class="mk-ide-n">4</span><span class="mk-ide-src">    F_n = limb.grf(τ, μ=<span class="mk-ide-n2">0.62</span>)</span><span class="mk-caret"></span></span>
+<span class="mk-ide-line" data-ide-row data-ide-type><span class="mk-ide-n">4</span><span class="mk-ide-src">    F_n = limb.grf(τ, μ=<span class="mk-ide-n2">0.62</span>)</span><span class="mk-caret"></span></span>
 <span class="mk-ide-line" data-ide-row data-ide-blank><span class="mk-ide-n">5</span><span class="mk-ide-src"></span><span class="mk-caret"></span></span>
 <span class="mk-ide-line" data-ide-row><span class="mk-ide-n">6</span><span class="mk-ide-src">    <span class="mk-ide-k">return</span> F_n <span class="mk-ide-k">if</span> F_n &gt; <span class="mk-ide-n2">0</span> <span class="mk-ide-k">else</span> <span class="mk-ide-n2">0.0</span></span><span class="mk-caret"></span></span>
 <span class="mk-ide-line" data-ide-row data-ide-blank><span class="mk-ide-n">7</span><span class="mk-ide-src"></span><span class="mk-caret"></span></span>
@@ -1503,8 +1501,8 @@
             };
 
             const setCaret = (el, on) => {
-                root.querySelectorAll('[data-epcr-caret]').forEach((c) => c.classList.remove('is-on'));
-                if (on && el) el.querySelector('[data-epcr-caret]')?.classList.add('is-on');
+                root.querySelectorAll('.mk-caret').forEach((c) => c.classList.remove('is-on'));
+                if (on && el) el.querySelector('.mk-caret')?.classList.add('is-on');
             };
 
             const typeInto = async (host, text, speed = 38) => {
@@ -1517,7 +1515,6 @@
                     target.textContent = text.slice(0, i + 1);
                     await wait(speed + (text[i] === ' ' ? 24 : 0) + Math.random() * 18);
                 }
-                setCaret(host, false);
             };
 
             const fillStatic = () => {
@@ -1556,6 +1553,9 @@
 
                 await typeInto(complaint, cType?.dataset.text || '', 44);
                 if (!running || token !== loopId) return;
+                await wait(220);
+                if (!running || token !== loopId) return;
+                setCaret(null, false);
                 complaint?.classList.remove('is-focus');
                 complaint?.classList.add('ok');
 
@@ -1575,10 +1575,9 @@
                     spo2V.textContent = fixed.slice(0, i + 1);
                     await wait(70 + Math.random() * 30);
                 }
-                setCaret(spo2, false);
-                await wait(200);
+                await wait(220);
                 if (!running || token !== loopId) return;
-
+                setCaret(null, false);
                 spo2?.classList.remove('is-focus');
                 spo2?.classList.add('is-live');
 
@@ -1628,7 +1627,7 @@
             const cmdText = root.querySelector('[data-term-cmd-text]');
             const termOuts = [...root.querySelectorAll('[data-term-out]')];
             const termPrompt = root.querySelector('[data-term-prompt]');
-            const termCaret = root.querySelector('.mk-term-caret');
+            const termCaret = root.querySelector('[data-term-caret]');
             const cmdFull = cmdText?.textContent || 'python gait.py --froude 0.31';
 
             const originals = new Map(
@@ -1649,8 +1648,19 @@
                 timers = [];
             };
 
+            const lastTypeRow = typeRows[typeRows.length - 1] || null;
+
+            const clearGlow = () => {
+                rows.forEach((r) => r.classList.remove('is-glow'));
+            };
+
+            const setGlow = (row) => {
+                clearGlow();
+                row?.classList.add('is-glow');
+            };
+
             const clearCarets = () => {
-                root.querySelectorAll('.mk-ide-caret, .mk-term-caret').forEach((c) => c.classList.remove('is-on'));
+                root.querySelectorAll('.mk-caret').forEach((c) => c.classList.remove('is-on'));
                 rows.forEach((r) => r.classList.remove('is-typing'));
             };
 
@@ -1664,11 +1674,12 @@
                 termOuts.forEach((line) => line.classList.remove('is-hidden'));
                 termPrompt?.classList.remove('is-hidden');
                 clearCarets();
+                setGlow(lastTypeRow);
             };
 
             const typePlain = async (row, plain, html, speed = 28) => {
                 const src = row.querySelector('.mk-ide-src');
-                const caret = row.querySelector('.mk-ide-caret');
+                const caret = row.querySelector('.mk-caret');
                 if (!src) return;
                 clearCarets();
                 row.classList.add('is-typing');
@@ -1686,6 +1697,7 @@
 
             const runCycle = async (token) => {
                 // Keep scaffold; clear the typed body lines + terminal
+                clearGlow();
                 typeRows.forEach((row) => {
                     const src = row.querySelector('.mk-ide-src');
                     if (src) src.innerHTML = '';
@@ -1714,9 +1726,11 @@
                             return tmp.textContent || '';
                         })()
                         : '';
-                    await typePlain(row, plain, html, row.classList.contains('is-glow') ? 26 : 30);
+                    await typePlain(row, plain, html, 28);
                     await wait(180);
                 }
+
+                setGlow(lastTypeRow);
 
                 await wait(360);
                 if (!running || token !== loopId) return;
