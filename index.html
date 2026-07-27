@@ -503,6 +503,10 @@
             color: var(--ink);
         }
 
+        .ttl-short {
+            display: none;
+        }
+
         .entry-date {
             flex-shrink: 0;
             font-size: 13px;
@@ -1232,6 +1236,14 @@
                 padding: 10px 4px;
                 white-space: nowrap;
             }
+
+            .ttl-long {
+                display: none;
+            }
+
+            .ttl-short {
+                display: inline;
+            }
         }
 
         @media (max-width: 520px) {
@@ -1399,7 +1411,7 @@
                 </article>
                 <article class="entry">
                     <div class="entry-top">
-                        <h3>Emergency Medical Technician</h3>
+                        <h3>Emergency Medical <span class="ttl-long">Technician</span><span class="ttl-short">Tech</span></h3>
                         <span class="entry-date">Nov 2025 — Present</span>
                     </div>
                     <div class="entry-sub">New York City Fire Department</div>
@@ -1415,7 +1427,7 @@
                 </article>
                 <article class="entry">
                     <div class="entry-top">
-                        <h3>Emergency Medical Technician</h3>
+                        <h3>Emergency Medical <span class="ttl-long">Technician</span><span class="ttl-short">Tech</span></h3>
                         <span class="entry-date">Mar 2025 — May 2025</span>
                     </div>
                     <div class="entry-sub">On Time Ambulance</div>
@@ -1429,7 +1441,7 @@
             <div class="stack">
                 <article class="entry">
                     <div class="entry-top">
-                        <h3>Emergency Medical Technician</h3>
+                        <h3>Emergency Medical <span class="ttl-long">Technician</span><span class="ttl-short">Tech</span></h3>
                         <span class="entry-date">Oct 2025 — Present</span>
                     </div>
                     <div class="entry-sub">Narberth Ambulance</div>
