@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://apallepati.com/static/profile.jpeg" width="128" alt="Abhishek Pallepati" />
+<img src="https://apallepati.com/static/profile.jpeg" width="112" alt="Abhishek Pallepati" />
 
 # Abhishek Pallepati
 
