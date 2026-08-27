@@ -1,20 +1,22 @@
 <div align="center">
 
-<img src="https://apallepati.com/static/profile.jpeg" width="88" alt="Abhishek Pallepati" />
+<img src="https://wsrv.nl/?url=apallepati.com/static/profile.jpeg&w=240&h=240&fit=cover&mask=circle" width="96" alt="Abhishek Pallepati" />
 
-<h1 align="center">Abhishek Pallepati<br><sub>Biophysics @ USC</sub></h1>
+# Abhishek Pallepati
 
-<a href="https://apallepati.com"><img src="https://api.iconify.design/lucide/globe.svg?color=%238b949e&height=14" alt="" />&nbsp;<sub>apallepati.com</sub></a>
+Biophysics @ USC
+
+<br>
+
+<a href="https://apallepati.com" title="apallepati.com"><img src="https://www.google.com/s2/favicons?domain=apallepati.com&sz=64" height="18" alt="Website" /></a>
 &nbsp;&nbsp;&nbsp;
-<a href="https://partret.com"><img src="https://api.iconify.design/lucide/activity.svg?color=%238b949e&height=14" alt="" />&nbsp;<sub>Partret</sub></a>
+<a href="https://partret.com" title="Partret"><img src="https://www.google.com/s2/favicons?domain=partret.com&sz=64" height="18" alt="Partret" /></a>
 &nbsp;&nbsp;&nbsp;
-<a href="https://www.linkedin.com/in/abhishekpallepati/"><img src="https://api.iconify.design/simple-icons/linkedin.svg?color=%238b949e&height=13" alt="" />&nbsp;<sub>LinkedIn</sub></a>
+<a href="https://www.linkedin.com/in/abhishekpallepati/" title="LinkedIn"><img src="https://www.google.com/s2/favicons?domain=linkedin.com&sz=64" height="18" alt="LinkedIn" /></a>
 &nbsp;&nbsp;&nbsp;
-<a href="https://www.youtube.com/@AbhishekPallepati"><img src="https://api.iconify.design/simple-icons/youtube.svg?color=%238b949e&height=13" alt="" />&nbsp;<sub>YouTube</sub></a>
+<a href="https://www.youtube.com/@AbhishekPallepati" title="YouTube"><img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=64" height="18" alt="YouTube" /></a>
 &nbsp;&nbsp;&nbsp;
-<a href="https://apallepati.com/static/resume.pdf"><img src="https://api.iconify.design/lucide/file-text.svg?color=%238b949e&height=14" alt="" />&nbsp;<sub>Résumé</sub></a>
-&nbsp;&nbsp;&nbsp;
-<a href="mailto:pallepat@usc.edu"><img src="https://api.iconify.design/lucide/mail.svg?color=%238b949e&height=14" alt="" />&nbsp;<sub>Email</sub></a>
+<a href="mailto:pallepat@usc.edu" title="Email"><img src="https://www.google.com/s2/favicons?domain=mail.google.com&sz=64" height="18" alt="Email" /></a>
 
 </div>
 
