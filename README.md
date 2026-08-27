@@ -1,12 +1,10 @@
 <div align="center">
 
-<img src="https://apallepati.com/static/profile.jpeg" width="96" alt="Abhishek Pallepati" />
+<img src="https://apallepati.com/static/profile.jpeg" width="128" alt="Abhishek Pallepati" />
 
 # Abhishek Pallepati
 
-[![Biophysics @ USC](https://img.shields.io/badge/Biophysics%20%40%20USC-14120B?style=for-the-badge&labelColor=14120B)](https://apallepati.com)
-
-<br>
+[![Biophysics @ USC](https://img.shields.io/badge/Biophysics-990000?style=for-the-badge&labelColor=990000)](https://apallepati.com)&nbsp;[![USC](https://img.shields.io/badge/USC-FFCC00?style=for-the-badge&labelColor=FFCC00&logoColor=990000)](https://apallepati.com)
 
 <a href="https://apallepati.com" title="apallepati.com"><img src="https://www.google.com/s2/favicons?domain=apallepati.com&sz=64" height="18" alt="Website" /></a>
 &nbsp;&nbsp;&nbsp;
@@ -20,13 +18,10 @@
 
 </div>
 
-<br>
-
 ```
-› now --status
+› Welcome!
 
-  building      Partret — operations intelligence for first response
-  responding    FDNY · Narberth Ambulance
-  teaching      BLS Instructor · CPR Certification Solutions
-  studying      B.S. Biophysics · USC '29
+  I'm Abhishek, a student interested in biophysics and biotechnology,
+  with an emphasis on preventive medicine through pediatric genetics
+  and emergency medicine through nanoparticle therapeutics.
 ```
