@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="https://wsrv.nl/?url=apallepati.com/static/profile.jpeg&w=240&h=240&fit=cover&mask=circle" width="96" alt="Abhishek Pallepati" />
+<img src="https://apallepati.com/static/profile.jpeg" width="96" alt="Abhishek Pallepati" />
 
 # Abhishek Pallepati
 
-Biophysics @ USC
+[![Biophysics @ USC](https://img.shields.io/badge/Biophysics%20%40%20USC-14120B?style=for-the-badge&labelColor=14120B)](https://apallepati.com)
 
 <br>
 
@@ -16,7 +16,7 @@ Biophysics @ USC
 &nbsp;&nbsp;&nbsp;
 <a href="https://www.youtube.com/@AbhishekPallepati" title="YouTube"><img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=64" height="18" alt="YouTube" /></a>
 &nbsp;&nbsp;&nbsp;
-<a href="mailto:pallepat@usc.edu" title="Email"><img src="https://www.google.com/s2/favicons?domain=mail.google.com&sz=64" height="18" alt="Email" /></a>
+<a href="mailto:pallepat@usc.edu" title="Email"><img src="https://ssl.gstatic.com/images/branding/product/1x/gmail_2020q4_48dp.png" height="18" alt="Email" /></a>
 
 </div>
 
