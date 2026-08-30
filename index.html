@@ -11,18 +11,51 @@
     <meta property="og:title" content="Abhishek Pallepati" />
     <meta property="og:description"
         content="Student interested in biophysics and biotechnology, with an emphasis on preventive medicine through pediatric genetics and emergency medicine through nanoparticle therapeutics." />
-    <meta property="og:image" content="/static/profile.jpeg" />
+    <meta property="og:image" content="https://apallepati.com/static/profile.jpeg" />
+    <meta property="og:url" content="https://apallepati.com/" />
+    <meta property="og:site_name" content="Abhishek Pallepati" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Abhishek Pallepati" />
     <meta name="twitter:description"
         content="Student interested in biophysics and biotechnology, with an emphasis on preventive medicine through pediatric genetics and emergency medicine through nanoparticle therapeutics." />
-    <meta name="twitter:image" content="/static/profile.jpeg" />
+    <meta name="twitter:image" content="https://apallepati.com/static/profile.jpeg" />
+    <link rel="canonical" href="https://apallepati.com/" />
     <link rel="icon" type="image/svg+xml" sizes="any" href="/static/icon.svg">
     <link rel="icon" type="image/png" sizes="96x96" href="/static/icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Abhishek Pallepati",
+        "url": "https://apallepati.com/",
+        "image": "https://apallepati.com/static/profile.jpeg",
+        "email": "mailto:pallepat@usc.edu",
+        "jobTitle": "Co-Founder and CTO",
+        "description": "Student interested in biophysics and biotechnology, with an emphasis on preventive medicine through pediatric genetics and emergency medicine through nanoparticle therapeutics.",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Partret",
+            "url": "https://partret.com"
+        },
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "University of Southern California",
+            "url": "https://www.usc.edu"
+        },
+        "knowsAbout": ["Biophysics", "Emergency Medical Services", "Genomics", "Python"],
+        "sameAs": [
+            "https://github.com/MasterMilkyshake",
+            "https://www.linkedin.com/in/abhishekpallepati/",
+            "https://www.youtube.com/@AbhishekPallepati",
+            "https://partret.com"
+        ]
+    }
+    </script>
 
     <style>
         :root {
@@ -101,9 +134,14 @@
             padding: 0;
         }
 
-        :focus,
-        :focus-visible {
+        :focus {
             outline: none;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent-hi);
+            outline-offset: 3px;
+            border-radius: 4px;
         }
 
         .site-header {
@@ -415,13 +453,28 @@
             color: var(--ink);
         }
 
-        .resume-link .arrow {
-            display: inline-block;
-            transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+        .arw {
+            width: 16px;
+            overflow: hidden;
+            display: inline-flex;
+            flex-shrink: 0;
         }
 
-        .resume-link:hover .arrow {
-            transform: translateX(5px);
+        .arw svg {
+            width: 16px;
+            height: 16px;
+            display: block;
+        }
+
+        .arw svg.arw-play {
+            animation: swap 0.5s cubic-bezier(.5, 0, .2, 1) forwards;
+        }
+
+        @keyframes swap {
+            0% { transform: translateX(0); }
+            49% { transform: translateX(26px); }
+            50% { transform: translateX(-26px); }
+            100% { transform: translateX(0); }
         }
 
         .hero-photo {
@@ -455,6 +508,10 @@
             .hero-photo:hover img {
                 transform: none;
             }
+
+            .arw svg.arw-play {
+                animation: none;
+            }
         }
 
         .main {
@@ -476,6 +533,7 @@
         }
 
         .entry {
+            position: relative;
             display: grid;
             gap: 3px;
         }
@@ -534,13 +592,36 @@
             color: var(--muted);
         }
 
-        .entry-sub a {
+        .entry-link {
             color: inherit;
+            text-decoration: none;
             transition: color 0.2s ease;
         }
 
-        .entry-sub a:hover {
-            color: var(--ink);
+        /* stretched hit area: the whole cell is the hover and click target */
+        .entry-link::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .entry:hover .entry-link,
+        .pub:hover .entry-link {
+            color: var(--accent-hi);
+        }
+
+        .entry-note {
+            margin-top: 7px;
+            max-width: 62ch;
+            font-size: 14px;
+            line-height: 1.65;
+            color: var(--muted);
+            text-wrap: pretty;
+        }
+
+        .entry-note em {
+            font-style: italic;
         }
 
         .entry-partret {
@@ -548,12 +629,22 @@
         }
 
         .pub {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            gap: 18px;
+            position: relative;
+            display: grid;
+            gap: 3px;
             padding: 16px 0;
             border-bottom: 1px solid var(--line);
+        }
+
+        .pub .entry-top h3 {
+            font-size: 15px;
+            font-weight: 400;
+            letter-spacing: -0.015em;
+            line-height: 1.45;
+        }
+
+        .pub em {
+            font-style: italic;
         }
 
         .pub:first-child {
@@ -563,20 +654,6 @@
         .pub:last-child {
             border-bottom: none;
             padding-bottom: 0;
-        }
-
-        .pub strong {
-            font-size: 15px;
-            font-weight: 400;
-            letter-spacing: -0.015em;
-            line-height: 1.45;
-            color: var(--soon);
-        }
-
-        .pub span {
-            font-size: 13px;
-            color: var(--soon);
-            white-space: nowrap;
         }
 
         .certs {
@@ -596,12 +673,62 @@
             border-radius: 8px;
             border: 1px solid var(--line-strong);
             background: var(--bg-2);
-            transition: border-color 0.15s ease, background 0.15s ease;
+            transition: border-color 0.2s ease, background 0.2s ease;
         }
 
         .cert:hover {
-            border-color: var(--line-hi);
-            background: var(--surface);
+            border-color: rgba(110, 125, 255, 0.5);
+            background: rgba(110, 125, 255, 0.08);
+        }
+
+        .skills {
+            display: grid;
+            gap: 16px;
+            margin: 0;
+        }
+
+        .skill-row {
+            display: grid;
+            grid-template-columns: 108px 1fr;
+            gap: 18px;
+            align-items: baseline;
+        }
+
+        .skill-row dt {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--faint);
+        }
+
+        .skill-row dd {
+            margin: 0;
+            overflow: hidden;
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: var(--body);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px 15px;
+            margin-left: -15px;
+        }
+
+        .skill-list li {
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .skill-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.3em;
+            bottom: 0.25em;
+            border-left: 1px solid var(--line-strong);
         }
 
         .edge-stage {
@@ -1249,6 +1376,11 @@
             .ttl-short {
                 display: inline;
             }
+
+            .skill-row {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
         }
 
         @media (max-width: 520px) {
@@ -1298,7 +1430,10 @@
                 <div class="hero-actions">
                     <a class="btn-primary" href="mailto:pallepat@usc.edu">Contact Me</a>
                     <a class="resume-link" href="/static/resume.pdf" target="_blank" rel="noopener noreferrer">View
-                        Resume <span class="arrow" aria-hidden="true">&#8594;</span></a>
+                        Resume <span class="arw" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12" /><polyline
+                                    points="14 6 20 12 14 18" /></svg></span></a>
                 </div>
             </div>
             <div class="hero-photo">
@@ -1313,7 +1448,7 @@
             <h2 class="section-label">Education</h2>
             <article class="entry">
                 <div class="entry-top">
-                    <h3>University of Southern California</h3>
+                    <h3><a class="entry-link" href="https://www.usc.edu" target="_blank" rel="noopener noreferrer">University of Southern California</a></h3>
                     <span class="entry-date">2025 — 2029</span>
                 </div>
                 <div class="entry-sub">Bachelor of Science in Biophysics</div>
@@ -1326,11 +1461,15 @@
             <div class="stack">
                 <article class="entry entry-partret">
                     <div class="entry-top">
-                        <h3>Co-Founder and CTO</h3>
+                        <h3><a class="entry-link" href="https://partret.com" target="_blank" rel="noopener noreferrer">Co-Founder and CTO</a></h3>
                         <span class="entry-date">May 2026 — Present</span>
                     </div>
-                    <a class="entry-sub" href="https://partret.com" target="_blank" rel="noopener noreferrer">Partret</a>
+                    <div class="entry-sub">Partret</div>
                     <div class="entry-loc">Princeton, NJ</div>
+                    <p class="entry-note">An EMS platform for compliant electronic patient care reporting. LLM-powered
+                        call capture transcribes live scene audio into a structured ePCR so charts are complete before
+                        the crew clears, backed by automated chart scoring, crew scheduling with coverage-gap detection,
+                        and agency analytics built around HIPAA data-handling requirements.</p>
                     <aside class="edge-stage" aria-hidden="true">
                         <div class="edge-canvas"></div>
                         <a class="edge-window" href="https://partret.com" target="_blank" rel="noopener noreferrer" tabindex="-1">
@@ -1415,7 +1554,7 @@
                 </article>
                 <article class="entry">
                     <div class="entry-top">
-                        <h3>Emergency Medical <span class="ttl-long">Technician</span><span class="ttl-short">Tech</span></h3>
+                        <h3><a class="entry-link" href="https://www.nyc.gov/site/fdny/index.page" target="_blank" rel="noopener noreferrer">Emergency Medical <span class="ttl-long">Technician</span><span class="ttl-short">Tech</span></a></h3>
                         <span class="entry-date">Nov 2025 — Present</span>
                     </div>
                     <div class="entry-sub">New York City Fire Department</div>
@@ -1423,27 +1562,25 @@
                 </article>
                 <article class="entry">
                     <div class="entry-top">
-                        <h3>Basic Life Support Instructor</h3>
-                        <span class="entry-date">Jul 2026 — Present</span>
+                        <h3><a class="entry-link" href="https://www.everyoneshould.com/" target="_blank" rel="noopener noreferrer">Basic Life Support Instructor</a></h3>
+                        <span class="entry-date">Jul 2025 — Present</span>
                     </div>
-                    <a class="entry-sub" href="https://www.everyoneshould.com/" target="_blank" rel="noopener noreferrer">CPR Certification Solutions</a>
+                    <div class="entry-sub">CPR Certification Solutions</div>
                     <div class="entry-loc">Princeton, NJ</div>
+                    <p class="entry-note">Teach American Heart Association BLS and Heartsaver CPR/AED/First Aid courses
+                        to healthcare providers and the public — hundreds of students across multiple training
+                        sites, including outreach events bringing lifesaving training to underserved communities.</p>
                 </article>
                 <article class="entry">
                     <div class="entry-top">
-                        <h3>Emergency Medical <span class="ttl-long">Technician</span><span class="ttl-short">Tech</span></h3>
-                        <span class="entry-date">Oct 2025 — Present</span>
+                        <h3><a class="entry-link" href="https://narberthambulance.org/" target="_blank" rel="noopener noreferrer">Emergency Medical <span class="ttl-long">Technician</span><span class="ttl-short">Tech</span></a></h3>
+                        <span class="entry-date">Oct 2025 — Sep 2026</span>
                     </div>
                     <div class="entry-sub">Narberth Ambulance</div>
                     <div class="entry-loc">Ardmore, PA</div>
-                </article>
-                <article class="entry">
-                    <div class="entry-top">
-                        <h3>Emergency Medical <span class="ttl-long">Technician</span><span class="ttl-short">Tech</span></h3>
-                        <span class="entry-date">Mar 2025 — May 2025</span>
-                    </div>
-                    <div class="entry-sub">On Time Ambulance</div>
-                    <div class="entry-loc">Voorhees, NJ</div>
+                    <p class="entry-note">Responded to 911 emergencies under Pennsylvania EMS protocols — patient
+                        assessment, vitals, approved interventions, and handoff to receiving facilities and medical
+                        control, working alongside paramedics, fire, law enforcement, and hospital staff.</p>
                 </article>
             </div>
         </section>
@@ -1452,10 +1589,64 @@
             <h2 class="section-label">Publications</h2>
             <ul>
                 <li class="pub">
-                    <strong>Coming soon</strong>
-                    <span>—</span>
+                    <div class="entry-top">
+                        <h3><a class="entry-link" href="https://www.ncbi.nlm.nih.gov/nuccore/JZ985529.1"
+                                target="_blank" rel="noopener noreferrer"><em>Landoltia punctata</em> clone W893.21, 36.4 kDa
+                                proline-rich protein-like mRNA, partial sequence</a></h3>
+                        <span class="entry-date">2021</span>
+                    </div>
+                    <div class="entry-sub">Pallepati A, Vershon A, Mead J.</div>
+                </li>
+                <li class="pub">
+                    <div class="entry-top">
+                        <h3><a class="entry-link" href="https://www.ncbi.nlm.nih.gov/nuccore/JZ985530.1"
+                                target="_blank" rel="noopener noreferrer"><em>Landoltia punctata</em> clone W894.21, leucine-rich
+                                repeat protein-like mRNA, partial sequence</a></h3>
+                        <span class="entry-date">2021</span>
+                    </div>
+                    <div class="entry-sub">Pallepati A, Vershon A, Mead J.</div>
                 </li>
             </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-label">Skills</h2>
+            <dl class="skills">
+                <div class="skill-row">
+                    <dt>Languages</dt>
+                    <dd>
+                        <ul class="skill-list">
+                            <li>Python</li>
+                            <li>R</li>
+                            <li>JavaScript</li>
+                            <li>React</li>
+                            <li>HTML/CSS</li>
+                        </ul>
+                    </dd>
+                </div>
+                <div class="skill-row">
+                    <dt>Tools</dt>
+                    <dd>
+                        <ul class="skill-list">
+                            <li>Git/GitHub</li>
+                            <li>SQL</li>
+                            <li>Docker</li>
+                            <li>AWS</li>
+                            <li>Command line</li>
+                        </ul>
+                    </dd>
+                </div>
+                <div class="skill-row">
+                    <dt>Familiar</dt>
+                    <dd>
+                        <ul class="skill-list">
+                            <li>C</li>
+                            <li>C++</li>
+                            <li>MATLAB</li>
+                        </ul>
+                    </dd>
+                </div>
+            </dl>
         </section>
 
         <section class="section">
@@ -1472,6 +1663,68 @@
     </main>
 
     <script>
+        (() => {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            const ANIM_MS = 500;
+
+            document.querySelectorAll('.arw').forEach((arw) => {
+                const btn = arw.closest('a, button');
+                const svg = arw.querySelector('svg');
+                if (!btn || !svg) return;
+
+                let leaveTimer = null;
+                let onLeaveFinish = null;
+
+                const clearLeaveTimer = () => {
+                    if (leaveTimer !== null) {
+                        window.clearTimeout(leaveTimer);
+                        leaveTimer = null;
+                    }
+                };
+
+                const cleanup = () => {
+                    clearLeaveTimer();
+                    if (onLeaveFinish) {
+                        svg.removeEventListener('animationend', onLeaveFinish);
+                        onLeaveFinish = null;
+                    }
+                    svg.classList.remove('arw-play');
+                };
+
+                const restartAnimation = () => {
+                    cleanup();
+                    svg.style.animation = 'none';
+                    void svg.offsetWidth;
+                    svg.style.animation = '';
+                    svg.classList.add('arw-play');
+                };
+
+                btn.addEventListener('mouseenter', restartAnimation);
+
+                btn.addEventListener('mouseleave', () => {
+                    if (!svg.classList.contains('arw-play')) return;
+
+                    const anims = typeof svg.getAnimations === 'function' ? svg.getAnimations() : [];
+                    const stillRunning = anims.some(
+                        (anim) => anim.playState === 'running' || anim.playState === 'pending',
+                    );
+
+                    if (!stillRunning) {
+                        cleanup();
+                        return;
+                    }
+
+                    onLeaveFinish = () => {
+                        cleanup();
+                    };
+
+                    svg.addEventListener('animationend', onLeaveFinish);
+                    leaveTimer = window.setTimeout(onLeaveFinish, ANIM_MS + 40);
+                });
+            });
+        })();
+
         (() => {
             const header = document.querySelector('.site-header');
             const burger = document.querySelector('.hdr-burger');
