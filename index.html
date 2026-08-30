@@ -611,16 +611,40 @@
             color: var(--accent-hi);
         }
 
-        .entry-note {
-            margin-top: 7px;
-            max-width: 62ch;
+        /* the demo windows are children of the Partret entry, so hovering one
+           would otherwise light up the entry title alongside it */
+        .entry:has(.edge-window:hover) .entry-link {
+            color: inherit;
+        }
+
+        .entry-notes {
+            display: grid;
+            gap: 6px;
+            margin-top: 10px;
+            max-width: 64ch;
+        }
+
+        .entry-notes li {
+            position: relative;
+            padding-left: 17px;
             font-size: 14px;
-            line-height: 1.65;
+            line-height: 1.6;
             color: var(--muted);
             text-wrap: pretty;
         }
 
-        .entry-note em {
+        .entry-notes li::before {
+            content: "";
+            position: absolute;
+            left: 2px;
+            top: 0.58em;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--faint);
+        }
+
+        .entry-notes em {
             font-style: italic;
         }
 
@@ -1466,10 +1490,16 @@
                     </div>
                     <div class="entry-sub">Partret</div>
                     <div class="entry-loc">Princeton, NJ</div>
-                    <p class="entry-note">An EMS platform for compliant electronic patient care reporting. LLM-powered
-                        call capture transcribes live scene audio into a structured ePCR so charts are complete before
-                        the crew clears, backed by automated chart scoring, crew scheduling with coverage-gap detection,
-                        and agency analytics built around HIPAA data-handling requirements.</p>
+                    <ul class="entry-notes">
+                        <li>Architected an EMS platform for compliant electronic patient care (ePCR) reporting in
+                            Python; advised by Ari Meisel, Executive Director of Princeton First Aid and Rescue Squad
+                        </li>
+                        <li>Built LLM-powered call capture that transcribes live scene audio and populates a structured
+                            ePCR, so charts are complete before the crew clears</li>
+                        <li>Developed the QA and operations layer: automated chart scoring that flags missing fields for
+                            reviewers, crew scheduling with coverage-gap detection, and agency-level analytics, built
+                            around HIPAA data-handling requirements</li>
+                    </ul>
                     <aside class="edge-stage" aria-hidden="true">
                         <div class="edge-canvas"></div>
                         <a class="edge-window" href="https://partret.com" target="_blank" rel="noopener noreferrer" tabindex="-1">
@@ -1567,9 +1597,14 @@
                     </div>
                     <div class="entry-sub">CPR Certification Solutions</div>
                     <div class="entry-loc">Princeton, NJ</div>
-                    <p class="entry-note">Teach American Heart Association BLS and Heartsaver CPR/AED/First Aid courses
-                        to healthcare providers and the public — hundreds of students across multiple training
-                        sites, including outreach events bringing lifesaving training to underserved communities.</p>
+                    <ul class="entry-notes">
+                        <li>Taught American Heart Association certification courses, including BLS and Heartsaver
+                            CPR/AED/First Aid, to healthcare providers and members of the public</li>
+                        <li>Educated hundreds of students across multiple training locations, tailoring instruction
+                            to learners from Boy Scouts to teachers to medical professionals</li>
+                        <li>Took part in events providing CPR and first aid education to underserved communities,
+                            widening access to lifesaving training through community outreach</li>
+                    </ul>
                 </article>
                 <article class="entry">
                     <div class="entry-top">
@@ -1578,9 +1613,14 @@
                     </div>
                     <div class="entry-sub">Narberth Ambulance</div>
                     <div class="entry-loc">Ardmore, PA</div>
-                    <p class="entry-note">Responded to 911 emergencies under Pennsylvania EMS protocols — patient
-                        assessment, vitals, approved interventions, and handoff to receiving facilities and medical
-                        control, working alongside paramedics, fire, law enforcement, and hospital staff.</p>
+                    <ul class="entry-notes">
+                        <li>Responded to 911 emergencies, providing rapid assessment, treatment, and transport of
+                            patients in accordance with Pennsylvania EMS protocols</li>
+                        <li>Performed patient assessments, obtained vital signs, administered approved interventions,
+                            and communicated critical findings to receiving facilities and medical control</li>
+                        <li>Collaborated with EMTs, paramedics, firefighters, law enforcement, and hospital staff to
+                            deliver prehospital care in high-acuity, high-stress environments</li>
+                    </ul>
                 </article>
             </div>
         </section>
