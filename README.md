@@ -21,7 +21,8 @@
 ```
 › Welcome!
 
-  I'm Abhishek, a student interested in biophysics and biotechnology,
-  with an emphasis on preventive medicine through pediatric genetics
-  and emergency medicine through nanoparticle therapeutics.
+  I'm a biophysics student at USC. I started as an EMT, where care
+  arrives last. Since then I've been working backward. The training
+  before the call, the drug before the emergency, the genome before
+  the symptom. Pediatric genetics is as far back as that goes.
 ```
