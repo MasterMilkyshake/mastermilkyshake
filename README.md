@@ -8,7 +8,7 @@
 
 <a href="https://apallepati.com" title="apallepati.com"><img src="https://www.google.com/s2/favicons?domain=apallepati.com&sz=64" height="18" alt="Website" /></a>
 &nbsp;&nbsp;&nbsp;
-<a href="https://partret.com" title="Partret"><img src="https://www.google.com/s2/favicons?domain=partret.com&sz=64" height="18" alt="Partret" /></a>
+<a href="https://partret.com" title="Partret"><img src="https://www.google.com/s2/favicons?domain=partret.com&sz=96" height="18" alt="Partret" /></a>
 &nbsp;&nbsp;&nbsp;
 <a href="https://www.linkedin.com/in/abhishekpallepati/" title="LinkedIn"><img src="https://www.google.com/s2/favicons?domain=linkedin.com&sz=64" height="18" alt="LinkedIn" /></a>
 &nbsp;&nbsp;&nbsp;
