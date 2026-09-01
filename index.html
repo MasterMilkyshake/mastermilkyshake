@@ -331,7 +331,6 @@
             text-decoration: none;
         }
 
-        /* stretched hit area: the whole cell is the hover and click target */
         .entry-link::after {
             content: "";
             position: absolute;
@@ -355,8 +354,6 @@
             text-wrap: pretty;
         }
 
-        /* each bullet branches off the spine with a rounded elbow,
-           which replaces the dot as the marker */
         .entry-notes li::before {
             content: "";
             position: absolute;
@@ -369,8 +366,6 @@
             border-radius: 0 0 0 9px;
         }
 
-        /* carries the spine on to the next elbow; the last bullet has none,
-           so the line ends on its curve */
         .entry-notes li:not(:last-child)::after {
             content: "";
             position: absolute;
@@ -1082,7 +1077,6 @@
                 animation: seq-scroll 38s linear infinite;
             }
 
-            /* the block is printed twice, so -50% loops seamlessly */
             @keyframes seq-scroll {
                 from { transform: translateY(0); }
                 to { transform: translateY(-50%); }
@@ -1171,8 +1165,6 @@
 
         }
 
-
-        /* ---- icon links under the photo ---- */
         .icon-sprite {
             position: absolute;
             width: 0;
@@ -1186,15 +1178,12 @@
             flex-shrink: 0;
         }
 
-        /* ---- entry logos + the line that drops out of them ---- */
         .entry.has-logo {
             grid-template-columns: 32px minmax(0, 1fr);
             column-gap: 14px;
             row-gap: 0;
         }
 
-        /* placed explicitly: the rail owns row 1 so its spine stops exactly
-           where the bullets start */
         .entry.has-logo > .entry-rail {
             grid-column: 1;
             grid-row: 1;
@@ -1236,7 +1225,6 @@
             object-fit: contain;
         }
 
-        /* only entries with bullets get a spine to run alongside */
         .entry.has-logo:has(.entry-notes) .entry-rail::after {
             content: "";
             position: absolute;
@@ -1253,7 +1241,6 @@
             min-width: 0;
         }
 
-        /* ---- conversational prose: hero + toolkit ---- */
         .hero-bio {
             display: grid;
             gap: 14px;
@@ -1339,8 +1326,6 @@
             .hero-bio {
                 gap: 12px;
                 max-width: 34ch;
-                /* multi-paragraph prose needs a flush left edge to stay readable,
-                   even though the rest of the mobile hero is centered */
                 text-align: left;
             }
 
@@ -1894,7 +1879,6 @@
             };
 
             const runCycle = async (token) => {
-                // Keep scaffold; clear the typed body lines + terminal
                 clearGlow();
                 typeRows.forEach((row) => {
                     const src = row.querySelector('.mk-ide-src');
@@ -1933,7 +1917,6 @@
                 await wait(360);
                 if (!running || token !== loopId) return;
 
-                // Type terminal command
                 clearCarets();
                 termCaret?.classList.add('is-on');
                 if (cmdText) cmdText.textContent = '';
