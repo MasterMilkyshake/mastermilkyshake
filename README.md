@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="https://apallepati.com/static/profile.jpeg" width="112" alt="Abhishek Pallepati" />
-
 # Abhishek Pallepati
 
 [![Biophysics @ USC](https://img.shields.io/badge/Biophysics-990000?style=for-the-badge&labelColor=990000)](https://apallepati.com)&nbsp;[![USC](https://img.shields.io/badge/USC-FFCC00?style=for-the-badge&labelColor=FFCC00&logoColor=990000)](https://apallepati.com)
