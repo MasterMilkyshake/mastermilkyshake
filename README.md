@@ -2,7 +2,7 @@
 
 # Abhishek Pallepati
 
-[![Biophysics @ USC](https://img.shields.io/badge/Biophysics-990000?style=for-the-badge&labelColor=990000)](https://apallepati.com)&nbsp;[![USC](https://img.shields.io/badge/USC-FFCC00?style=for-the-badge&labelColor=FFCC00&logoColor=990000)](https://apallepati.com)
+# Biophysics @ USC
 
 <a href="https://apallepati.com" title="apallepati.com"><img src="https://www.google.com/s2/favicons?domain=apallepati.com&sz=96" height="18" alt="Website" /></a>
 &nbsp;&nbsp;&nbsp;
