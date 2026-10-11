@@ -17,13 +17,3 @@
 <a href="mailto:pallepat@usc.edu" title="Email"><img src="https://ssl.gstatic.com/images/branding/product/1x/gmail_2020q4_48dp.png" height="18" alt="Email" /></a>
 
 </div>
-
-```
-› Welcome!
-
-  I'm a biophysics student at USC. I started as an EMT, where
-  care arrives last. Since then I've been working backward.
-  The training before the call, the drug before the emergency,
-  the genome before the symptom. That’s where it all begins,
-  and where I intend to end it.
-```
