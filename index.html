@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Abhishek Pallepati</title>
     <meta name="description"
-        content="I'm a biophysics student at USC. I started as an EMT, where care arrives last. Since then I've been working backward. The training before the call, the drug before the emergency, the genome before the symptom. Pediatric genetics is as far back as that goes." />
-    <meta name="theme-color" content="#14120B" />
+        content="I’m a biophysics student at USC. I started as an EMT, where care arrives last. Since then I’ve been working backward. The training before the call, the drug before the emergency, the genome before the symptom. That’s where it all begins, and where it ends." />
+    <meta name="theme-color" content="#ffffff" />
     <meta property="og:title" content="Abhishek Pallepati" />
     <meta property="og:description"
-        content="I'm a biophysics student at USC. I started as an EMT, where care arrives last. Since then I've been working backward. The training before the call, the drug before the emergency, the genome before the symptom. Pediatric genetics is as far back as that goes." />
+        content="I’m a biophysics student at USC. I started as an EMT, where care arrives last. Since then I’ve been working backward. The training before the call, the drug before the emergency, the genome before the symptom. That’s where it all begins, and where it ends." />
     <meta property="og:image" content="https://apallepati.com/static/profile.jpeg" />
     <meta property="og:url" content="https://apallepati.com/" />
     <meta property="og:site_name" content="Abhishek Pallepati" />
@@ -18,14 +18,20 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Abhishek Pallepati" />
     <meta name="twitter:description"
-        content="I'm a biophysics student at USC. I started as an EMT, where care arrives last. Since then I've been working backward. The training before the call, the drug before the emergency, the genome before the symptom. Pediatric genetics is as far back as that goes." />
+        content="I’m a biophysics student at USC. I started as an EMT, where care arrives last. Since then I’ve been working backward. The training before the call, the drug before the emergency, the genome before the symptom. That’s where it all begins, and where it ends." />
     <meta name="twitter:image" content="https://apallepati.com/static/profile.jpeg" />
     <link rel="canonical" href="https://apallepati.com/" />
-    <link rel="icon" type="image/svg+xml" sizes="any" href="/static/icon.svg">
-    <link rel="icon" type="image/png" sizes="96x96" href="/static/icon.png">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="/static/icon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/static/icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300;400&family=Mona+Sans:wght@400..600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/site.css" />
+    <link rel="modulepreload" href="/static/js/dots.js" />
+    <link rel="modulepreload" href="/static/js/shapes.js" />
+    <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js" />
+    <script type="module" src="/static/js/main.js"></script>
 
     <script type="application/ld+json">
     {
@@ -36,7 +42,7 @@
         "image": "https://apallepati.com/static/profile.jpeg",
         "email": "mailto:pallepat@usc.edu",
         "jobTitle": "Co-Founder",
-        "description": "I'm a biophysics student at USC. I started as an EMT, where care arrives last. Since then I've been working backward. The training before the call, the drug before the emergency, the genome before the symptom. Pediatric genetics is as far back as that goes.",
+        "description": "I’m a biophysics student at USC. I started as an EMT, where care arrives last. Since then I’ve been working backward. The training before the call, the drug before the emergency, the genome before the symptom. That’s where it all begins, and where it ends.",
         "worksFor": {
             "@type": "Organization",
             "name": "Partret",
@@ -56,1908 +62,317 @@
         ]
     }
     </script>
-
-    <style>
-        :root {
-            --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-            --max: 1080px;
-            --pad: clamp(20px, 5vw, 40px);
-            --hero-gap: clamp(72px, 10vw, 148px);
-            --hero-bottom-gap: clamp(52px, 7vw, 104px);
-            --bg: #14120b;
-            --bg-2: #1b1913;
-            --surface: #201e18;
-            --paper: #ffffff;
-            --paper-dim: #ededed;
-            --ink: #edecec;
-            --body: #a8a7a4;
-            --muted: #8c8b86;
-            --faint: #6e6d68;
-            --soon: #5c5b55;
-            --line: #2b2923;
-            --line-strong: #3b3a33;
-            --line-hi: #4a4941;
-            --accent: #6e7dff;
-            --accent-hi: #8a97ff;
-            --accent-soft: rgba(110, 125, 255, 0.18);
-            --green: #4cbf95;
-            --amber: #e6b35c;
-            --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
-            --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        html {
-            color-scheme: dark;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        body,
-        h1,
-        h2,
-        h3,
-        p,
-        ul {
-            margin: 0;
-        }
-
-        body {
-            font-family: var(--font);
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--body);
-            background: radial-gradient(ellipse 1100px 620px at 50% -20%, rgba(110, 125, 255, 0.06), transparent 60%), var(--bg);
-            overflow-x: hidden;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        img {
-            display: block;
-            max-width: 100%;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        :focus {
-            outline: none;
-        }
-
-        :focus-visible {
-            outline: 2px solid var(--accent-hi);
-            outline-offset: 3px;
-            border-radius: 4px;
-        }
-
-        .hero {
-            max-width: var(--max);
-            width: 100%;
-            margin: 0 auto;
-            padding: var(--hero-gap) var(--pad) var(--hero-bottom-gap);
-        }
-
-        .hero-grid {
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr minmax(240px, 320px);
-            gap: clamp(48px, 7vw, 96px);
-            align-items: center;
-        }
-
-        .hero-content {
-            min-width: 0;
-        }
-
-        .hero-name {
-            margin: 0 0 28px;
-            font-size: clamp(2.75rem, 6vw, 4rem);
-            font-weight: 500;
-            line-height: 1.02;
-            letter-spacing: -0.04em;
-            color: var(--ink);
-            text-wrap: balance;
-        }
-
-        .hero-bio {
-            max-width: 52ch;
-            margin: 0;
-            font-size: 18px;
-            line-height: 1.7;
-            color: var(--muted);
-            text-wrap: pretty;
-        }
-
-        .hero-aside {
-            display: grid;
-            gap: 16px;
-            min-width: 0;
-        }
-
-        .photo-links {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2px;
-        }
-
-        .photo-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            color: rgba(237, 236, 236, 0.58);
-            transition: color 0.2s ease, background 0.2s ease;
-        }
-
-        .photo-links a:hover {
-            color: var(--ink);
-            background: var(--surface);
-        }
-
-        .photo-links .nav-ico {
-            width: 18px;
-            height: 18px;
-        }
-
-        .hero-photo {
-            position: relative;
-            aspect-ratio: 1;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .hero-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform-origin: center;
-            transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-            -webkit-user-drag: none;
-            user-select: none;
-            -webkit-user-select: none;
-            pointer-events: none;
-        }
-
-        .hero-photo:hover img {
-            transform: scale(1.02);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .hero-photo img {
-                transition: none;
-            }
-
-            .hero-photo:hover img {
-                transform: none;
-            }
-
-        }
-
-        .main {
-            max-width: 720px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 var(--pad) clamp(56px, 10vw, 96px);
-            display: grid;
-            gap: clamp(56px, 10vw, 80px);
-        }
-
-        .section-label {
-            margin: 0 0 22px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--faint);
-        }
-
-        .entry {
-            position: relative;
-            display: grid;
-            gap: 3px;
-        }
-
-        .entry + .entry {
-            border-top: 1px solid var(--line);
-        }
-
-        .section .stack .entry {
-            padding: 18px 0;
-        }
-
-        .section .stack .entry:first-child {
-            padding-top: 0;
-        }
-
-        .section .stack .entry:last-child {
-            padding-bottom: 0;
-        }
-
-        .entry-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            gap: 18px;
-        }
-
-        .entry-top h3 {
-            font-size: 16px;
-            font-weight: 500;
-            letter-spacing: -0.02em;
-            line-height: 1.35;
-            color: var(--ink);
-        }
-
-        .entry-date {
-            flex-shrink: 0;
-            font-size: 13px;
-            color: var(--faint);
-            font-variant-numeric: tabular-nums;
-            white-space: nowrap;
-        }
-
-        .entry-sub {
-            font-size: 14.5px;
-            line-height: 1.5;
-            color: var(--body);
-        }
-
-        .entry-loc {
-            font-size: 13.5px;
-            color: var(--muted);
-        }
-
-        .entry-link {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .entry-link::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-        }
-
-        .entry-notes {
-            display: grid;
-            gap: 6px;
-            margin-top: 10px;
-            max-width: 64ch;
-        }
-
-        .entry-notes li {
-            position: relative;
-            padding-left: 0;
-            font-size: 14px;
-            line-height: 1.6;
-            color: var(--muted);
-            text-wrap: pretty;
-        }
-
-        .entry-notes li::before {
-            content: "";
-            position: absolute;
-            left: -31px;
-            top: -6px;
-            width: 22px;
-            height: 17px;
-            border-left: 1px solid var(--line-strong);
-            border-bottom: 1px solid var(--line-strong);
-            border-radius: 0 0 0 9px;
-        }
-
-        .entry-notes li:not(:last-child)::after {
-            content: "";
-            position: absolute;
-            left: -31px;
-            top: -6px;
-            bottom: -6px;
-            width: 1px;
-            background: var(--line-strong);
-        }
-
-        .entry-partret {
-            position: relative;
-        }
-
-        .pub {
-            position: relative;
-            display: grid;
-            gap: 3px;
-            padding: 16px 0;
-            border-bottom: 1px solid var(--line);
-        }
-
-        .pub .entry-top h3 {
-            font-size: 15px;
-            font-weight: 400;
-            letter-spacing: -0.015em;
-            line-height: 1.45;
-        }
-
-        .pub:first-child {
-            padding-top: 0;
-        }
-
-        .pub:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .edge-stage {
-            display: none;
-        }
-
-        .certs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .cert {
-            display: inline-flex;
-            align-items: center;
-            padding: 8px 14px;
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: -0.01em;
-            color: var(--ink);
-            border-radius: 8px;
-            border: 1px solid var(--line-strong);
-            background: var(--bg-2);
-            transition: border-color 0.2s ease, background 0.2s ease;
-        }
-
-        .cert:hover {
-            border-color: var(--line-hi);
-            background: var(--surface);
-        }
-
-        @media (min-width: 1360px) {
-            .main,
-            .section,
-            .section .stack,
-            .entry-partret {
-                overflow: visible;
-            }
-
-            .edge-stage {
-                display: block;
-                position: absolute;
-                top: 8px;
-                left: calc(-50vw + 50%);
-                right: calc(100% + max(44px, 50vw - 50% - 300px));
-                width: auto;
-                max-width: none;
-                height: auto;
-                z-index: 1;
-                pointer-events: none;
-            }
-
-            .edge-canvas {
-                position: absolute;
-                inset: 0;
-                border-radius: 0 16px 16px 0;
-                overflow: hidden;
-                opacity: 0.9;
-                background:
-                    radial-gradient(ellipse 120% 95% at 50% 52%, rgba(255, 255, 255, 0.45), transparent 68%),
-                    linear-gradient(166deg, rgba(250, 244, 233, 0.92) 0%, rgba(240, 233, 219, 0.45) 32%, transparent 58%),
-                    linear-gradient(166deg, transparent 38%, rgba(228, 219, 200, 0.72) 68%, rgba(224, 214, 193, 0.95) 100%),
-                    linear-gradient(98deg, #faf7f0 0%, #ece5d7 48%, #ece5d7 100%);
-            }
-
-            .edge-window {
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                height: 338px;
-                margin: 18px 18px 18px 14px;
-                border-radius: 12px;
-                background: var(--surface);
-                border: 1px solid var(--line-strong);
-                box-shadow: 0 16px 40px rgba(0, 0, 0, 0.42);
-                overflow: hidden;
-                pointer-events: auto;
-                text-decoration: none;
-                color: inherit;
-            }
-
-            .edge-stage-right {
-                top: 550px;
-                left: auto;
-                right: calc(-50vw + 50%);
-                width: calc(50vw - 50% - 44px);
-                max-width: 300px;
-            }
-
-            .edge-stage-right .edge-canvas {
-                border-radius: 16px 0 0 16px;
-            }
-
-            .edge-stage-right .edge-window {
-                margin: 18px 14px 18px 18px;
-            }
-
-            .mk-topbar {
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                padding: 11px 12px;
-                border-bottom: 1px solid var(--line);
-            }
-
-            .mk-traffic {
-                display: flex;
-                gap: 5px;
-                flex-shrink: 0;
-            }
-
-            .mk-traffic i {
-                width: 9px;
-                height: 9px;
-                border-radius: 50%;
-                display: block;
-            }
-
-            .mk-traffic i:nth-child(1) { background: #ff5f57; }
-            .mk-traffic i:nth-child(2) { background: #febc2e; }
-            .mk-traffic i:nth-child(3) { background: #28c840; }
-
-            .mk-topbar-title {
-                flex: 1;
-                text-align: center;
-                font-size: 11.5px;
-                font-weight: 500;
-                color: rgba(237, 236, 236, 0.5);
-                letter-spacing: -0.01em;
-                margin-right: 32px;
-            }
-
-            .mk-epcr {
-                padding: 12px;
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .mk-epcr-head {
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            }
-
-            .mk-logo {
-                width: 18px;
-                height: 18px;
-                border-radius: 5px;
-                display: block;
-                flex-shrink: 0;
-            }
-
-            .mk-epcr-title {
-                font-size: 13px;
-                font-weight: 600;
-                color: var(--ink);
-                letter-spacing: -0.02em;
-            }
-
-            .mk-fields {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 6px;
-            }
-
-            .mk-field {
-                border: 1px solid var(--line-strong);
-                border-radius: 8px;
-                padding: 8px 9px;
-                display: flex;
-                flex-direction: column;
-                gap: 3px;
-                min-width: 0;
-                background: var(--bg-2);
-            }
-
-            .mk-field-k {
-                font-size: 8px;
-                text-transform: uppercase;
-                letter-spacing: 0.03em;
-                color: rgba(237, 236, 236, 0.4);
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-
-            .mk-field-v {
-                font-size: 11.5px;
-                font-weight: 600;
-                color: var(--ink);
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                line-height: 1.2;
-            }
-
-            .mk-field-v:has([data-epcr-caret]),
-            .mk-vital-v:has([data-epcr-caret]) {
-                display: inline-flex;
-                align-items: center;
-                gap: 0;
-                max-width: 100%;
-            }
-
-            .mk-field.is-focus .mk-field-v,
-            .mk-vital.is-focus .mk-vital-v {
-                overflow: visible;
-            }
-
-            .mk-field-v [data-epcr-type],
-            .mk-vital-v [data-epcr-spo2-v] {
-                min-width: 0;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-
-            .mk-field.ok {
-                border-color: rgba(76, 191, 149, 0.3);
-                background: rgba(76, 191, 149, 0.08);
-            }
-
-            .mk-field.ok .mk-field-k {
-                color: var(--green);
-            }
-
-            .mk-field.warn {
-                border-color: rgba(230, 179, 92, 0.32);
-                background: rgba(230, 179, 92, 0.09);
-            }
-
-            .mk-field.warn .mk-field-k {
-                color: var(--amber);
-            }
-
-            .mk-vitals-row {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 6px;
-            }
-
-            .mk-vital {
-                border: 1px solid var(--line-strong);
-                border-radius: 8px;
-                padding: 8px 8px;
-                background: var(--bg-2);
-                display: flex;
-                flex-direction: column;
-                gap: 3px;
-                min-width: 0;
-            }
-
-            .mk-vital-k {
-                font-size: 8px;
-                text-transform: uppercase;
-                letter-spacing: 0.03em;
-                color: rgba(237, 236, 236, 0.4);
-            }
-
-            .mk-vital-v {
-                font-size: 12px;
-                font-weight: 600;
-                color: var(--ink);
-                letter-spacing: -0.02em;
-                font-variant-numeric: tabular-nums;
-                line-height: 1.2;
-            }
-
-            .mk-note {
-                border: 1px solid var(--line-strong);
-                border-radius: 8px;
-                padding: 9px 10px;
-                background: var(--bg-2);
-                display: grid;
-                gap: 4px;
-            }
-
-            .mk-note-k {
-                font-size: 8px;
-                text-transform: uppercase;
-                letter-spacing: 0.04em;
-                color: rgba(237, 236, 236, 0.38);
-            }
-
-            .mk-note-v {
-                font-size: 11px;
-                line-height: 1.45;
-                color: rgba(237, 236, 236, 0.58);
-                letter-spacing: -0.01em;
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 2;
-                line-clamp: 2;
-                overflow: hidden;
-            }
-
-            .mk-vector-row {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                gap: 8px;
-                border: 1px solid var(--line-strong);
-                border-radius: 8px;
-                padding: 8px 9px;
-                background: var(--bg-2);
-                font-size: 11px;
-            }
-
-            .mk-vector-row span {
-                color: rgba(237, 236, 236, 0.45);
-            }
-
-            .mk-vector-row strong {
-                font-weight: 600;
-                color: var(--ink);
-                font-variant-numeric: tabular-nums;
-            }
-
-            .mk-epcr.is-animating .mk-field:not(.ok):not(.warn) {
-                border-color: var(--line);
-                background: var(--bg-2);
-            }
-
-            .mk-field.is-focus {
-                border-color: rgba(110, 125, 255, 0.5) !important;
-                background: rgba(110, 125, 255, 0.08) !important;
-                box-shadow: 0 0 0 1px rgba(110, 125, 255, 0.16);
-            }
-
-            .mk-field.is-focus .mk-field-k {
-                color: var(--accent-hi) !important;
-            }
-
-            .mk-field.is-focus .mk-field-v {
-                color: var(--ink) !important;
-                font-weight: 600 !important;
-                font-style: normal !important;
-            }
-
-            .mk-vital.is-pending .mk-vital-v,
-            .mk-note.is-pending .mk-note-v,
-            .mk-vector-row.is-pending strong {
-                color: rgba(237, 236, 236, 0.22);
-            }
-
-            .mk-vital.warn {
-                border-color: rgba(230, 179, 92, 0.32);
-                background: rgba(230, 179, 92, 0.09);
-                transition: border-color 280ms var(--ease-out), background 280ms var(--ease-out);
-            }
-
-            .mk-vital.warn .mk-vital-k {
-                color: var(--amber);
-            }
-
-            .mk-vital.is-live {
-                border-color: rgba(76, 191, 149, 0.3);
-                background: rgba(76, 191, 149, 0.08);
-                transition: border-color 280ms var(--ease-out), background 280ms var(--ease-out);
-            }
-
-            .mk-vital.is-live .mk-vital-k {
-                color: var(--green);
-            }
-
-            .mk-vital.is-live .mk-vital-v {
-                color: var(--ink);
-                font-weight: 600;
-                font-style: normal;
-            }
-
-            .mk-vital.is-focus {
-                border-color: rgba(110, 125, 255, 0.5) !important;
-                background: rgba(110, 125, 255, 0.08) !important;
-                box-shadow: 0 0 0 1px rgba(110, 125, 255, 0.16);
-            }
-
-            .mk-vital.is-focus .mk-vital-k {
-                color: var(--accent-hi) !important;
-            }
-
-            .mk-vital.is-focus .mk-vital-v {
-                color: var(--ink) !important;
-                font-weight: 600 !important;
-                font-style: normal !important;
-            }
-
-            .mk-note.is-focus {
-                border-color: rgba(110, 125, 255, 0.42);
-                background: rgba(110, 125, 255, 0.07);
-                box-shadow: 0 0 0 1px rgba(110, 125, 255, 0.13);
-            }
-
-            .mk-caret {
-                display: inline-block;
-                width: 1.5px;
-                height: 0.95em;
-                margin-left: 2px;
-                flex-shrink: 0;
-                align-self: center;
-                vertical-align: -0.05em;
-                background: var(--accent-hi);
-                border-radius: 1px;
-                opacity: 0;
-                visibility: hidden;
-                pointer-events: none;
-            }
-
-            .mk-caret.is-on {
-                opacity: 1;
-                visibility: visible;
-                animation: mk-caret-blink 1s steps(1, end) infinite;
-            }
-
-            @keyframes mk-caret-blink {
-                0%, 49% { opacity: 1; }
-                50%, 100% { opacity: 0; }
-            }
-
-            .mk-vector-row.is-in {
-                animation: mk-fade-up 420ms var(--ease-out) both;
-            }
-
-            @keyframes mk-fade-up {
-                from {
-                    opacity: 0;
-                    transform: translateY(4px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            @media (prefers-reduced-motion: reduce) {
-                .mk-caret.is-on {
-                    animation: none;
-                    opacity: 1;
-                    visibility: visible;
-                }
-
-                .mk-vector-row.is-in {
-                    animation: none;
-                }
-            }
-
-            .mk-ide {
-                display: flex;
-                flex-direction: column;
-                min-width: 0;
-                font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-            }
-
-            .mk-ide-tabs {
-                display: flex;
-                align-items: stretch;
-                gap: 0;
-                border-bottom: 1px solid var(--line);
-                background: var(--bg-2);
-                overflow: hidden;
-            }
-
-            .mk-ide-tab {
-                font-size: 10px;
-                color: rgba(237, 236, 236, 0.4);
-                padding: 7px 10px;
-                border-right: 1px solid var(--line);
-                white-space: nowrap;
-            }
-
-            .mk-ide-tab.is-active {
-                color: rgba(237, 236, 236, 0.85);
-                background: var(--surface);
-                box-shadow: inset 0 -1px 0 var(--accent);
-            }
-
-            .mk-ide-code {
-                margin: 0;
-                padding: 8px 0;
-                font-size: 10px;
-                line-height: 1.35;
-                color: rgba(237, 236, 236, 0.72);
-                overflow: hidden;
-                display: flex;
-                flex-direction: column;
-                white-space: normal;
-            }
-
-            .mk-ide-line {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                padding: 1px 10px;
-                white-space: pre;
-                min-height: calc(1.35em + 2px);
-            }
-
-            .mk-ide-src {
-                min-width: 0;
-            }
-
-            .mk-ide-n {
-                width: 16px;
-                flex-shrink: 0;
-                text-align: right;
-                color: rgba(237, 236, 236, 0.22);
-                user-select: none;
-            }
-
-            .mk-ide-line.is-typing {
-                background: rgba(110, 125, 255, 0.08);
-            }
-
-            .mk-ide-line.is-glow {
-                background: rgba(110, 125, 255, 0.12);
-            }
-
-            .mk-ide-k { color: #ada6ff; }
-            .mk-ide-f { color: var(--accent-hi); }
-            .mk-ide-s { color: var(--green); }
-            .mk-ide-c { color: rgba(237, 236, 236, 0.32); }
-            .mk-ide-n2 { color: #e6c06a; }
-
-            .mk-term {
-                border-top: 1px solid var(--line);
-                background: var(--bg);
-                display: flex;
-                flex-direction: column;
-                min-width: 0;
-            }
-
-            .mk-term-bar {
-                display: flex;
-                align-items: center;
-                gap: 0;
-                padding: 0;
-                border-bottom: 1px solid var(--line);
-                font-size: 9px;
-                color: rgba(237, 236, 236, 0.4);
-                letter-spacing: 0.02em;
-                background: var(--bg-2);
-                min-height: 18px;
-                overflow: hidden;
-            }
-
-            .mk-term-seg {
-                position: relative;
-                display: inline-flex;
-                align-items: center;
-                height: 18px;
-                padding: 0 9px 0 8px;
-                margin-right: 11px;
-                background: var(--accent-soft);
-                color: var(--accent-hi);
-                font-weight: 600;
-                font-size: 8.5px;
-                letter-spacing: 0.03em;
-                font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-                flex-shrink: 0;
-            }
-
-            .mk-term-seg::after {
-                content: "";
-                position: absolute;
-                top: 0;
-                right: -7px;
-                width: 0;
-                height: 0;
-                border-style: solid;
-                border-width: 9px 0 9px 7px;
-                border-color: transparent transparent transparent rgba(110, 125, 255, 0.18);
-            }
-
-            .mk-term-bar-label {
-                padding-right: 10px;
-                white-space: nowrap;
-            }
-
-            .mk-term-body {
-                margin: 0;
-                padding: 6px 0 8px;
-                font-size: 9.5px;
-                line-height: 1.35;
-                color: rgba(237, 236, 236, 0.55);
-                overflow: hidden;
-                display: flex;
-                flex-direction: column;
-                white-space: normal;
-            }
-
-            .mk-term-line {
-                padding: 1px 10px;
-                white-space: pre;
-                min-height: calc(1.35em + 2px);
-            }
-
-            .mk-term-line.is-hidden {
-                visibility: hidden;
-            }
-
-            .mk-term-line[data-term-cmd],
-            .mk-term-line[data-term-prompt] {
-                display: flex;
-                align-items: center;
-                gap: 6px;
-            }
-
-            .mk-term-body .mk-term-ok { color: var(--green); }
-            .mk-term-body .mk-term-dim { color: rgba(237, 236, 236, 0.32); }
-            .mk-term-body .mk-term-cmd { color: rgba(237, 236, 236, 0.72); }
-            .mk-term-body .mk-term-prompt { color: var(--accent-hi); }
-
-            .edge-stage-third {
-                top: 1092px;
-            }
-
-            .mk-seq {
-                flex: 1;
-                min-height: 0;
-                padding: 12px;
-                display: flex;
-                flex-direction: column;
-                gap: 9px;
-            }
-
-            .seq-head {
-                display: flex;
-                justify-content: space-between;
-                align-items: baseline;
-                gap: 8px;
-            }
-
-            .seq-org {
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: -0.02em;
-                color: var(--ink);
-            }
-
-            .seq-len {
-                font-size: 9px;
-                color: rgba(237, 236, 236, 0.4);
-                font-variant-numeric: tabular-nums;
-                white-space: nowrap;
-            }
-
-            .seq-viewport {
-                position: relative;
-                flex: 1;
-                min-height: 0;
-                overflow: hidden;
-                border: 1px solid var(--line-strong);
-                border-radius: 8px;
-                background: var(--bg-2);
-            }
-
-            .seq-viewport::after {
-                content: "";
-                position: absolute;
-                inset: 0;
-                pointer-events: none;
-                background: linear-gradient(180deg, var(--bg-2), transparent 24%, transparent 76%, var(--bg-2));
-            }
-
-            .seq-body {
-                margin: 0;
-                padding: 8px 9px;
-                font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-                font-size: 9px;
-                line-height: 1.55;
-                letter-spacing: 0.04em;
-                white-space: pre;
-                animation: seq-scroll 38s linear infinite;
-            }
-
-            @keyframes seq-scroll {
-                from { transform: translateY(0); }
-                to { transform: translateY(-50%); }
-            }
-
-            .seq-n { color: rgba(237, 236, 236, 0.22); margin-right: 7px; }
-            .seq-body .c1 { color: rgba(76, 191, 149, 0.85); }
-            .seq-body .c2 { color: rgba(237, 236, 236, 0.5); }
-
-            .seq-foot {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 7px 9px;
-                border: 1px solid var(--line-strong);
-                border-radius: 8px;
-                background: var(--bg-2);
-            }
-
-            .seq-foot span {
-                font-size: 8px;
-                text-transform: uppercase;
-                letter-spacing: 0.04em;
-                color: rgba(237, 236, 236, 0.4);
-            }
-
-            .seq-foot strong {
-                font-size: 11px;
-                font-weight: 600;
-                color: var(--ink);
-                font-variant-numeric: tabular-nums;
-            }
-
-            @media (prefers-reduced-motion: reduce) {
-                .seq-body { animation: none; }
-            }
-        }
-
-        @media (max-width: 720px) {
-            :root {
-                --hero-gap: 64px;
-                --hero-bottom-gap: 48px;
-            }
-
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-                justify-items: center;
-                text-align: center;
-            }
-
-            .hero-content {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .hero-aside {
-                order: -1;
-                justify-items: center;
-            }
-
-            .hero-photo {
-                width: min(240px, 72vw, 36dvh);
-                margin: 0 auto;
-            }
-
-            .hero-name {
-                margin-bottom: 14px;
-                font-size: clamp(2.35rem, 9vw, 2.85rem);
-            }
-
-            .hero-bio {
-                font-size: 16.5px;
-                line-height: 1.6;
-                max-width: 38ch;
-            }
-
-        }
-
-        .icon-sprite {
-            position: absolute;
-            width: 0;
-            height: 0;
-            overflow: hidden;
-        }
-
-        .nav-ico {
-            width: 15px;
-            height: 15px;
-            flex-shrink: 0;
-        }
-
-        .entry.has-logo {
-            grid-template-columns: 32px minmax(0, 1fr);
-            column-gap: 14px;
-            row-gap: 0;
-        }
-
-        .entry.has-logo > .entry-rail {
-            grid-column: 1;
-            grid-row: 1;
-        }
-
-        .entry.has-logo > .entry-body {
-            grid-column: 2;
-            grid-row: 1;
-        }
-
-        .entry.has-logo > .entry-notes {
-            grid-column: 2;
-            grid-row: 2;
-            min-width: 0;
-        }
-
-        .entry-rail {
-            position: relative;
-            align-self: stretch;
-            width: 32px;
-        }
-
-        .entry-logo {
-            position: relative;
-            z-index: 1;
-            display: grid;
-            place-items: center;
-            width: 32px;
-            height: 32px;
-            margin-top: -3px;
-            border-radius: 8px;
-            background: var(--surface);
-            overflow: hidden;
-        }
-
-        .entry-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .entry.has-logo:has(.entry-notes) .entry-rail::after {
-            content: "";
-            position: absolute;
-            left: 15px;
-            top: 29px;
-            bottom: -4px;
-            width: 1px;
-            background: var(--line-strong);
-        }
-
-        .entry-body {
-            display: grid;
-            gap: 3px;
-            min-width: 0;
-        }
-
-        .hero-bio {
-            display: grid;
-            gap: 14px;
-        }
-
-        .hero-bio p {
-            text-wrap: pretty;
-        }
-
-        .hi {
-            color: var(--ink);
-            font-weight: 500;
-        }
-
-        a.hi {
-            text-decoration: underline;
-            text-decoration-color: var(--line-hi);
-            text-underline-offset: 3px;
-            text-decoration-thickness: 1px;
-            transition: color 0.2s ease, text-decoration-color 0.2s ease;
-        }
-
-        a.hi:hover {
-            color: var(--accent-hi);
-            text-decoration-color: var(--accent-hi);
-        }
-
-        .toolkit {
-            max-width: 64ch;
-            font-size: 15.5px;
-            line-height: 1.85;
-            color: var(--body);
-            text-wrap: pretty;
-        }
-
-        .toolkit + .toolkit {
-            margin-top: 14px;
-        }
-
-        .tool {
-            display: inline;
-            padding: 2px 7px;
-            font-size: 13.5px;
-            font-weight: 500;
-            letter-spacing: -0.01em;
-            white-space: nowrap;
-            color: var(--ink);
-            background: var(--surface);
-            border-radius: 5px;
-            box-shadow: inset 0 0 0 1px var(--line);
-        }
-
-        @media (max-width: 860px) {
-            .entry.has-logo {
-                grid-template-columns: 28px minmax(0, 1fr);
-                column-gap: 12px;
-            }
-
-            .entry-rail {
-                width: 28px;
-            }
-
-            .entry-logo {
-                width: 28px;
-                height: 28px;
-                border-radius: 7px;
-            }
-
-            .entry.has-logo:has(.entry-notes) .entry-rail::after {
-                left: 13px;
-                top: 25px;
-            }
-
-            .entry-notes li::before {
-                left: -27px;
-                width: 18px;
-            }
-
-            .entry-notes li:not(:last-child)::after {
-                left: -27px;
-            }
-
-            .hero-bio {
-                gap: 12px;
-                max-width: 34ch;
-                text-align: left;
-            }
-
-            .toolkit {
-                font-size: 15px;
-                line-height: 1.8;
-            }
-        }
-    </style>
 </head>
 
 <body>
-    <svg class="icon-sprite" aria-hidden="true" focusable="false">
-        <symbol id="i-youtube" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3 3 0 0 0 .5 6.2C0 8.07 0 12 0 12s0 3.93.5 5.8a3 3 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3 3 0 0 0 2.12-2.13c.5-1.88.5-5.81.5-5.81s0-3.93-.5-5.8ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z" />
-        </symbol>
-        <symbol id="i-linkedin" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13Zm1.78 13.02H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z" />
-        </symbol>
-        <symbol id="i-github" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.83-.26.83-.58l-.02-2.04c-3.33.73-4.03-1.6-4.03-1.6-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22l-.01 3.29c0 .31.21.69.82.57A12 12 0 0 0 12 .3Z" />
-        </symbol>
-        <symbol id="i-resume" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M6 2h7.2L20 8.8V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm7 1.9V9h5.1L13 3.9ZM8 12h8v1.6H8V12Zm0 3.6h8v1.6H8v-1.6Z" />
-        </symbol>
-        <symbol id="i-mail" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M3 5h18a1 1 0 0 1 1 1v.35l-10 5.6-10-5.6V6a1 1 0 0 1 1-1Zm-1 3.64V18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V8.64l-9.51 5.33a1 1 0 0 1-.98 0L2 8.64Z" />
-        </symbol>
-    </svg>
+    <main>
+        <section class="band band--rule hero">
+            <div class="col hero-inner">
+                <h1 class="headline">
+                    <span class="line">Hi, I&rsquo;m Abhishek</span>
+                    <span class="line">a <mark class="chip chip--lime">biophysics</mark> student at <mark class="chip chip--rose">USC</mark></span>
+                    <span class="line">interested in <mark class="chip chip--sky">AI/ML</mark></span>
+                </h1>
 
-    <section class="hero">
-        <div class="hero-grid">
-            <div class="hero-content">
-                <h1 class="hero-name">Abhishek Pallepati</h1>
-                <div class="hero-bio">
-                    <p>I&rsquo;m a <b class="hi">biophysics</b> student at <b class="hi">USC</b>. I started as an
-                        <b class="hi">EMT</b>, where care arrives <b class="hi">last</b>. Since then I&rsquo;ve been
-                        <b class="hi">working backward</b>. The <b class="hi">training</b> before the call, the
-                        <b class="hi">drug</b> before the emergency, the <b class="hi">genome</b> before the symptom.
-                        <b class="hi">Pediatric genetics</b> is as far back as that goes.</p>
+                <div class="stage">
+                    <canvas class="stage-canvas" data-hero-dots aria-hidden="true"></canvas>
                 </div>
             </div>
-            <div class="hero-aside">
-                <div class="hero-photo">
-                    <img src="/static/profile.jpeg" alt="Portrait of Abhishek Pallepati" width="320" height="320"
-                        decoding="async" fetchpriority="high" />
-                </div>
-                <nav class="photo-links" aria-label="Profile links">
-                    <a href="https://www.youtube.com/@AbhishekPallepati" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg class="nav-ico" aria-hidden="true"><use href="#i-youtube" /></svg></a>
-                    <a href="https://www.linkedin.com/in/abhishekpallepati/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg class="nav-ico" aria-hidden="true"><use href="#i-linkedin" /></svg></a>
-                    <a href="https://github.com/MasterMilkyshake" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="nav-ico" aria-hidden="true"><use href="#i-github" /></svg></a>
-                    <a href="/static/resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Resume"><svg class="nav-ico" aria-hidden="true"><use href="#i-resume" /></svg></a>
-                    <a href="mailto:pallepat@usc.edu" aria-label="Email"><svg class="nav-ico" aria-hidden="true"><use href="#i-mail" /></svg></a>
-                </nav>
-            </div>
-        </div>
-    </section>
-
-    <main class="main">
-        <section class="section">
-            <h2 class="section-label">Education</h2>
-            <article class="entry has-logo">
-                <span class="entry-rail" aria-hidden="true"><span class="entry-logo"><img src="/static/logos/usc.png" alt="" width="32" height="32" loading="lazy" decoding="async" /></span></span>
-                <div class="entry-body">
-                    <div class="entry-top">
-                        <h3><a class="entry-link" href="https://www.usc.edu" target="_blank" rel="noopener noreferrer">University of Southern California</a></h3>
-                        <span class="entry-date">2025 — 2029</span>
-                    </div>
-                    <div class="entry-sub">Bachelor of Science in Biophysics</div>
-                    <div class="entry-loc">Los Angeles, CA</div>
-                </div>
-            </article>
         </section>
 
-        <section class="section">
-            <h2 class="section-label">Experience</h2>
-            <div class="stack">
-                <article class="entry has-logo entry-partret">
-                    <span class="entry-rail" aria-hidden="true"><span class="entry-logo"><img src="/static/logos/partret.png" alt="" width="32" height="32" loading="lazy" decoding="async" /></span></span>
-                    <div class="entry-body">
-                        <div class="entry-top">
-                            <h3><a class="entry-link" href="https://partret.com" target="_blank" rel="noopener noreferrer">Partret</a></h3>
-                            <span class="entry-date">May 2026 — Present</span>
-                        </div>
-                        <div class="entry-sub">Co-Founder</div>
-                        <div class="entry-loc">Princeton, NJ</div>
-                    </div>
-                    <ul class="entry-notes">
-                        <li>Architected an EMS platform for compliant electronic patient care (ePCR) reporting in
-                            Python; advised by Ari Meisel, Executive Director of Princeton First Aid & Rescue Squad
-                        </li>
-                        <li>Built HIPAA-compliant LLM-powered call capture that transcribes live scene audio and populates a structured
-                            ePCR, so charts are complete before the crew clears</li>
-                        <li>Developed the QA and operations layer: automated chart scoring that flags missing fields for
-                            reviewers, crew scheduling with coverage-gap detection, and agency-level analytics</li>
-                    </ul>
-                    <aside class="edge-stage" aria-hidden="true">
-                        <div class="edge-canvas"></div>
-                        <a class="edge-window" href="https://partret.com" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                            <div class="mk-topbar">
-                                <span class="mk-traffic" aria-hidden="true"><i></i><i></i><i></i></span>
-                                <span class="mk-topbar-title">Partret</span>
-                            </div>
-                            <div class="mk-epcr" data-epcr-demo>
-                                <div class="mk-epcr-head">
-                                    <span class="mk-epcr-title">ePCR Chart</span>
-                                </div>
-                                <div class="mk-fields">
-                                    <div class="mk-field warn" data-epcr-field>
-                                        <span class="mk-field-k">Complaint</span>
-                                        <span class="mk-field-v"><span data-epcr-type data-text="Chest pressure" data-wrong="Chest pain">Chest pain</span><span class="mk-caret" data-epcr-caret></span></span>
-                                    </div>
-                                    <div class="mk-field ok">
-                                        <span class="mk-field-k">Location</span>
-                                        <span class="mk-field-v">Left chest</span>
-                                    </div>
-                                </div>
-                                <div class="mk-vitals-row">
-                                    <div class="mk-vital is-live">
-                                        <span class="mk-vital-k">HR</span>
-                                        <span class="mk-vital-v">88</span>
-                                    </div>
-                                    <div class="mk-vital warn" data-epcr-spo2>
-                                        <span class="mk-vital-k">SpO₂</span>
-                                        <span class="mk-vital-v"><span data-epcr-spo2-v>91%</span><span class="mk-caret" data-epcr-caret></span></span>
-                                    </div>
-                                    <div class="mk-vital is-live">
-                                        <span class="mk-vital-k">BP</span>
-                                        <span class="mk-vital-v">128/82</span>
-                                    </div>
-                                </div>
-                                <div class="mk-note">
-                                    <span class="mk-note-k">Narrative</span>
-                                    <span class="mk-note-v">Patient c/o chest pressure, started 20 min ago. Vitals stable, 12-lead acquired.</span>
-                                </div>
-                                <div class="mk-vector-row">
-                                    <span>Crew</span>
-                                    <strong>A. Pallepati</strong>
-                                </div>
-                            </div>
-                        </a>
-                    </aside>
-                    <aside class="edge-stage edge-stage-right" aria-hidden="true">
-                        <div class="edge-canvas"></div>
-                        <a class="edge-window" href="https://github.com/MasterMilkyshake" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                            <div class="mk-topbar">
-                                <span class="mk-traffic" aria-hidden="true"><i></i><i></i><i></i></span>
-                                <span class="mk-topbar-title">biophysics-lab</span>
-                            </div>
-                            <div class="mk-ide" data-ide-demo>
-                                <div class="mk-ide-tabs">
-                                    <span class="mk-ide-tab is-active">gait.py</span>
-                                    <span class="mk-ide-tab">torque.py</span>
-                                </div>
-                                <pre class="mk-ide-code" aria-hidden="true"><span class="mk-ide-line" data-ide-row><span class="mk-ide-n">1</span><span class="mk-ide-src"><span class="mk-ide-k">def</span> <span class="mk-ide-f">stance_torque</span>(limb, φ, P_h):</span><span class="mk-caret"></span></span>
-<span class="mk-ide-line" data-ide-row data-ide-blank><span class="mk-ide-n">2</span><span class="mk-ide-src"></span><span class="mk-caret"></span></span>
-<span class="mk-ide-line" data-ide-row data-ide-type><span class="mk-ide-n">3</span><span class="mk-ide-src">    τ = P_h * limb.A_eff * np.sin(φ)</span><span class="mk-caret"></span></span>
-<span class="mk-ide-line" data-ide-row data-ide-type><span class="mk-ide-n">4</span><span class="mk-ide-src">    F_n = limb.grf(τ, μ=<span class="mk-ide-n2">0.62</span>)</span><span class="mk-caret"></span></span>
-<span class="mk-ide-line" data-ide-row data-ide-blank><span class="mk-ide-n">5</span><span class="mk-ide-src"></span><span class="mk-caret"></span></span>
-<span class="mk-ide-line" data-ide-row><span class="mk-ide-n">6</span><span class="mk-ide-src">    <span class="mk-ide-k">return</span> F_n <span class="mk-ide-k">if</span> F_n &gt; <span class="mk-ide-n2">0</span> <span class="mk-ide-k">else</span> <span class="mk-ide-n2">0.0</span></span><span class="mk-caret"></span></span>
-<span class="mk-ide-line" data-ide-row data-ide-blank><span class="mk-ide-n">7</span><span class="mk-ide-src"></span><span class="mk-caret"></span></span>
-<span class="mk-ide-line" data-ide-row><span class="mk-ide-n">8</span><span class="mk-ide-src"><span class="mk-ide-k">def</span> <span class="mk-ide-f">phase_gait</span>(t, ω, δ=<span class="mk-ide-n2">π/4</span>):</span><span class="mk-caret"></span></span>
-<span class="mk-ide-line" data-ide-row data-ide-blank><span class="mk-ide-n">9</span><span class="mk-ide-src"></span><span class="mk-caret"></span></span>
-<span class="mk-ide-line" data-ide-row><span class="mk-ide-n">10</span><span class="mk-ide-src">    <span class="mk-ide-k">return</span> [(ω*t+i*δ)%<span class="mk-ide-n2">2π</span> <span class="mk-ide-k">for</span> i <span class="mk-ide-k">in</span> range(<span class="mk-ide-n2">8</span>)]</span><span class="mk-caret"></span></span></pre>
-                                <div class="mk-term">
-                                    <div class="mk-term-bar">
-                                        <span class="mk-term-seg">zsh</span>
-                                        <span class="mk-term-bar-label">biophysics-lab</span>
-                                    </div>
-                                    <pre class="mk-term-body" aria-hidden="true"><span class="mk-term-line" data-term-cmd><span class="mk-term-prompt">›</span> <span class="mk-term-cmd" data-term-cmd-text>python gait.py --froude 0.31</span><span class="mk-caret" data-term-caret></span></span>
-<span class="mk-term-line" data-term-out><span class="mk-term-ok">ok</span> duty=0.58  μ_peak=0.61</span>
-<span class="mk-term-line" data-term-out><span class="mk-term-ok">ok</span> limbs[stance]=5/8</span>
-<span class="mk-term-line" data-term-prompt><span class="mk-term-prompt">›</span> <span class="mk-term-cmd">_</span></span></pre>
-                                </div>
-                            </div>
-                        </a>
-                    </aside>
-                    <aside class="edge-stage edge-stage-third" aria-hidden="true">
-                        <div class="edge-canvas"></div>
-                        <a class="edge-window" href="/static/resume.pdf" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                            <div class="mk-topbar">
-                                <span class="mk-traffic" aria-hidden="true"><i></i><i></i><i></i></span>
-                                <span class="mk-topbar-title">data-analysis</span>
-                            </div>
-                            <div class="mk-seq">
-                                <div class="seq-head">
-                                    <span class="seq-org">Landoltia punctata</span>
-                                    <span class="seq-len">528 bp</span>
-                                </div>
-                                <div class="seq-viewport">
-                                    <pre class="seq-body"><span class="seq-n">  1</span><span class="c1">TCG</span><span class="c2">GCA</span><span class="c1">TTG</span><span class="c2">GTG</span><span class="c1">GCA</span><span class="c2">GCG</span><span class="c1">CGG</span><span class="c2">CCG</span><span class="c1">ATA</span><span class="c2">AAT</span>
-<span class="seq-n"> 31</span><span class="c1">GCT</span><span class="c2">GCC</span><span class="c1">CTC</span><span class="c2">TGC</span><span class="c1">TGA</span><span class="c2">GGG</span><span class="c1">GGC</span><span class="c2">TTG</span><span class="c1">CGG</span><span class="c2">ACC</span>
-<span class="seq-n"> 61</span><span class="c1">TTG</span><span class="c2">ATG</span><span class="c1">CCG</span><span class="c2">CGC</span><span class="c1">TTT</span><span class="c2">GCC</span><span class="c1">TCT</span><span class="c2">GCA</span><span class="c1">CCG</span><span class="c2">CCA</span>
-<span class="seq-n"> 91</span><span class="c1">TAC</span><span class="c2">GCG</span><span class="c1">CTA</span><span class="c2">AGG</span><span class="c1">TGC</span><span class="c2">TAA</span><span class="c1">ACA</span><span class="c2">TCG</span><span class="c1">GCA</span><span class="c2">TCG</span>
-<span class="seq-n">121</span><span class="c1">TGC</span><span class="c2">TGC</span><span class="c1">CTA</span><span class="c2">TCG</span><span class="c1">CCC</span><span class="c2">TCA</span><span class="c1">AGG</span><span class="c2">TTC</span><span class="c1">TTG</span><span class="c2">TCA</span>
-<span class="seq-n">151</span><span class="c1">ACG</span><span class="c2">ACT</span><span class="c1">GCG</span><span class="c2">GGA</span><span class="c1">AGC</span><span class="c2">ACG</span><span class="c1">TTC</span><span class="c2">CCT</span><span class="c1">CTG</span><span class="c2">ATT</span>
-<span class="seq-n">181</span><span class="c1">TCA</span><span class="c2">AGT</span><span class="c1">GTC</span><span class="c2">CCA</span><span class="c1">GTT</span><span class="c2">AGG</span><span class="c1">CTC</span><span class="c2">TGG</span><span class="c1">CTT</span><span class="c2">CAT</span>
-<span class="seq-n">211</span><span class="c1">ATC</span><span class="c2">ACA</span><span class="c1">GCA</span><span class="c2">AGC</span><span class="c1">GCC</span><span class="c2">TCA</span><span class="c1">GAT</span><span class="c2">CTG</span><span class="c1">TCA</span><span class="c2">TTC</span>
-<span class="seq-n">241</span><span class="c1">TTG</span><span class="c2">TCT</span><span class="c1">TCC</span><span class="c2">ATA</span><span class="c1">CCA</span><span class="c2">ACG</span><span class="c1">ATC</span><span class="c2">TCA</span><span class="c1">CGC</span><span class="c2">AGC</span>
-<span class="seq-n">271</span><span class="c1">GGT</span><span class="c2">ACG</span><span class="c1">CTA</span><span class="c2">AAG</span><span class="c1">GAC</span><span class="c2">AAT</span><span class="c1">TAT</span><span class="c2">TAA</span><span class="c1">GGG</span><span class="c2">AAG</span>
-<span class="seq-n">301</span><span class="c1">GAG</span><span class="c2">GGA</span><span class="c1">GTG</span><span class="c2">AAG</span><span class="c1">CTG</span><span class="c2">GTT</span><span class="c1">TAT</span><span class="c2">GCA</span><span class="c1">GTA</span><span class="c2">GTC</span>
-<span class="seq-n">331</span><span class="c1">TTT</span><span class="c2">CTG</span><span class="c1">AAG</span><span class="c2">TGT</span><span class="c1">TTT</span><span class="c2">AGA</span><span class="c1">TTT</span><span class="c2">TCA</span><span class="c1">AAC</span><span class="c2">CAT</span>
-<span class="seq-n">361</span><span class="c1">AGT</span><span class="c2">CTG</span><span class="c1">GAA</span><span class="c2">CTT</span><span class="c1">TGG</span><span class="c2">GCG</span><span class="c1">AAA</span><span class="c2">GTG</span><span class="c1">TAA</span><span class="c2">AAC</span>
-<span class="seq-n">391</span><span class="c1">GTT</span><span class="c2">CAT</span><span class="c1">GTG</span><span class="c2">CCC</span><span class="c1">CAA</span><span class="c2">AAT</span><span class="c1">AAA</span><span class="c2">CGG</span><span class="c1">TGG</span><span class="c2">TCT</span>
-<span class="seq-n">421</span><span class="c1">TTA</span><span class="c2">AGC</span><span class="c1">ACT</span><span class="c2">GTA</span><span class="c1">AAC</span><span class="c2">CGT</span><span class="c1">AGT</span><span class="c2">GTA</span><span class="c1">TTC</span><span class="c2">CTT</span>
-<span class="seq-n">451</span><span class="c1">GTT</span><span class="c2">GGA</span><span class="c1">ATC</span><span class="c2">GCA</span><span class="c1">TGC</span><span class="c2">TGT</span><span class="c1">ACT</span><span class="c2">TGA</span><span class="c1">GTC</span><span class="c2">ATT</span>
-<span class="seq-n">481</span><span class="c1">AAA</span><span class="c2">AAA</span><span class="c1">AAA</span><span class="c2">AAA</span><span class="c1">AAA</span><span class="c2">ATA</span><span class="c1">AAA</span><span class="c2">AAA</span><span class="c1">AAA</span><span class="c2">AAA</span>
-<span class="seq-n">511</span><span class="c1">AAA</span><span class="c2">AAA</span><span class="c1">AAA</span><span class="c2">AAA</span><span class="c1">AAA</span><span class="c2">AAA</span>
-<span class="seq-n">  1</span><span class="c1">TCG</span><span class="c2">GCA</span><span class="c1">TTG</span><span class="c2">GTG</span><span class="c1">GCA</span><span class="c2">GCG</span><span class="c1">CGG</span><span class="c2">CCG</span><span class="c1">ATA</span><span class="c2">AAT</span>
-<span class="seq-n"> 31</span><span class="c1">GCT</span><span class="c2">GCC</span><span class="c1">CTC</span><span class="c2">TGC</span><span class="c1">TGA</span><span class="c2">GGG</span><span class="c1">GGC</span><span class="c2">TTG</span><span class="c1">CGG</span><span class="c2">ACC</span>
-<span class="seq-n"> 61</span><span class="c1">TTG</span><span class="c2">ATG</span><span class="c1">CCG</span><span class="c2">CGC</span><span class="c1">TTT</span><span class="c2">GCC</span><span class="c1">TCT</span><span class="c2">GCA</span><span class="c1">CCG</span><span class="c2">CCA</span>
-<span class="seq-n"> 91</span><span class="c1">TAC</span><span class="c2">GCG</span><span class="c1">CTA</span><span class="c2">AGG</span><span class="c1">TGC</span><span class="c2">TAA</span><span class="c1">ACA</span><span class="c2">TCG</span><span class="c1">GCA</span><span class="c2">TCG</span>
-<span class="seq-n">121</span><span class="c1">TGC</span><span class="c2">TGC</span><span class="c1">CTA</span><span class="c2">TCG</span><span class="c1">CCC</span><span class="c2">TCA</span><span class="c1">AGG</span><span class="c2">TTC</span><span class="c1">TTG</span><span class="c2">TCA</span>
-<span class="seq-n">151</span><span class="c1">ACG</span><span class="c2">ACT</span><span class="c1">GCG</span><span class="c2">GGA</span><span class="c1">AGC</span><span class="c2">ACG</span><span class="c1">TTC</span><span class="c2">CCT</span><span class="c1">CTG</span><span class="c2">ATT</span>
-<span class="seq-n">181</span><span class="c1">TCA</span><span class="c2">AGT</span><span class="c1">GTC</span><span class="c2">CCA</span><span class="c1">GTT</span><span class="c2">AGG</span><span class="c1">CTC</span><span class="c2">TGG</span><span class="c1">CTT</span><span class="c2">CAT</span>
-<span class="seq-n">211</span><span class="c1">ATC</span><span class="c2">ACA</span><span class="c1">GCA</span><span class="c2">AGC</span><span class="c1">GCC</span><span class="c2">TCA</span><span class="c1">GAT</span><span class="c2">CTG</span><span class="c1">TCA</span><span class="c2">TTC</span>
-<span class="seq-n">241</span><span class="c1">TTG</span><span class="c2">TCT</span><span class="c1">TCC</span><span class="c2">ATA</span><span class="c1">CCA</span><span class="c2">ACG</span><span class="c1">ATC</span><span class="c2">TCA</span><span class="c1">CGC</span><span class="c2">AGC</span>
-<span class="seq-n">271</span><span class="c1">GGT</span><span class="c2">ACG</span><span class="c1">CTA</span><span class="c2">AAG</span><span class="c1">GAC</span><span class="c2">AAT</span><span class="c1">TAT</span><span class="c2">TAA</span><span class="c1">GGG</span><span class="c2">AAG</span>
-<span class="seq-n">301</span><span class="c1">GAG</span><span class="c2">GGA</span><span class="c1">GTG</span><span class="c2">AAG</span><span class="c1">CTG</span><span class="c2">GTT</span><span class="c1">TAT</span><span class="c2">GCA</span><span class="c1">GTA</span><span class="c2">GTC</span>
-<span class="seq-n">331</span><span class="c1">TTT</span><span class="c2">CTG</span><span class="c1">AAG</span><span class="c2">TGT</span><span class="c1">TTT</span><span class="c2">AGA</span><span class="c1">TTT</span><span class="c2">TCA</span><span class="c1">AAC</span><span class="c2">CAT</span>
-<span class="seq-n">361</span><span class="c1">AGT</span><span class="c2">CTG</span><span class="c1">GAA</span><span class="c2">CTT</span><span class="c1">TGG</span><span class="c2">GCG</span><span class="c1">AAA</span><span class="c2">GTG</span><span class="c1">TAA</span><span class="c2">AAC</span>
-<span class="seq-n">391</span><span class="c1">GTT</span><span class="c2">CAT</span><span class="c1">GTG</span><span class="c2">CCC</span><span class="c1">CAA</span><span class="c2">AAT</span><span class="c1">AAA</span><span class="c2">CGG</span><span class="c1">TGG</span><span class="c2">TCT</span>
-<span class="seq-n">421</span><span class="c1">TTA</span><span class="c2">AGC</span><span class="c1">ACT</span><span class="c2">GTA</span><span class="c1">AAC</span><span class="c2">CGT</span><span class="c1">AGT</span><span class="c2">GTA</span><span class="c1">TTC</span><span class="c2">CTT</span>
-<span class="seq-n">451</span><span class="c1">GTT</span><span class="c2">GGA</span><span class="c1">ATC</span><span class="c2">GCA</span><span class="c1">TGC</span><span class="c2">TGT</span><span class="c1">ACT</span><span class="c2">TGA</span><span class="c1">GTC</span><span class="c2">ATT</span>
-<span class="seq-n">481</span><span class="c1">AAA</span><span class="c2">AAA</span><span class="c1">AAA</span><span class="c2">AAA</span><span class="c1">AAA</span><span class="c2">ATA</span><span class="c1">AAA</span><span class="c2">AAA</span><span class="c1">AAA</span><span class="c2">AAA</span>
-<span class="seq-n">511</span><span class="c1">AAA</span><span class="c2">AAA</span><span class="c1">AAA</span><span class="c2">AAA</span><span class="c1">AAA</span><span class="c2">AAA</span></pre>
-                                </div>
-                                <div class="seq-foot"><span>clone</span><strong>W893.21</strong></div>
-                            </div>
-                        </a>
-                    </aside>
-                </article>
-                <article class="entry has-logo">
-                    <span class="entry-rail" aria-hidden="true"><span class="entry-logo"><img src="/static/logos/fdny.png" alt="" width="32" height="32" loading="lazy" decoding="async" /></span></span>
-                    <div class="entry-body">
-                        <div class="entry-top">
-                            <h3><a class="entry-link" href="https://www.nyc.gov/site/fdny/index.page" target="_blank" rel="noopener noreferrer">New York City Fire Department</a></h3>
-                            <span class="entry-date">Nov 2025 — Present</span>
-                        </div>
-                        <div class="entry-sub">Emergency Medical Technician</div>
-                        <div class="entry-loc">New York, NY</div>
-                    </div>
-                </article>
-                <article class="entry has-logo">
-                    <span class="entry-rail" aria-hidden="true"><span class="entry-logo"><img src="/static/logos/cpr.png" alt="" width="32" height="32" loading="lazy" decoding="async" /></span></span>
-                    <div class="entry-body">
-                        <div class="entry-top">
-                            <h3><a class="entry-link" href="https://www.everyoneshould.com/" target="_blank" rel="noopener noreferrer">CPR Certification Solutions</a></h3>
-                            <span class="entry-date">Jul 2025 — Present</span>
-                        </div>
-                        <div class="entry-sub">Basic Life Support Instructor</div>
-                        <div class="entry-loc">Princeton, NJ</div>
-                    </div>
-                    <ul class="entry-notes">
-                        <li>Taught American Heart Association certification courses, including BLS and Heartsaver
-                            CPR/AED/First Aid, to healthcare providers and members of the public</li>
-                        <li>Educated hundreds of students across multiple training locations, tailoring instruction
-                            to learners from Boy Scouts to teachers to medical professionals</li>
-                        <li>Took part in events providing CPR and first aid education to underserved communities,
-                            widening access to lifesaving training through community outreach</li>
-                    </ul>
-                </article>
-                <article class="entry has-logo">
-                    <span class="entry-rail" aria-hidden="true"><span class="entry-logo"><img src="/static/logos/narberth.png" alt="" width="32" height="32" loading="lazy" decoding="async" /></span></span>
-                    <div class="entry-body">
-                        <div class="entry-top">
-                            <h3><a class="entry-link" href="https://narberthambulance.org/" target="_blank" rel="noopener noreferrer">Narberth Ambulance</a></h3>
-                            <span class="entry-date">Oct 2025 — Sep 2026</span>
-                        </div>
-                        <div class="entry-sub">Emergency Medical Technician</div>
-                        <div class="entry-loc">Ardmore, PA</div>
-                    </div>
-                    <ul class="entry-notes">
-                        <li>Responded to 911 emergencies, providing rapid assessment, treatment, and transport of
-                            patients in accordance with Pennsylvania EMS protocols</li>
-                        <li>Performed patient assessments, obtained vital signs, administered approved interventions,
-                            and communicated critical findings to receiving facilities</li>
-                        <li>Collaborated with EMTs, paramedics, firefighters, law enforcement, and hospital staff to
-                            deliver prehospital care in high-acuity, high-stress environments</li>
-                    </ul>
-                </article>
+        <section class="band band--rule" id="about">
+            <div class="col heading">
+                <h2>About</h2>
             </div>
         </section>
 
-        <section class="section">
-            <h2 class="section-label">Skills</h2>
-            <p class="toolkit">Most of my development is in <span class="tool">Python</span>, data
-                    analysis in <span class="tool">R</span>. Frontend work is built on <span
-                    class="tool">JavaScript</span>, <span class="tool">React</span>, and <span
-                    class="tool">HTML/CSS</span>.</p>
-            <p class="toolkit">Data handling through <span class="tool">SQL</span>. Version control with
-                    <span class="tool">Git/GitHub</span>, work from the <span class="tool">command line</span>,
-                    and run in <span class="tool">Docker</span> on <span class="tool">AWS</span>.
-                    I can read <span class="tool">C</span>, <span class="tool">C++</span>, and <span
-                    class="tool">MATLAB</span>.</p>
+        <section class="band band--rule">
+            <div class="col">
+                <div class="grid--about">
+                    <div class="about-intro">
+                        <a class="about-photo-link" href="https://www.linkedin.com/in/abhishekpallepati/" target="_blank"
+                            rel="noopener noreferrer" aria-label="Abhishek Pallepati on LinkedIn">
+                            <img class="about-photo" src="/static/profile.jpeg" alt="Portrait of Abhishek Pallepati"
+                                width="582" height="582" loading="lazy" decoding="async" />
+                        </a>
+                        <p class="about-bio">I&rsquo;m a biophysics student at USC. I started as an EMT, where care arrives last. Since then I&rsquo;ve been working backward. The training before the call, the drug before the emergency, the genome before the symptom. That&rsquo;s where it all begins, and where it ends.</p>
+                    </div>
+
+                    <div class="about-detail">
+                        <div class="block">
+                            <h3 class="label">Education</h3>
+                            <ol>
+                                <li class="entry">
+                                    <a class="entry-logo-link" href="https://www.usc.edu" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img class="entry-logo" src="/static/logos/usc.png" alt="" width="36" height="36" loading="lazy" decoding="async" /></a>
+                                    <div>
+                                        <div class="entry-top">
+                                            <div>
+                                                <h4><a href="https://www.usc.edu" target="_blank" rel="noopener noreferrer">University of Southern California</a></h4>
+                                                <p class="entry-sub">Bachelor of Science in Biophysics</p>
+                                            </div>
+                                            <p class="entry-meta"><span class="entry-date">2025 – 2029</span><span class="entry-loc">Los Angeles, CA</span></p>
+                                        </div>
+                                        <ul class="entry-notes">
+                                            <li>Developed quantitative foundations in hypothesis testing, confidence intervals, statistical power, Type I/II error, study design, and interpretation of experimental data – skills relevant to evaluating the strength and uncertainty of safety findings</li>
+                                            <li>Used statistical reasoning to distinguish observed patterns from conclusions supported by the data, with attention to variability, false-positive/false-negative error, and appropriate interpretation of biomedical results</li>
+                                            <li>Built experience communicating quantitative results through visualization and structured analysis, supporting clear review of trends, distributions, and outlying observations</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="block">
+                            <h3 class="label">Experience</h3>
+                            <ol>
+                                <li class="entry">
+                                    <a class="entry-logo-link" href="https://partret.com" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img class="entry-logo" src="/static/logos/partret.png" alt="" width="36" height="36" loading="lazy" decoding="async" /></a>
+                                    <div>
+                                        <div class="entry-top">
+                                            <div>
+                                                <h4><a href="https://partret.com" target="_blank" rel="noopener noreferrer">Partret</a></h4>
+                                                <p class="entry-sub">Co-Founder</p>
+                                            </div>
+                                            <p class="entry-meta"><span class="entry-date">May 2026 – Present</span><span class="entry-loc">Princeton, NJ</span></p>
+                                        </div>
+                                        <ul class="entry-notes">
+                                            <li>Designed an EMS platform for compliant electronic patient care (ePCR) reporting in Python; advised by Ari Meisel, Executive Director of Princeton First Aid &amp; Rescue Squad</li>
+                                            <li>Built HIPAA-compliant LLM-powered call capture that transcribes live scene audio and populates structured ePCR fields, translating unstructured clinical information into reviewable patient-care documentation</li>
+                                            <li>Built agency-level analytics and operational tools, gaining experience with structured healthcare data, rule-based quality checks, reviewer workflows, and systematic identification of data gaps</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="entry">
+                                    <a class="entry-logo-link" href="https://www.everyoneshould.com/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img class="entry-logo" src="/static/logos/cpr.png" alt="" width="36" height="36" loading="lazy" decoding="async" /></a>
+                                    <div>
+                                        <div class="entry-top">
+                                            <div>
+                                                <h4><a href="https://www.everyoneshould.com/" target="_blank" rel="noopener noreferrer">CPR Certification Solutions</a></h4>
+                                                <p class="entry-sub">Basic Life Support Instructor</p>
+                                            </div>
+                                            <p class="entry-meta"><span class="entry-date">Jul 2026 – Present</span><span class="entry-loc">Princeton, NJ</span></p>
+                                        </div>
+                                        <ul class="entry-notes">
+                                            <li>Teach American Heart Association BLS and Heartsaver CPR/AED/First Aid courses to healthcare providers and members of the public, translating protocol-based medical content into clear, actionable instruction</li>
+                                            <li>Reinforce standardized recognition and response to acute clinical deterioration, emphasizing accurate assessment, timely escalation, and adherence to established algorithms</li>
+                                            <li>Participate in community events providing CPR and first-aid education to underserved populations, strengthening patient-centered communication across varied backgrounds</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="entry">
+                                    <a class="entry-logo-link" href="https://narberthambulance.org/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img class="entry-logo" src="/static/logos/narberth.png" alt="" width="36" height="36" loading="lazy" decoding="async" /></a>
+                                    <div>
+                                        <div class="entry-top">
+                                            <div>
+                                                <h4><a href="https://narberthambulance.org/" target="_blank" rel="noopener noreferrer">Narberth Ambulance</a></h4>
+                                                <p class="entry-sub">Emergency Medical Technician</p>
+                                            </div>
+                                            <p class="entry-meta"><span class="entry-date">Oct 2025 – Sep 2026</span><span class="entry-loc">Ardmore, PA</span></p>
+                                        </div>
+                                        <ul class="entry-notes">
+                                            <li>Responded to 911 emergencies, performing rapid patient assessment, treatment, and transport in accordance with Pennsylvania EMS protocols in high-acuity and time-sensitive settings</li>
+                                            <li>Obtained vital signs, evaluated presenting symptoms, administered approved interventions, and communicated clinically important findings to receiving facilities and other healthcare professionals</li>
+                                            <li>Worked within multidisciplinary teams of EMTs, paramedics, firefighters, law enforcement, and hospital staff, strengthening concise handoff communication and escalation of significant clinical observations</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="block">
+                            <h3 class="label">Publications</h3>
+                            <ol>
+                                <li class="entry entry--plain">
+                                    <div class="entry-top">
+                                        <div>
+                                            <h4><a href="https://www.ncbi.nlm.nih.gov/nuccore/JZ985529.1" target="_blank" rel="noopener noreferrer"><i>Landoltia punctata</i> clone W893.21, 36.4 kDa proline-rich protein-like mRNA, partial sequence</a></h4>
+                                            <p class="entry-sub">Pallepati A, Vershon A, Mead J.</p>
+                                        </div>
+                                        <p class="entry-meta"><span class="entry-date">2021</span></p>
+                                    </div>
+                                </li>
+                                <li class="entry entry--plain">
+                                    <div class="entry-top">
+                                        <div>
+                                            <h4><a href="https://www.ncbi.nlm.nih.gov/nuccore/JZ985530.1" target="_blank" rel="noopener noreferrer"><i>Landoltia punctata</i> clone W894.21, leucine-rich repeat protein-like mRNA, partial sequence</a></h4>
+                                            <p class="entry-sub">Pallepati A, Vershon A, Mead J.</p>
+                                        </div>
+                                        <p class="entry-meta"><span class="entry-date">2021</span></p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="block">
+                            <h3 class="label">Skills</h3>
+                            <dl class="skills">
+                                <div class="skill">
+                                    <dt>Statistics &amp; Data</dt>
+                                    <dd>R; statistical analysis; data visualization; probability modeling; simulation; hypothesis testing; confidence intervals; statistical power; Type I/II error; biomedical data interpretation</dd>
+                                </div>
+                                <div class="skill">
+                                    <dt>Genomics &amp; Bioinformatics</dt>
+                                    <dd>cDNA cloning and sequencing; DNA chromatogram quality review; base-call assessment; sequence trimming/assembly; gene annotation; NCBI BLAST; NCBI GenBank; 4Peaks</dd>
+                                </div>
+                                <div class="skill">
+                                    <dt>Clinical &amp; Documentation</dt>
+                                    <dd>EMT patient assessment; vital signs; clinical handoff; protocol-based care; BLS; CPR/AED/First Aid instruction; structured ePCR documentation; clinical data-quality review</dd>
+                                </div>
+                                <div class="skill">
+                                    <dt>Programming &amp; Tools</dt>
+                                    <dd>Python, R, TypeScript, JavaScript, React, HTML/CSS; SQL; Git/GitHub; command line; Docker; AWS; CI/CD; familiar with C, C++, MATLAB</dd>
+                                </div>
+                                <div class="skill">
+                                    <dt>Areas of Interest</dt>
+                                    <dd>Pharmacovigilance, drug safety, safety analytics, clinical research, pharmaceutical sciences, benefit-risk evaluation</dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="section">
-            <h2 class="section-label">Publications</h2>
-            <ul>
-                <li class="pub">
-                    <div class="entry-top">
-                        <h3><a class="entry-link" href="https://www.ncbi.nlm.nih.gov/nuccore/JZ985529.1"
-                                target="_blank" rel="noopener noreferrer">Landoltia punctata clone W893.21, 36.4 kDa
-                                proline-rich protein-like mRNA, partial sequence</a></h3>
-                        <span class="entry-date">2021</span>
-                    </div>
-                    <div class="entry-sub">Pallepati A, Vershon A, Mead J.</div>
-                </li>
-                <li class="pub">
-                    <div class="entry-top">
-                        <h3><a class="entry-link" href="https://www.ncbi.nlm.nih.gov/nuccore/JZ985530.1"
-                                target="_blank" rel="noopener noreferrer">Landoltia punctata clone W894.21, leucine-rich
-                                repeat protein-like mRNA, partial sequence</a></h3>
-                        <span class="entry-date">2021</span>
-                    </div>
-                    <div class="entry-sub">Pallepati A, Vershon A, Mead J.</div>
-                </li>
-            </ul>
+        <section class="band band--rule" id="work">
+            <div class="col heading">
+                <h2>Work</h2>
+            </div>
         </section>
 
-        <section class="section">
-            <h2 class="section-label">Certifications</h2>
-            <div class="certs">
-                <a class="cert" href="/static/emt.pdf" target="_blank" rel="noopener noreferrer">EMT</a>
-                <a class="cert" href="/static/bls.pdf" target="_blank" rel="noopener noreferrer">BLS</a>
-                <a class="cert" href="/static/bls-i.pdf" target="_blank" rel="noopener noreferrer">BLS-I</a>
-                <a class="cert" href="/static/acls.pdf" target="_blank" rel="noopener noreferrer">ACLS</a>
-                <a class="cert" href="/static/pals.pdf" target="_blank" rel="noopener noreferrer">PALS</a>
-                <a class="cert" href="/static/medstats.pdf" target="_blank" rel="noopener noreferrer">Medical Statistics</a>
+        <section class="band band--rule">
+            <div class="col">
+                <div class="grid--work">
+                    <a class="card" href="https://partret.com" target="_blank" rel="noopener noreferrer">
+                        <div class="media media--partret">
+                            <div class="window epcr" data-epcr-demo aria-hidden="true">
+                                <div class="window-bar">
+                                    <span class="window-dots"><i></i><i></i><i></i></span>
+                                    <span class="window-url">partret.com</span>
+                                </div>
+                                <div class="epcr-body">
+                                    <span class="epcr-title">ePCR Chart</span>
+                                    <div class="epcr-fields">
+                                        <div class="epcr-field warn" data-epcr-field>
+                                            <span class="epcr-k">Complaint</span>
+                                            <span class="epcr-v"><span data-epcr-type data-text="Chest pressure" data-wrong="Chest pain">Chest pain</span><span class="caret"></span></span>
+                                        </div>
+                                        <div class="epcr-field ok">
+                                            <span class="epcr-k">Location</span>
+                                            <span class="epcr-v">Left chest</span>
+                                        </div>
+                                    </div>
+                                    <div class="epcr-vitals">
+                                        <div class="epcr-field ok"><span class="epcr-k">HR</span><span class="epcr-v">88</span></div>
+                                        <div class="epcr-field warn" data-epcr-spo2><span class="epcr-k">SpO&#8322;</span><span class="epcr-v"><span data-epcr-spo2-v>91%</span><span class="caret"></span></span></div>
+                                        <div class="epcr-field ok"><span class="epcr-k">BP</span><span class="epcr-v">128/82</span></div>
+                                    </div>
+                                    <div class="epcr-field">
+                                        <span class="epcr-k">Narrative</span>
+                                        <span class="epcr-narr">Patient c/o chest pressure, started 20 min ago. Vitals stable, 12-lead acquired.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <h3>Partret</h3>
+                            <p><span class="tag tag--green">Scheduling &amp; Analytics Platform</span></p>
+                        </div>
+                    </a>
+                    <a class="card" href="https://github.com/MasterMilkyshake/iAgents" target="_blank" rel="noopener noreferrer">
+                        <div class="media media--iagents">
+                            <div class="window chat" data-chat-demo aria-hidden="true">
+                                <div class="chat-head">
+                                    <svg class="chat-back" viewBox="0 0 10 16"><path d="M8 1.5 1.75 8 8 14.5" /></svg>
+                                    <span class="chat-avatar">S</span>
+                                    <span class="chat-name">Secretary<svg viewBox="0 0 6 10"><path d="m1.25 1.25 3.5 3.75-3.5 3.75" /></svg></span>
+                                </div>
+                                <div class="chat-body">
+                                    <p class="bubble bubble--me" data-chat-step>Fix the flaky login test</p>
+                                    <p class="bubble" data-chat-step>On it. Starting a Cursor agent on the repo.</p>
+                                    <p class="bubble" data-chat-step>Agent finished. Tests pass and the PR is open.</p>
+                                    <p class="bubble bubble--typing" data-chat-typing><i></i><i></i><i></i></p>
+                                </div>
+                                <div class="chat-compose">
+                                    <span class="compose-plus"><svg viewBox="0 0 16 16"><path d="M8 3.5v9M3.5 8h9" /></svg></span>
+                                    <span class="compose-field">
+                                        <span class="compose-text" data-chat-compose></span><span class="caret" data-compose-caret></span>
+                                        <span class="compose-placeholder">iMessage</span>
+                                        <svg class="compose-mic" viewBox="0 0 16 16"><rect x="5.75" y="1.75" width="4.5" height="7.5" rx="2.25" /><path d="M3.5 7.5a4.5 4.5 0 0 0 9 0M8 12v2.25" /></svg>
+                                        <span class="compose-send"><svg viewBox="0 0 16 16"><path d="M8 12.5v-9M4.25 7.25 8 3.5l3.75 3.75" /></svg></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <h3>iAgents</h3>
+                            <p><span class="tag tag--teal">iMessages to AI Agents</span></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="band band--rule">
+            <div class="col heading">
+                <h2>Certifications</h2>
+            </div>
+        </section>
+
+        <section class="band band--rule">
+            <div class="col">
+                <div class="grid--certs">
+                    <a class="cert cert--aqua" href="/static/emt.pdf" target="_blank" rel="noopener noreferrer">
+                        <span class="cert-abbr">EMT</span>
+                        <span class="cert-name">Emergency Medical Technician</span>
+                        <span class="cert-link">View certificate <span aria-hidden="true">↗</span></span>
+                    </a>
+                    <a class="cert cert--lilac" href="/static/bls.pdf" target="_blank" rel="noopener noreferrer">
+                        <span class="cert-abbr">BLS</span>
+                        <span class="cert-name">Basic Life Support</span>
+                        <span class="cert-link">View certificate <span aria-hidden="true">↗</span></span>
+                    </a>
+                    <a class="cert cert--sky" href="/static/bls-i.pdf" target="_blank" rel="noopener noreferrer">
+                        <span class="cert-abbr">BLS-I</span>
+                        <span class="cert-name">Basic Life Support Instructor</span>
+                        <span class="cert-link">View certificate <span aria-hidden="true">↗</span></span>
+                    </a>
+                    <a class="cert cert--peach" href="/static/acls.pdf" target="_blank" rel="noopener noreferrer">
+                        <span class="cert-abbr">ACLS</span>
+                        <span class="cert-name">Advanced Cardiovascular Life Support</span>
+                        <span class="cert-link">View certificate <span aria-hidden="true">↗</span></span>
+                    </a>
+                    <a class="cert cert--pink" href="/static/pals.pdf" target="_blank" rel="noopener noreferrer">
+                        <span class="cert-abbr">PALS</span>
+                        <span class="cert-name">Pediatric Advanced Life Support</span>
+                        <span class="cert-link">View certificate <span aria-hidden="true">↗</span></span>
+                    </a>
+                    <a class="cert cert--mint" href="/static/medstats.pdf" target="_blank" rel="noopener noreferrer">
+                        <span class="cert-abbr">Stats</span>
+                        <span class="cert-name">Medical Statistics</span>
+                        <span class="cert-link">View certificate <span aria-hidden="true">↗</span></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="band">
+            <div class="col quests">
+                <h2>Off the clock, a few side&nbsp;quests</h2>
+                <div class="quest-cards">
+                    <a class="quest" href="https://www.youtube.com/@AbhishekPallepati" target="_blank" rel="noopener noreferrer">
+                        <svg class="quest-ico quest-ico--yt" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3 3 0 0 0 .5 6.2C0 8.07 0 12 0 12s0 3.93.5 5.8a3 3 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3 3 0 0 0 2.12-2.13c.5-1.88.5-5.81.5-5.81s0-3.93-.5-5.8ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z" /></svg>
+                        <span class="quest-name">YouTube</span>
+                        <span class="quest-handle">@AbhishekPallepati</span>
+                    </a>
+                    <a class="quest" href="https://github.com/MasterMilkyshake" target="_blank" rel="noopener noreferrer">
+                        <svg class="quest-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.83-.26.83-.58l-.02-2.04c-3.33.73-4.03-1.6-4.03-1.6-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22l-.01 3.29c0 .31.21.69.82.57A12 12 0 0 0 12 .3Z" /></svg>
+                        <span class="quest-name">GitHub</span>
+                        <span class="quest-handle">MasterMilkyshake</span>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
-
-    <script>
-        (() => {
-            const root = document.querySelector('[data-epcr-demo]');
-            if (!root) return;
-
-            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const complaint = root.querySelector('[data-epcr-field]');
-            const spo2 = root.querySelector('[data-epcr-spo2]');
-            const spo2V = root.querySelector('[data-epcr-spo2-v]');
-            let timers = [];
-            let running = false;
-            let loopId = 0;
-
-            const wait = (ms) => new Promise((resolve) => {
-                const id = setTimeout(resolve, ms);
-                timers.push(id);
-            });
-
-            const clearTimers = () => {
-                timers.forEach(clearTimeout);
-                timers = [];
-            };
-
-            const setCaret = (el, on) => {
-                root.querySelectorAll('.mk-caret').forEach((c) => c.classList.remove('is-on'));
-                if (on && el) el.querySelector('.mk-caret')?.classList.add('is-on');
-            };
-
-            const typeInto = async (host, text, speed = 38) => {
-                const target = host?.querySelector('[data-epcr-type]');
-                if (!target) return;
-                setCaret(host, true);
-                target.textContent = '';
-                for (let i = 0; i < text.length; i++) {
-                    if (!running) return;
-                    target.textContent = text.slice(0, i + 1);
-                    await wait(speed + (text[i] === ' ' ? 24 : 0) + Math.random() * 18);
-                }
-            };
-
-            const fillStatic = () => {
-                const type = complaint?.querySelector('[data-epcr-type]');
-                if (type) type.textContent = type.dataset.text || '';
-                complaint?.classList.add('ok');
-                complaint?.classList.remove('warn', 'is-focus');
-                if (spo2V) spo2V.textContent = '97%';
-                spo2?.classList.add('is-live');
-                spo2?.classList.remove('warn', 'is-focus', 'is-pending');
-                setCaret(null, false);
-                root.classList.remove('is-animating');
-            };
-
-            const runCycle = async (token) => {
-                root.classList.add('is-animating');
-
-                const cType = complaint?.querySelector('[data-epcr-type]');
-                if (cType) cType.textContent = cType.dataset.wrong || 'Chest pain';
-                complaint?.classList.add('warn');
-                complaint?.classList.remove('ok', 'is-focus');
-
-                if (spo2V) spo2V.textContent = '91%';
-                spo2?.classList.add('warn');
-                spo2?.classList.remove('is-live', 'is-focus');
-
-                await wait(1300);
-                if (!running || token !== loopId) return;
-
-                complaint?.classList.remove('warn');
-                complaint?.classList.add('is-focus');
-                if (cType) cType.textContent = '';
-                setCaret(complaint, true);
-                await wait(180);
-                if (!running || token !== loopId) return;
-
-                await typeInto(complaint, cType?.dataset.text || '', 44);
-                if (!running || token !== loopId) return;
-                await wait(220);
-                if (!running || token !== loopId) return;
-                setCaret(null, false);
-                complaint?.classList.remove('is-focus');
-                complaint?.classList.add('ok');
-
-                await wait(520);
-                if (!running || token !== loopId) return;
-
-                spo2?.classList.remove('warn');
-                spo2?.classList.add('is-focus');
-                if (spo2V) spo2V.textContent = '';
-                setCaret(spo2, true);
-                await wait(180);
-                if (!running || token !== loopId) return;
-
-                const fixed = '97%';
-                for (let i = 0; i < fixed.length; i++) {
-                    if (!running || token !== loopId) return;
-                    spo2V.textContent = fixed.slice(0, i + 1);
-                    await wait(70 + Math.random() * 30);
-                }
-                await wait(220);
-                if (!running || token !== loopId) return;
-                setCaret(null, false);
-                spo2?.classList.remove('is-focus');
-                spo2?.classList.add('is-live');
-
-                await wait(3200);
-                if (running && token === loopId) runCycle(token);
-            };
-
-            const start = () => {
-                if (running) return;
-                running = true;
-                loopId += 1;
-                runCycle(loopId);
-            };
-
-            const stop = () => {
-                running = false;
-                loopId += 1;
-                clearTimers();
-                fillStatic();
-            };
-
-            if (reduce) {
-                fillStatic();
-                return;
-            }
-
-            fillStatic();
-
-            const io = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) start();
-                    else stop();
-                });
-            }, { threshold: 0.35 });
-
-            io.observe(root);
-        })();
-
-        (() => {
-            const root = document.querySelector('[data-ide-demo]');
-            if (!root) return;
-
-            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const rows = [...root.querySelectorAll('[data-ide-row]')];
-            const typeRows = rows.filter((r) => r.hasAttribute('data-ide-type'));
-            const cmdLine = root.querySelector('[data-term-cmd]');
-            const cmdText = root.querySelector('[data-term-cmd-text]');
-            const termOuts = [...root.querySelectorAll('[data-term-out]')];
-            const termPrompt = root.querySelector('[data-term-prompt]');
-            const termCaret = root.querySelector('[data-term-caret]');
-            const cmdFull = cmdText?.textContent || 'python gait.py --froude 0.31';
-
-            const originals = new Map(
-                rows.map((row) => [row, row.querySelector('.mk-ide-src')?.innerHTML || ''])
-            );
-
-            let timers = [];
-            let running = false;
-            let loopId = 0;
-
-            const wait = (ms) => new Promise((resolve) => {
-                const id = setTimeout(resolve, ms);
-                timers.push(id);
-            });
-
-            const clearTimers = () => {
-                timers.forEach(clearTimeout);
-                timers = [];
-            };
-
-            const lastTypeRow = typeRows[typeRows.length - 1] || null;
-
-            const clearGlow = () => {
-                rows.forEach((r) => r.classList.remove('is-glow'));
-            };
-
-            const setGlow = (row) => {
-                clearGlow();
-                row?.classList.add('is-glow');
-            };
-
-            const clearCarets = () => {
-                root.querySelectorAll('.mk-caret').forEach((c) => c.classList.remove('is-on'));
-                rows.forEach((r) => r.classList.remove('is-typing'));
-            };
-
-            const fillStatic = () => {
-                rows.forEach((row) => {
-                    const src = row.querySelector('.mk-ide-src');
-                    if (src) src.innerHTML = originals.get(row) || '';
-                    row.classList.remove('is-typing');
-                });
-                if (cmdText) cmdText.textContent = cmdFull;
-                termOuts.forEach((line) => line.classList.remove('is-hidden'));
-                termPrompt?.classList.remove('is-hidden');
-                clearCarets();
-                setGlow(lastTypeRow);
-            };
-
-            const typePlain = async (row, plain, html, speed = 28) => {
-                const src = row.querySelector('.mk-ide-src');
-                const caret = row.querySelector('.mk-caret');
-                if (!src) return;
-                clearCarets();
-                row.classList.add('is-typing');
-                caret?.classList.add('is-on');
-                src.textContent = '';
-                for (let i = 0; i < plain.length; i++) {
-                    if (!running) return;
-                    src.textContent = plain.slice(0, i + 1);
-                    await wait(speed + (plain[i] === ' ' ? 16 : 0) + Math.random() * 14);
-                }
-                src.innerHTML = html;
-                caret?.classList.remove('is-on');
-                row.classList.remove('is-typing');
-            };
-
-            const runCycle = async (token) => {
-                clearGlow();
-                typeRows.forEach((row) => {
-                    const src = row.querySelector('.mk-ide-src');
-                    if (src) src.innerHTML = '';
-                });
-                rows.forEach((row) => {
-                    if (row.hasAttribute('data-ide-type')) return;
-                    const src = row.querySelector('.mk-ide-src');
-                    if (src) src.innerHTML = originals.get(row) || '';
-                });
-
-                if (cmdText) cmdText.textContent = '';
-                termOuts.forEach((line) => line.classList.add('is-hidden'));
-                termPrompt?.classList.add('is-hidden');
-                clearCarets();
-
-                await wait(400);
-                if (!running || token !== loopId) return;
-
-                for (const row of typeRows) {
-                    if (!running || token !== loopId) return;
-                    const html = originals.get(row) || '';
-                    const plain = row.querySelector('.mk-ide-src')
-                        ? (() => {
-                            const tmp = document.createElement('span');
-                            tmp.innerHTML = html;
-                            return tmp.textContent || '';
-                        })()
-                        : '';
-                    await typePlain(row, plain, html, 28);
-                    await wait(180);
-                }
-
-                setGlow(lastTypeRow);
-
-                await wait(360);
-                if (!running || token !== loopId) return;
-
-                clearCarets();
-                termCaret?.classList.add('is-on');
-                if (cmdText) cmdText.textContent = '';
-                for (let i = 0; i < cmdFull.length; i++) {
-                    if (!running || token !== loopId) return;
-                    cmdText.textContent = cmdFull.slice(0, i + 1);
-                    await wait(24 + Math.random() * 16);
-                }
-                termCaret?.classList.remove('is-on');
-
-                await wait(220);
-                for (const line of termOuts) {
-                    if (!running || token !== loopId) return;
-                    line.classList.remove('is-hidden');
-                    await wait(240);
-                }
-                termPrompt?.classList.remove('is-hidden');
-
-                await wait(2800);
-                if (running && token === loopId) runCycle(token);
-            };
-
-            const start = () => {
-                if (running) return;
-                running = true;
-                loopId += 1;
-                runCycle(loopId);
-            };
-
-            const stop = () => {
-                running = false;
-                loopId += 1;
-                clearTimers();
-                fillStatic();
-            };
-
-            if (reduce) {
-                fillStatic();
-                return;
-            }
-
-            fillStatic();
-
-            const io = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) start();
-                    else stop();
-                });
-            }, { threshold: 0.35 });
-
-            io.observe(root);
-        })();
-    </script>
 </body>
 
 </html>
