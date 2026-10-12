@@ -1015,6 +1015,11 @@ canvas {
 
     .about-intro {
         position: static;
+        text-align: center;
+    }
+
+    .about-photo-link {
+        justify-self: center;
     }
 
     .about-detail {
