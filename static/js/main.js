@@ -127,7 +127,7 @@ function pkDemo() {
     const X0 = 18;
     const X1 = 166;
     const Y_TOP = 4;
-    const Y_BOT = 104;
+    const Y_BOT = 100;
     const HOURS = 48;
     const y = (v) => Y_TOP + ((2 - Math.log10(Math.max(v, 0.01))) / 4) * (Y_BOT - Y_TOP);
     const unit = (v, [lo, hi]) => (v - lo) / (hi - lo);
