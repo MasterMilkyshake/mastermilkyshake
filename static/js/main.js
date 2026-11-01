@@ -124,7 +124,7 @@ function pkDemo() {
     const CHARGE = [-30, 30];
     const PEG = [0, 100];
     const DOSE = [0.5, 20];
-    const X0 = 20;
+    const X0 = 19.25;
     const X1 = 166;
     const Y_TOP = 4;
     const Y_BOT = 96;

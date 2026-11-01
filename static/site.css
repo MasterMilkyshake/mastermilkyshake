@@ -608,20 +608,31 @@ canvas {
 }
 
 .pk-body {
+    --pk-pad: 11px;
+    --pk-side: 116px;
+    position: relative;
     display: grid;
     flex: 1;
     min-height: 0;
-    grid-template-columns: 116px minmax(0, 1fr);
+    grid-template-columns: var(--pk-side) minmax(0, 1fr);
+    align-content: center;
     gap: 12px;
-    padding: 0 11px;
+    padding: 0 var(--pk-pad);
+}
+
+.pk-body::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 calc(var(--pk-pad) + var(--pk-side) - 1px);
+    width: 1px;
+    background: #eee;
 }
 
 .pk-controls {
     display: grid;
-    align-content: start;
+    align-content: space-between;
     gap: 11px;
     padding: 9px 12px 9px 0;
-    border-right: 1px solid #eee;
 }
 
 .pk-ctl {
@@ -671,8 +682,8 @@ canvas {
 
 .pk-chart {
     display: grid;
-    align-content: start;
-    gap: 4px;
+    align-content: center;
+    gap: 2px;
     min-width: 0;
     padding: 9px 0;
 }
