@@ -41,6 +41,7 @@ h1,
 h2,
 h3,
 h4,
+h5,
 p,
 ol,
 ul {
@@ -199,6 +200,11 @@ canvas {
     max-width: 21em;
 }
 
+/* Opening sentence sits on its own line */
+.about-lede {
+    display: block;
+}
+
 .about-detail {
     display: grid;
     gap: 48px;
@@ -263,7 +269,7 @@ canvas {
     gap: 16px;
 }
 
-.entry h4 {
+.entry :is(h4, h5) {
     font-family: var(--serif);
     font-size: 20px;
     font-weight: 400;
@@ -272,14 +278,14 @@ canvas {
     color: var(--black);
 }
 
-.entry h4 a {
+.entry :is(h4, h5) a {
     text-decoration: underline;
     text-decoration-color: transparent;
     text-underline-offset: 3px;
     transition: text-decoration-color 0.2s ease;
 }
 
-.entry h4 a:hover {
+.entry :is(h4, h5) a:hover {
     text-decoration-color: currentColor;
 }
 
@@ -307,8 +313,10 @@ canvas {
     white-space: nowrap;
 }
 
+/* Location stays directly under the date; this gap puts it on the role's baseline
+   whenever the name fits on one line (tuned per name size) */
 .entry-loc {
-    margin-top: 6px;
+    margin-top: 4.75px;
     white-space: nowrap;
 }
 
@@ -319,7 +327,6 @@ canvas {
 }
 
 .entry-notes li {
-    --thread: calc(-1 * (var(--col-gap) + var(--logo) / 2));
     position: relative;
     font-size: 14.5px;
     line-height: 1.6;
@@ -327,25 +334,119 @@ canvas {
     text-wrap: pretty;
 }
 
-.entry-notes li::before {
-    content: "";
-    position: absolute;
-    left: var(--thread);
-    top: calc(-1 * var(--note-gap));
-    width: calc(var(--col-gap) + var(--logo) / 2 - 8px);
-    height: calc(var(--note-gap) + 0.8em);
-    border-left: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-    border-bottom-left-radius: 8px;
+/* Threads: --thread is the rail's x (relative to the bullet), --gap the space between
+   bullets, --bend the branch's corner radius and its inset from the text */
+.entry-notes > li {
+    --thread: calc(-1 * (var(--col-gap) + var(--logo) / 2));
+    --gap: var(--note-gap);
+    --bend: 8px;
 }
 
-.entry-notes li:not(:last-child)::after {
+:is(.entry-notes, .entry-subnotes) > li::before {
     content: "";
     position: absolute;
     left: var(--thread);
-    top: calc(0.8em - 8px);
-    bottom: calc(-1 * var(--note-gap));
+    top: calc(-1 * var(--gap));
+    width: calc(-1 * var(--thread) - var(--bend));
+    height: calc(var(--gap) + var(--branch-y, 0.8em));
     border-left: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    border-bottom-left-radius: var(--bend);
+}
+
+:is(.entry-notes, .entry-subnotes) > li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: var(--thread);
+    top: calc(var(--branch-y, 0.8em) - var(--bend));
+    bottom: calc(-1 * var(--gap));
+    border-left: 1px solid var(--rule);
+}
+
+/* An organisation nested as a bullet under a parent entry, with its own threaded sub-bullets */
+.note-org {
+    --mini: 28px;
+    --mini-gap: 12px;
+    --sub-gap: 8px;
+    --branch-y: calc(var(--mini) / 2);
+    --sub-name: 18px;
+    display: grid;
+    grid-template-columns: var(--mini) minmax(0, 1fr);
+    gap: var(--sub-gap) var(--mini-gap);
+}
+
+.note-org-rail {
+    grid-row: 1;
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-org-rail::after {
+    content: "";
+    flex: 1;
+    width: 1px;
+    margin: 6px 0 0 calc(var(--mini) / 2);
+    background: var(--rule);
+}
+
+.note-org-rail a {
+    display: block;
+}
+
+.note-org-logo {
+    width: var(--mini);
+    height: var(--mini);
+    border-radius: calc(var(--mini) / 4);
+}
+
+.note-org h5 {
+    font-size: var(--sub-name);
+    letter-spacing: -0.015em;
+}
+
+/* Role, date and location match the parent entry; only the name and logo step down */
+.note-org .entry-sub,
+.note-org .entry-meta {
+    line-height: 1.5;
+}
+
+.note-org .entry-loc {
+    margin-top: 4.15px;
+}
+
+/* Long role titles swap to their abbreviation whenever the full title would wrap.
+   19.5em is the width of "Volunteer Emergency Medical Technician" at role size, plus slack. */
+.entry-top > div:has(.role-short) {
+    container: role / inline-size;
+    flex-grow: 1;
+}
+
+.role-short {
+    display: none;
+}
+
+@container role (max-width: 19.5em) {
+    .role-full {
+        display: none;
+    }
+
+    .role-short {
+        display: inline;
+    }
+}
+
+.entry-subnotes {
+    grid-column: 2;
+    display: grid;
+    gap: var(--sub-gap);
+}
+
+.entry-subnotes > li {
+    --thread: calc(-1 * (var(--mini-gap) + var(--mini) / 2));
+    --gap: var(--sub-gap);
+    --bend: 6px;
+    --branch-y: 0.8em; /* undo the logo-centred branch inherited from .note-org */
 }
 
 .skills {
@@ -1186,6 +1287,14 @@ canvas {
         margin-left: auto;
     }
 
+    .entry-loc {
+        margin-top: 4.15px;
+    }
+
+    .note-org .entry-loc {
+        margin-top: 3.2px;
+    }
+
     .entry-logo {
         width: 32px;
         height: 32px;
@@ -1194,6 +1303,12 @@ canvas {
     .entry h4,
     .skill dt {
         font-size: 18px;
+    }
+
+    .note-org {
+        --mini: 24px;
+        --mini-gap: 10px;
+        --sub-name: 16.5px;
     }
 
     .entry-sub,
@@ -1237,6 +1352,21 @@ canvas {
 @media (max-width: 520px) {
     .window {
         zoom: 0.66;
+    }
+
+    /* Phones: name, role, date and location stack left-aligned at full width */
+    .entry-top:has(.entry-loc) {
+        display: block;
+    }
+
+    .entry-top:has(.entry-loc) .entry-meta {
+        justify-items: start;
+        margin-top: 2px;
+        text-align: left;
+    }
+
+    .entry-top .entry-loc {
+        margin-top: 0;
     }
 }
 
