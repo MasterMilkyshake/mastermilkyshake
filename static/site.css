@@ -228,7 +228,6 @@ canvas {
     max-width: 21em;
 }
 
-/* Opening sentence sits on its own line */
 .about-lede {
     display: block;
 }
@@ -247,6 +246,16 @@ canvas {
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--caption);
+}
+
+.label--row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.scholar-link {
+    margin-block: -3px;
 }
 
 .entry {
@@ -341,8 +350,6 @@ canvas {
     white-space: nowrap;
 }
 
-/* Location stays directly under the date; this gap puts it on the role's baseline
-   whenever the name fits on one line (tuned per name size) */
 .entry-loc {
     margin-top: 4.75px;
     white-space: nowrap;
@@ -362,8 +369,6 @@ canvas {
     text-wrap: pretty;
 }
 
-/* Threads: --thread is the rail's x (relative to the bullet), --gap the space between
-   bullets, --bend the branch's corner radius and its inset from the text */
 .entry-notes > li {
     --thread: calc(-1 * (var(--col-gap) + var(--logo) / 2));
     --gap: var(--note-gap);
@@ -391,7 +396,6 @@ canvas {
     border-left: 1px solid var(--rule);
 }
 
-/* An organisation nested as a bullet under a parent entry, with its own threaded sub-bullets */
 .note-org {
     --mini: 28px;
     --mini-gap: 12px;
@@ -433,7 +437,6 @@ canvas {
     letter-spacing: -0.015em;
 }
 
-/* Role, date and location match the parent entry; only the name and logo step down */
 .note-org .entry-sub,
 .note-org .entry-meta {
     line-height: 1.5;
@@ -443,8 +446,6 @@ canvas {
     margin-top: 4.15px;
 }
 
-/* Long role titles swap to their abbreviation whenever the full title would wrap.
-   19.5em is the width of "Volunteer Emergency Medical Technician" at role size, plus slack. */
 .entry-top > div:has(.role-short) {
     container: role / inline-size;
     flex-grow: 1;
@@ -474,31 +475,7 @@ canvas {
     --thread: calc(-1 * (var(--mini-gap) + var(--mini) / 2));
     --gap: var(--sub-gap);
     --bend: 6px;
-    --branch-y: 0.8em; /* undo the logo-centred branch inherited from .note-org */
-}
-
-.skills {
-    margin: 0;
-}
-
-.skill {
-    padding: 18px 0;
-}
-
-.skill dt {
-    font-family: var(--serif);
-    font-size: 20px;
-    line-height: 1.3;
-    letter-spacing: -0.02em;
-    color: var(--black);
-}
-
-.skill dd {
-    margin: 4px 0 0;
-    font-size: 14.5px;
-    line-height: 1.6;
-    color: var(--muted);
-    text-wrap: pretty;
+    --branch-y: 0.8em;
 }
 
 .grid--work {
@@ -1328,8 +1305,7 @@ canvas {
         height: 32px;
     }
 
-    .entry h4,
-    .skill dt {
+    .entry h4 {
         font-size: 18px;
     }
 
@@ -1341,8 +1317,7 @@ canvas {
 
     .entry-sub,
     .entry-loc,
-    .entry-notes li,
-    .skill dd {
+    .entry-notes li {
         font-size: 14px;
     }
 
@@ -1382,7 +1357,6 @@ canvas {
         zoom: 0.66;
     }
 
-    /* Phones: name, role, date and location stack left-aligned at full width */
     .entry-top:has(.entry-loc) {
         display: block;
     }
