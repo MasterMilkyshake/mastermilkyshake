@@ -1,4 +1,3 @@
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js';
 import { buildShapes } from './shapes.js';
 
 const SHAPES = { nanoparticle: 0, protein: 1, network: 2, dust: 3 };
@@ -8,6 +7,8 @@ const EXTENT = [[3.3, 3.3], [3.6, 4.1], [4.2, 2.75], null];
 const vertexShader = `
 #define TAU 6.2831853
 
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
 uniform float uTime;
 uniform float uFrom;
 uniform float uTo;
@@ -17,6 +18,7 @@ uniform float uSize;
 uniform float uPixelRatio;
 uniform float uMotion;
 
+attribute vec3 position;
 attribute vec3 aProtein;
 attribute vec3 aNet;
 attribute vec3 aDust;
@@ -98,6 +100,8 @@ void main() {
 `;
 
 const fragmentShader = `
+precision highp float;
+
 varying vec3 vColor;
 varying float vAlpha;
 
@@ -110,46 +114,74 @@ void main() {
 
 const FOV = 35;
 const CAMERA_Z = 10;
+const NEAR = 0.1;
+const FAR = 100;
 const smooth = (t) => t * t * (3 - 2 * t);
 const lerp = (a, b, t) => a + (b - a) * t;
 
+function compile(gl, type, source) {
+    const shader = gl.createShader(type);
+    gl.shaderSource(shader, source);
+    gl.compileShader(shader);
+    return shader;
+}
+
+function link(gl) {
+    const program = gl.createProgram();
+    gl.attachShader(program, compile(gl, gl.VERTEX_SHADER, vertexShader));
+    gl.attachShader(program, compile(gl, gl.FRAGMENT_SHADER, fragmentShader));
+    gl.linkProgram(program);
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(program));
+    return program;
+}
+
 export function createDots(canvas, { count = 5000, shape = 0, fill = 0.82, size = 26, seed = 29, reduced = false } = {}) {
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setClearColor(0xffffff, 0);
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(FOV, 1, 0.1, 100);
-    camera.position.z = CAMERA_Z;
+    const gl = canvas.getContext('webgl', { alpha: true, antialias: true, depth: false, stencil: false });
+    if (!gl) throw new Error('WebGL unavailable');
 
     const s = buildShapes(count, seed);
-    const geometry = new THREE.BufferGeometry();
-    geometry.setAttribute('position', new THREE.BufferAttribute(s.nanoparticle, 3));
-    geometry.setAttribute('aProtein', new THREE.BufferAttribute(s.protein, 3));
-    geometry.setAttribute('aNet', new THREE.BufferAttribute(s.network, 3));
-    geometry.setAttribute('aDust', new THREE.BufferAttribute(s.dust, 3));
-    geometry.setAttribute('aKind', new THREE.BufferAttribute(s.kind, 3));
-    geometry.setAttribute('aRand', new THREE.BufferAttribute(s.rand, 4));
+    const attributes = [
+        ['position', s.nanoparticle, 3],
+        ['aProtein', s.protein, 3],
+        ['aNet', s.network, 3],
+        ['aDust', s.dust, 3],
+        ['aKind', s.kind, 3],
+        ['aRand', s.rand, 4],
+    ];
 
     const uniforms = {
-        uTime: { value: 0 },
-        uFrom: { value: SHAPES.dust },
-        uTo: { value: shape },
-        uMix: { value: reduced ? 1 : 0 },
-        uSpin: { value: 0.4 },
-        uSize: { value: size },
-        uPixelRatio: { value: 1 },
-        uMotion: { value: reduced ? 0 : 1 },
+        uTime: 0,
+        uFrom: SHAPES.dust,
+        uTo: shape,
+        uMix: reduced ? 1 : 0,
+        uSpin: 0.4,
+        uSize: size,
+        uPixelRatio: 1,
+        uMotion: reduced ? 0 : 1,
     };
+    const modelView = new Float32Array([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, -CAMERA_Z, 1]);
+    const projection = new Float32Array(16);
+    const locations = {};
 
-    const points = new THREE.Points(
-        geometry,
-        new THREE.ShaderMaterial({ vertexShader, fragmentShader, uniforms, transparent: true, depthWrite: false })
-    );
-    points.frustumCulled = false;
-    const group = new THREE.Group();
-    group.add(points);
-    scene.add(group);
+    function setup() {
+        const program = link(gl);
+        gl.useProgram(program);
+        for (const [name, data, width] of attributes) {
+            const location = gl.getAttribLocation(program, name);
+            gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+            gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
+            gl.enableVertexAttribArray(location);
+            gl.vertexAttribPointer(location, width, gl.FLOAT, false, 0, 0);
+        }
+        for (const name of [...Object.keys(uniforms), 'modelViewMatrix', 'projectionMatrix']) {
+            locations[name] = gl.getUniformLocation(program, name);
+        }
+        gl.enable(gl.BLEND);
+        gl.blendFuncSeparate(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA, gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+        gl.clearColor(0, 0, 0, 0);
+    }
 
-    const view = { w: 1, h: 1 };
+    const view = { w: 1, h: 1, pixels: [1, 1] };
     const state = { from: SHAPES.dust, to: shape, mix: reduced ? 1 : 0, queued: null, time: 0, spin: 0.4 };
     let visible = false;
     let raf = 0;
@@ -173,14 +205,20 @@ export function createDots(canvas, { count = 5000, shape = 0, fill = 0.82, size 
             begin(state.queued);
             state.queued = null;
         }
-        group.scale.setScalar(lerp(fit(state.from), fit(state.to), smooth(state.mix)));
+        modelView[0] = modelView[5] = modelView[10] = lerp(fit(state.from), fit(state.to), smooth(state.mix));
 
-        uniforms.uTime.value = state.time;
-        uniforms.uFrom.value = state.from;
-        uniforms.uTo.value = state.to;
-        uniforms.uMix.value = state.mix;
-        uniforms.uSpin.value = state.spin;
-        renderer.render(scene, camera);
+        uniforms.uTime = state.time;
+        uniforms.uFrom = state.from;
+        uniforms.uTo = state.to;
+        uniforms.uMix = state.mix;
+        uniforms.uSpin = state.spin;
+        for (const name in uniforms) gl.uniform1f(locations[name], uniforms[name]);
+        gl.uniformMatrix4fv(locations.modelViewMatrix, false, modelView);
+        gl.uniformMatrix4fv(locations.projectionMatrix, false, projection);
+
+        gl.viewport(0, 0, ...view.pixels);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+        gl.drawArrays(gl.POINTS, 0, count);
     }
 
     function loop(now) {
@@ -193,16 +231,30 @@ export function createDots(canvas, { count = 5000, shape = 0, fill = 0.82, size 
     function resize() {
         const { width, height } = canvas.getBoundingClientRect();
         if (!width || !height) return;
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-        renderer.setSize(width, height, false);
-        camera.aspect = width / height;
-        camera.updateProjectionMatrix();
-        uniforms.uPixelRatio.value = renderer.getPixelRatio();
+        const ratio = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.floor(width * ratio);
+        canvas.height = Math.floor(height * ratio);
+        view.pixels = [Math.round(width * ratio), Math.round(height * ratio)];
+        const aspect = width / height;
+        const focal = 1 / Math.tan((FOV * Math.PI) / 360);
+        projection[0] = focal / aspect;
+        projection[5] = focal;
+        projection[10] = (FAR + NEAR) / (NEAR - FAR);
+        projection[11] = -1;
+        projection[14] = (2 * FAR * NEAR) / (NEAR - FAR);
+        uniforms.uPixelRatio = ratio;
         view.h = 2 * CAMERA_Z * Math.tan((FOV * Math.PI) / 360);
-        view.w = view.h * camera.aspect;
+        view.w = view.h * aspect;
         if (!raf) render(0);
     }
 
+    canvas.addEventListener('webglcontextlost', (e) => e.preventDefault());
+    canvas.addEventListener('webglcontextrestored', () => {
+        setup();
+        if (!raf) render(0);
+    });
+
+    setup();
     new ResizeObserver(resize).observe(canvas);
     new IntersectionObserver(([entry]) => {
         visible = entry.isIntersecting;

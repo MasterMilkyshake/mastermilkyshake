@@ -378,8 +378,12 @@ document.addEventListener('dragstart', (e) => {
     if (e.target instanceof HTMLImageElement) e.preventDefault();
 });
 
-epcrDemo();
-pkDemo();
-simDemo();
-neuroDemo();
-startHero();
+// Paint first, then start one piece per task so nothing holds up the page
+requestAnimationFrame(async () => {
+    await wait(0);
+    await startHero();
+    for (const demo of [epcrDemo, pkDemo, simDemo, neuroDemo]) {
+        await wait(0);
+        demo();
+    }
+});
