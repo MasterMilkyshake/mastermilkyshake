@@ -248,14 +248,30 @@ canvas {
     color: var(--caption);
 }
 
-.label--row {
+.block-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 6px;
+}
+
+.block-head .label {
+    margin-bottom: 0;
 }
 
 .scholar-link {
-    margin-block: -3px;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: rgba(0, 0, 0, 0.6);
+    transition: color 0.2s ease;
+}
+
+.scholar-link:hover {
+    color: var(--black);
 }
 
 .entry {
