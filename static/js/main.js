@@ -48,7 +48,6 @@ function epcrDemo() {
     const type = $('[data-epcr-type]', demo);
     const spo2 = $('[data-epcr-spo2]', demo);
     const spo2V = $('[data-epcr-spo2-v]', demo);
-    const narrField = $('[data-epcr-narr-field]', demo);
     const narr = $('[data-epcr-narr]', demo);
 
     const caret = (field) => {
@@ -72,6 +71,7 @@ function epcrDemo() {
             type.textContent = type.dataset.wrong;
             spo2V.textContent = spo2V.dataset.wrong;
             narr.textContent = '';
+            narr.classList.remove('is-filled');
             mark(complaint, 'warn');
             mark(spo2, 'warn');
             await wait(1300);
@@ -99,25 +99,19 @@ function epcrDemo() {
             caret(null);
             mark(spo2, 'ok');
 
-            await wait(520);
+            await wait(450);
             if (stopped()) return;
-            narrField.classList.add('is-focus');
-            caret(narrField);
-            await wait(180);
-            await typeOut(narr, narr.dataset.text, 18, stopped);
-            await wait(220);
-            if (stopped()) return;
-            caret(null);
-            narrField.classList.remove('is-focus');
+            narr.textContent = narr.dataset.text;
+            narr.classList.add('is-filled');
             await wait(3200);
         },
         () => {
             type.textContent = type.dataset.text;
             spo2V.textContent = spo2V.dataset.text;
             narr.textContent = narr.dataset.text;
+            narr.classList.remove('is-filled');
             mark(complaint, 'ok');
             mark(spo2, 'ok');
-            narrField.classList.remove('is-focus');
             caret(null);
         }
     );

@@ -689,15 +689,18 @@ canvas {
     color: var(--muted);
 }
 
-.epcr-narr .caret {
-    display: inline-block;
-    vertical-align: -0.12em;
-}
-
-.epcr-field:not(.is-focus) [data-epcr-narr]:empty::before {
+.epcr-narr:empty::before {
     content: "Waiting for required fields";
     font-weight: 500;
     color: #b0b0b5;
+}
+
+.epcr-narr.is-filled {
+    animation: narr-in 0.45s ease;
+}
+
+@keyframes narr-in {
+    from { opacity: 0; }
 }
 
 .epcr-field.ok {
