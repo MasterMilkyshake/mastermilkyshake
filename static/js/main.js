@@ -225,76 +225,84 @@ function pkDemo() {
     );
 }
 
-function simDemo() {
-    const demo = $('[data-sim-demo]');
-    const guide = $('.sim-guide', demo);
-    const trail = $('[data-sim-trail]', demo);
-    const robot = $('[data-sim-robot]', demo);
-    const layers = $$('[data-nn-layer]', demo);
-    const gaps = $$('[data-nn-gap]', demo);
-    const SAMPLES = 160;
-    const SWEEPS = 6;
+function geoDemo() {
+    const demo = $('[data-geo-demo]');
+    const stages = $$('[data-geo-stage]', demo);
+    const mark = $('[data-geo-mark]', demo);
+    const finding = $('[data-geo-finding]', demo);
+    const value = $('[data-geo-value]', demo);
+    const caret = $('.caret', finding);
+    const total = stages[stages.length - 1];
+    const fmt = new Intl.NumberFormat('en-US');
 
-    const length = guide.getTotalLength();
-    let seed = 11;
-    const rand = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
-    let drift = 0;
-    const pts = [];
-    for (let i = 0; i <= SAMPLES; i++) {
-        const at = (i / SAMPLES) * length;
-        const p = guide.getPointAtLength(at);
-        const ahead = guide.getPointAtLength(Math.min(length, at + 0.5));
-        const behind = guide.getPointAtLength(Math.max(0, at - 0.5));
-        const nx = behind.y - ahead.y;
-        const ny = ahead.x - behind.x;
-        const n = Math.hypot(nx, ny) || 1;
-        drift = drift * 0.75 + (rand() - 0.5) * 1.6;
-        const taper = Math.min(1, i / 8, (SAMPLES - i) / 8);
-        pts.push(`${(p.x + (nx / n) * drift * taper).toFixed(2)} ${(p.y + (ny / n) * drift * taper).toFixed(2)}`);
-    }
-    trail.setAttribute('d', `M${pts.join('L')}`);
-    const total = trail.getTotalLength();
-
-    const pulse = (k) => {
-        const wave = ((k * SWEEPS) % 1) * (layers.length + 0.4) - 0.6;
-        const glow = (at) => Math.max(0, 1 - Math.abs(wave - at) * 1.4).toFixed(2);
-        layers.forEach((g, i) => (g.style.opacity = glow(i)));
-        gaps.forEach((g, i) => (g.style.opacity = glow(i + 0.5)));
-    };
-    const settle = () => {
-        [...layers, ...gaps].forEach((g) => (g.style.opacity = '0.9'));
-    };
-    const render = (k) => {
-        const p = trail.getPointAtLength(k * total);
-        robot.setAttribute('transform', `translate(${p.x.toFixed(1)} ${p.y.toFixed(1)})`);
-        trail.style.strokeDashoffset = String(100 * (1 - k));
-        if (k < 1) pulse(k);
-        else settle();
+    const setCount = (stage, n) => ($('.geo-n', stage).textContent = fmt.format(Math.round(n)));
+    const setFinding = (state) => (finding.dataset.state = state);
+    const count = async (stage, ms, stopped) => {
+        const to = Number(stage.dataset.n) - (stage === total ? 1 : 0);
+        const t0 = performance.now();
+        while (!stopped()) {
+            const k = Math.min(1, (performance.now() - t0) / ms);
+            setCount(stage, to * (1 - (1 - k) ** 3));
+            if (k === 1) return;
+            await new Promise(requestAnimationFrame);
+        }
     };
 
     whileVisible(
         demo,
         async (stopped) => {
-            render(0);
-            demo.classList.remove('is-fading');
+            stages.forEach((s) => setCount(s, 0));
+            mark.classList.remove('is-on');
+            value.textContent = '';
+            setFinding('empty');
             await wait(700);
             if (stopped()) return;
-            const t0 = performance.now();
-            while (!stopped()) {
-                const k = Math.min(1, (performance.now() - t0) / 4500);
-                render(k);
-                if (k === 1) break;
-                await new Promise(requestAnimationFrame);
+
+            for (const stage of stages) {
+                stage.classList.add('is-on');
+                await count(stage, 650, stopped);
+                stage.classList.remove('is-on');
+                if (stopped()) return;
+                await wait(120);
+            }
+
+            await wait(300);
+            if (stopped()) return;
+            mark.classList.add('is-on');
+            await wait(750);
+            if (stopped()) return;
+
+            setFinding('typing');
+            caret.classList.add('is-on');
+            await wait(180);
+            const text = value.dataset.text;
+            for (let i = 1; i <= text.length && !stopped(); i++) {
+                value.textContent = text.slice(0, i);
+                await wait(55 + Math.random() * 20);
             }
             if (stopped()) return;
-            await wait(3000);
+            await wait(220);
+            caret.classList.remove('is-on');
+            setFinding('done');
+            await wait(650);
             if (stopped()) return;
-            demo.classList.add('is-fading');
-            await wait(500);
+
+            setCount(total, Number(total.dataset.n));
+            total.classList.add('is-on');
+            await wait(900);
+            total.classList.remove('is-on');
+            if (stopped()) return;
+            await wait(3400);
         },
         () => {
-            demo.classList.remove('is-fading');
-            render(0);
+            stages.forEach((s) => {
+                s.classList.remove('is-on');
+                setCount(s, Number(s.dataset.n));
+            });
+            mark.classList.add('is-on');
+            value.textContent = value.dataset.text;
+            caret.classList.remove('is-on');
+            setFinding('done');
         }
     );
 }
@@ -381,7 +389,7 @@ document.addEventListener('dragstart', (e) => {
 requestAnimationFrame(async () => {
     await wait(0);
     await startHero();
-    for (const demo of [epcrDemo, pkDemo, simDemo, neuroDemo]) {
+    for (const demo of [epcrDemo, pkDemo, geoDemo, neuroDemo]) {
         await wait(0);
         demo();
     }
