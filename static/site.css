@@ -683,9 +683,21 @@ canvas {
 }
 
 .epcr-narr {
+    min-height: 1.45em;
     font-size: 10.5px;
     line-height: 1.45;
     color: var(--muted);
+}
+
+.epcr-narr .caret {
+    display: inline-block;
+    vertical-align: -0.12em;
+}
+
+.epcr-field:not(.is-focus) [data-epcr-narr]:empty::before {
+    content: "Waiting for required fields";
+    font-weight: 500;
+    color: #b0b0b5;
 }
 
 .epcr-field.ok {
@@ -962,6 +974,13 @@ canvas {
 .geo-finding[data-state="empty"] .geo-desc,
 .geo-finding[data-state="typing"] .geo-desc {
     opacity: 0;
+}
+
+.geo-finding[data-state="empty"] [data-geo-value]::before {
+    content: "Waiting for extraction";
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #b0b0b5;
 }
 
 .neuro-body {
